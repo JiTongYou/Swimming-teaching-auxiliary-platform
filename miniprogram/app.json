@@ -1,10 +1,42 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/vedio/vedio",
+    "pages/teaching class/teaching class",
+    "pages/individual/individual"
   ],
   "window": {
+    "navigationStyle": "custom",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "济同游"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/vedio/vedio",
+        "text": "视频",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/teaching class/teaching class",
+        "text": "班级",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/individual/individual",
+        "text": "个人",
+        "iconPath": "",
+        "selectedIconPath": ""
+      }
+    ]
   }
 }
