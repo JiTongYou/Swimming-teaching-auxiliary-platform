@@ -1,0 +1,1 @@
+"D:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-7gh3ock7a08defbd --n quickstartFunctions --r --project "E:\Programming\wechat\Swimming teaching auxiliary platform" --report
