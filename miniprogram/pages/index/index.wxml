@@ -1,5 +1,34 @@
-<!--miniprogram/pages/index/index.wxml-->
-<view class="indexContainer">
-  <image src=""></image>
-  <text>hello world</text>
+<view style="width: 750rpx; height: 130rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+   <button class="miniButton" style="position: relative; left: 262rpx; top: 60rpx; width: 176rpx; height: 54rpx; display: block; box-sizing: border-box">查看详情</button>
+</view> 
+
+<view style="width: 750rpx; height: 342rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+
+   <text style="position: relative; left: 10rpx; top: 6rpx">上次观看</text>
+   <swiper>
+      <swiper-item>
+         
+      </swiper-item>
+   </swiper>
+
 </view>
+
+<view style="width: 750rpx; height: 634rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+
+   <text style="position: relative; left: 196rpx; top: 15rpx">广场</text>
+   <text style="position: relative; left: 404rpx; top: 15rpx">消息</text>
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+

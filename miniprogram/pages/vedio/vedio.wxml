@@ -1,2 +1,5 @@
-<!--miniprogram/pages/vedio/vedio.wxml-->
-<text>miniprogram/pages/vedio/vedio.wxml</text>
+<text style="position: relative; left: 118rpx; top: 18rpx">教学视频</text>
+<text style="position: relative; left: 344rpx; top: 18rpx">训练计划</text>
+
+
+

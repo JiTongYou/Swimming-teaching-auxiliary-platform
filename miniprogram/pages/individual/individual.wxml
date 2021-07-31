@@ -1,2 +1,30 @@
-<!--miniprogram/pages/individual/individual.wxml-->
-<text>miniprogram/pages/individual/individual.wxml</text>
+<view class="header"
+  style="position: relative; width: 750rpx; background: #d3d3d3; min-height: 100px; height: 266rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
+
+  <text style="position: relative; left: 316rpx; top: 122rpx">ID:</text>
+
+  <text style="position: relative; left: 179rpx; top: 205rpx">关注：</text>
+
+  <text style="position: relative; left: 286rpx; top: 205rpx">粉丝：</text>
+</view>
+<view style="position: relative; width: 750rpx; background: #d3d3d3; min-height: 50px; height: 50rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></view>
+<view style="position: relative; width: 750rpx; background: #d3d3d3; min-height: 50px; height: 50rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></view>
+<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
+<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
+<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
+<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
+<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
+<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
+
+
+
+
+
+
+
+
+
+
+
+
+
