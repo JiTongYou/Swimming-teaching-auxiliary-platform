@@ -5,9 +5,10 @@
     "pages/teaching class/teaching class",
     "pages/individual/individual"
   ],
+  "style":"v2",
+
   "window": {
-    "navigationStyle": "custom",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#87E8E6",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "济同游"
   },
@@ -38,5 +39,6 @@
         "selectedIconPath": ""
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
