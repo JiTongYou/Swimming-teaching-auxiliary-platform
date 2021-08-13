@@ -1,42 +1,44 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/vedio/vedio",
+    "pages/video/video",
     "pages/teaching class/teaching class",
-    "pages/individual/individual"
+    "pages/individual/individual",
+    "pages/chat/chat"
   ],
-  "style":"v2",
-
+  "style": "v2",
   "window": {
-    "navigationBarBackgroundColor": "#87E8E6",
+    "navigationBarBackgroundColor": "#81DAF5",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "济同游"
   },
   "tabBar": {
+    "selectedColor": "#81DAF5",
+
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "iconPath": "static/iconfont/inonfontImages/homepage.png",
+        "selectedIconPath": "static/iconfont/inonfontImages/homepage_selected.png"
       },
       {
-        "pagePath": "pages/vedio/vedio",
+        "pagePath": "pages/video/video",
         "text": "视频",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "iconPath": "static/iconfont/inonfontImages/video.png",
+        "selectedIconPath": "static/iconfont/inonfontImages/video_selected.png"
       },
       {
         "pagePath": "pages/teaching class/teaching class",
         "text": "班级",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "iconPath": "static/iconfont/inonfontImages/class.png",
+        "selectedIconPath": "static/iconfont/inonfontImages/class_selected.png"
       },
       {
         "pagePath": "pages/individual/individual",
         "text": "个人",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "iconPath": "static/iconfont/inonfontImages/person.png",
+        "selectedIconPath": "static/iconfont/inonfontImages/person_selected.png"
       }
     ]
   },

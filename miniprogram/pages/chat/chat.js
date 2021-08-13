@@ -1,42 +1,11 @@
-// miniprogram/pages/index/index.js
+// miniprogram/pages/chat/chat.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navId: "0",
-    navFixed: false,
-  },
 
-  //点击切换主页导航条的回调
-  changeNav(event){
-    let navId = event.currentTarget.id;
-    this.setData({
-      navId: navId
-    })
-    wx.pageScrollTo({
-      /** 缺数值，应在判断后返回顶部 */
-    })
-  },
-
-   /* 浮动导航条
-  原文链接：https://blog.csdn.net/qq_43764578/article/details/105706732
-  效果较为糟糕，卡顿明显，使用体验差
- */
-  floatNav: function (e) {
-    let that = this;
-    wx.createSelectorQuery().select('#indexNav').boundingClientRect(function (rect) {
-      if(0 <= rect.top){
-        that.setData({
-          navFixed:false
-        })
-      }else{
-        that.setData({
-          navFixed:true
-        })
-      }
-    }).exec()
   },
 
   /**

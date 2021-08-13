@@ -1,34 +1,139 @@
-<view style="width: 750rpx; height: 130rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
-   <button class="miniButton" style="position: relative; left: 262rpx; top: 60rpx; width: 176rpx; height: 54rpx; display: block; box-sizing: border-box">查看详情</button>
-</view> 
+<view>
+   <scroll-view bindscroll="floatNav" scroll-y style="height: 100vh;">
+      <!-- 班级通知 -->
+      <view class="indexNoticeContainer">
+         <view class="header">
+            <text class="class">Lorem ipsum dolor sit amet.</text>
+            <text class="time">time</text>
+         </view>
+         <view class="content">
+            <text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, non!</text>
+         </view>
+         <view>
+            <button class="detailButton" style="width:180rpx">查看详情>></button>
+         </view>
+      </view>
 
-<view style="width: 750rpx; height: 342rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+      <!-- 上次观看 -->
+      <view class="indexWatchingRecord">
+         <text>上次观看</text>
+         <view>
+            <image class="videoCover" src=""></image>
+            <text class="videoName">Lorem, ipsum.</text>
+         </view>
+      </view>
 
-   <text style="position: relative; left: 10rpx; top: 6rpx">上次观看</text>
-   <swiper>
-      <swiper-item>
-         
-      </swiper-item>
-   </swiper>
+      <!-- 广场与消息（老） -->
+      <!--
+   <view class="indexSquareAndChatContainer">
+      <ul class="navigationBar">
+         <li class="listItem"><button class="navigationBarButton" style="width:100%">广场</button></li>
+         <li class="listItem"><button class="navigationBarButton" style="width:100%">消息</button></li>
+      </ul>
+   </view>
+   -->
 
+      <!-- 广场与消息 导航条 -->
+      <view id='indexNav' class="indexNav" style="{{navFixed?'position:fixed; top: 0':''}}">
+         <view class="navItem">
+            <view class="navContent {{ navId == '0'?'active':''}}" bindtap="changeNav" id="0">广场</view>
+            <view class="navContent {{ navId == '1'?'active':''}}" bindtap="changeNav" id="1">消息</view>
+         </view>
+      </view>
+
+      <!-- 广场内容 -->
+      <view class="indexSquare" wx:if="{{navId==0}}">
+         <view class="indexSquareItem">
+            <view class="user">
+               <image class="avatar" src=""></image>
+               <text class="name">userName</text>
+            </view>
+            <text class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, in. Ullam doloribus aliquam molestias dolorum amet esse in quas nisi sequi! Maxime nam magnam facere, repellat natus eos praesentium ad.</text>
+            <view>
+               <text class="time">time</text>
+            </view>
+         </view>
+
+         <view class="indexSquareItem">
+            <view class="user">
+               <image class="avatar" src=""></image>
+               <text class="name">userName</text>
+            </view>
+            <text class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, in. Ullam doloribus aliquam molestias dolorum amet esse in quas nisi sequi! Maxime nam magnam facere, repellat natus eos praesentium ad.</text>
+            <view>
+               <text class="time">time</text>
+            </view>
+         </view>
+
+         <view class="indexSquareItem">
+            <view class="user">
+               <image class="avatar" src=""></image>
+               <text class="name">userName</text>
+            </view>
+            <text class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, in. Ullam doloribus aliquam molestias dolorum amet esse in quas nisi sequi! Maxime nam magnam facere, repellat natus eos praesentium ad.</text>
+            <view>
+               <text class="time">time</text>
+            </view>
+         </view>
+
+         <view class="indexSquareItem">
+            <view class="user">
+               <image class="avatar" src=""></image>
+               <text class="name">userName</text>
+            </view>
+            <text class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, in. Ullam doloribus aliquam molestias dolorum amet esse in quas nisi sequi! Maxime nam magnam facere, repellat natus eos praesentium ad.</text>
+            <view>
+               <text class="time">time</text>
+            </view>
+         </view>
+
+      </view>
+
+      <!-- 聊天内容 -->
+      <view class="indexChat" wx:if="{{navId==1}}">
+         <view class="indexChatItem">
+            <image class="userAvatar" src=""></image>
+            <view class="info">
+               <view>
+                  <text class="userName">name</text>
+                  <text class="time">time</text>
+               </view>
+               <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
+            </view>
+         </view>
+
+         <view class="indexChatItem">
+            <image class="userAvatar" src=""></image>
+            <view class="info">
+               <view>
+                  <text class="userName">name</text>
+                  <text class="time">time</text>
+               </view>
+               <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
+            </view>
+         </view>
+
+         <view class="indexChatItem">
+            <image class="userAvatar" src=""></image>
+            <view class="info">
+               <view>
+                  <text class="userName">name</text>
+                  <text class="time">time</text>
+               </view>
+               <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
+            </view>
+         </view>
+
+         <view class="indexChatItem">
+            <image class="userAvatar" src=""></image>
+            <view class="info">
+               <view>
+                  <text class="userName">name</text>
+                  <text class="time">time</text>
+               </view>
+               <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
+            </view>
+         </view>
+      </view>
+   </scroll-view>
 </view>
-
-<view style="width: 750rpx; height: 634rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
-
-   <text style="position: relative; left: 196rpx; top: 15rpx">广场</text>
-   <text style="position: relative; left: 404rpx; top: 15rpx">消息</text>
-
-</view>
-
-
-
-
-
-
-
-
-
-
-
-
-

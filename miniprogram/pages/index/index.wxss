@@ -1,6 +1,197 @@
 /* miniprogram/pages/index/index.wxss */
-.indexContainer{
+
+/* 班级通知 */
+.indexNoticeContainer{
+  padding: 7rpx 5rpx 18rpx;
+  background-color: #f7fafd;
+}
+
+.indexNoticeContainer .header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.indexNoticeContainer .header .class{
+  font-size: 35rpx;
+  font-weight: 500;
+  padding: 0 0 6rpx 10rpx;
+}
+
+.indexNoticeContainer .header .time{
+  font-size: 30rpx;
+  padding: 3rpx 10rpx
+}
+
+.indexNoticeContainer .content{
+  font-size: 30rpx;
+  padding: 0 10rpx;
+}
+
+.indexNoticeContainer .detailButton{
+  position: relative;
+  text-align: center;
+  font-size: 25rpx;
+  height: 43rpx;
+  padding: 5rpx;
+  left: 250rpx;
+  background-color: #c4ebf7;
+}
+
+/* 上次观看 */
+.indexWatchingRecord{
+  padding: 10rpx;
+  font-size: 33rpx;
+}
+
+.indexWatchingRecord .videoCover{
+  display: flex;
+  width: 320rpx;
+  height: 180rpx;
+}
+
+.indexWatchingRecord .videoName{
+  display: block;
+  width: 40%;
+  text-align: left;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+/* 广场和消息（按钮实现） */
+/*
+.indexSquareAndChatContainer .navigationBar{
+  display: flex;
+  width: 100%;
+}
+
+.indexSquareAndChatContainer .navigationBar .listItem{
+  width: 100%;
+}
+
+.indexSquareAndChatContainer .navigationBar .navigationBarButton{
+  margin: 0;
+  padding: 10rpx;
+  background-color: #f7fafd;
+  border-radius: 0;
+  font-size: 40rpx;
+  font-weight: 200;
+}
+
+.indexSquareAndChatContainer .navigationBar .navigationBarButton:hover{
+  background-color: #dfedfc;
+  font-weight: 400;
+}
+*/
+
+/* 广场和信息 */
+.indexNav{
+  background-color: #f7fafd;
+  height: 80rpx;
+  width: 100%;
+}
+
+.indexNav .navItem{
+  display: flex;
+}
+
+.indexNav .navItem .navContent{
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 50%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.navItem .active{
+  border-bottom: 5rpx solid #c4ebf7;
+}
+
+/* 悬浮（外联样式表无效）（无用）
+.indexNav .positionFixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+*/
+
+/* 广场内容 */
+.indexSquareItem{
+  padding: 20rpx;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  border-bottom: 1rpx solid #cfd6d8;
 }
+
+.indexSquareItem .user{
+  display: flex;
+}
+
+.indexSquareItem .user .avatar{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 5rpx;
+}
+
+.indexSquareItem .user .name{
+  padding-left: 20rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+
+.indexSquareItem .content{
+  font-size: 35rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.indexSquareItem .time{
+  font-size: 30rpx;
+  color: #9ca1a1;
+  line-height: 30rpx;
+}
+
+/* 聊天内容 */
+.indexChatItem{
+  display: flex;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #cfd6d8;
+}
+
+.indexChatItem .userAvatar{
+  width: 125rpx;
+  height: 125rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin:25rpx;
+}
+
+.indexChatItem .userName{
+  line-height: 70rpx;
+  text-align: center;
+  height: 70rpx;
+  font-size: 35rpx;
+}
+
+.indexChatItem .time{
+  float: right;
+  line-height: 75rpx;
+  text-align: center;
+  height: 75rpx;
+  font-size: 30rpx;
+  color: #cfd6d8;
+}
+
+.indexChatItem .detail{
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #9ca1a1;
+}
+
