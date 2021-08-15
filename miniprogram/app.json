@@ -1,11 +1,11 @@
 {
-  "pages": [
-    "pages/index/index",
+  "pages": [ "pages/individual/individual",
+    "pages/index/index", 
     "pages/video/video",
+    "pages/videoPage/videoPage",
     "pages/teaching class/teaching class",
-    "pages/individual/individual",
-    "pages/chat/chat",
-    "pages/single class/single class"
+   
+    "pages/chat/chat"
   ],
   "style": "v2",
   "window": {

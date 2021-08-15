@@ -1,14 +1,6 @@
-// pages/individual/individual.js
+// miniprogram/pages/aboutUs/aboutUs.js
 Page({
 
-
-
-
-  usTap(){
-    wx.navigateTo({
-      url:'/pages/aboutUs/aboutUs'
-    })
- },
   /**
    * 页面的初始数据
    */

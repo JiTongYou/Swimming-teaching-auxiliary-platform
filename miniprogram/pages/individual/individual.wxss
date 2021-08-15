@@ -1,1 +1,95 @@
-/* miniprogram/pages/individual/individual.wxss */
+/* pages/individual/individual.wxss */
+.header{
+  height:400rpx;
+  display: flex;
+  background-color: rgba(250, 245, 240, 0.863);
+ /* background-image: */
+}
+
+.headerContent{
+  text-align: center;
+  width:400rpx;
+  margin-left: 25%;
+}
+
+.avatar{
+  width: 160rpx;
+  height:160rpx;
+  border-radius: 80rpx;
+  background-color: aqua;
+  margin-top: 40rpx;
+}
+
+.ID{
+   font-size: 35rpx;
+   margin:8rpx;
+}
+
+.following{
+  font-size: 35rpx;
+  margin:8rpx;
+}
+
+.followers{
+  font-size: 35rpx;
+  margin:8rpx;
+}
+
+.name{
+  display:flex;
+}
+
+.nameInput{
+  flex:1;  
+  margin-bottom:45rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}
+
+.nickname{
+  margin-bottom:45rpx;
+  margin-left: 20rpx;
+  width:100rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}
+
+.level{
+  margin-bottom:65rpx;
+  margin-left: 20rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}
+
+.favorites{
+  margin-bottom:45rpx;
+  margin-left: 20rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}
+
+.blacklist{
+  margin-bottom:45rpx;
+  margin-left: 20rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}
+
+.privacy{
+  margin-bottom:45rpx;
+  margin-left: 20rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}
+
+.generals{
+  margin-bottom:45rpx;
+  margin-left: 20rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}
+
+.ifNotice{
+  margin-bottom:45rpx;
+  margin-left: 20rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}
+
+.aboutUs{
+  margin-bottom:45rpx;
+  margin-left: 20rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
+}

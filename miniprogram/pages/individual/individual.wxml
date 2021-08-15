@@ -1,30 +1,50 @@
-<view class="header"
-  style="position: relative; width: 750rpx; background: #d3d3d3; min-height: 100px; height: 266rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
-
-  <text style="position: relative; left: 316rpx; top: 122rpx">ID:</text>
-
-  <text style="position: relative; left: 179rpx; top: 205rpx">关注：</text>
-
-  <text style="position: relative; left: 286rpx; top: 205rpx">粉丝：</text>
+<!--pages/individual/individual.wxml-->
+<view class="header">
+  <view class="headerContent">
+     <image class="avatar" src=""></image>
+     <view class="ID">
+       ID:jty1111 {{}}
+     </view>
+     <view class="following">
+      关注：  {{}}
+     </view>
+     <view class="followers">
+       粉丝： {{}}
+     </view>
+  </view>
 </view>
-<view style="position: relative; width: 750rpx; background: #d3d3d3; min-height: 50px; height: 50rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></view>
-<view style="position: relative; width: 750rpx; background: #d3d3d3; min-height: 50px; height: 50rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></view>
-<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
-<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
-<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
-<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
-<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
-<view style="position: relative; width: 100%; background: #d3d3d3; min-height: 50px; left: 0rpx; top: 12rpx"></view>
 
+<view class="others">
+  <view class="name">
+      <view class="nickname" >昵称</view>
+      <view class="nameInput" ><input type="text" placeholder="更改昵称"/></view>
+  </view>
 
+  <view class="level"  bindtap="levelTap">
+      等级
+  </view>
 
+  <view class="favorites"  bindtap="favoriteTap">
+      收藏夹
+  </view>
 
+  <view class="blacklist"  bindtap="listTap">
+      黑名单
+  </view>
 
+  <view class="privacy"  bindtap="privacyTap">
+      隐私
+  </view>
 
+  <view class="generals"  bindtap="generalTap">
+      通用
+  </view>
 
+  <view class="ifNotice"  bindtap="ifTap">
+      通知提醒
+  </view>
 
-
-
-
-
-
+  <view class="aboutUs"  bindtap="usTap">
+      关于我们
+  </view>
+</view>
