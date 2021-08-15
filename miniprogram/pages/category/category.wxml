@@ -1,0 +1,10 @@
+<!--miniprogram/pages/category/category.wxml-->
+<view class="categorizing">
+   <view class="one" bindtap="back">全部</view>
+   <view class="one">蛙泳</view>
+   <view class="one">自由泳</view>
+   <view class="one">仰泳</view>
+   <view class="one">蝶泳</view>
+   <view class="one">水性</view>
+   <view class="one">身体素质</view>
+</view>

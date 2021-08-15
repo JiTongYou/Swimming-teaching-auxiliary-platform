@@ -1,0 +1,19 @@
+<!--miniprogram/pages/videoPage/videoPage.wxml-->
+<view class="videoItem">
+   <video class="common"
+          src="" 
+          bindplay="handlePlay"
+          id="{{item.data.vid}} " 
+          poster="{{item.data.coverUrl}}" 
+          object-fit="fill"
+          bindtimeupdate="handleTimeUpdate"
+          bindended="handleEnded">
+   </video>
+</view>
+
+<view id='videoNav' class="videoNav" style="{{navFixed?'position:fixed; top: 0':''}}">
+  <view class="navItem">
+    <view class="navContent {{ navId == '0'?'active':''}}" bindtap="changeNav" id="0">简介</view>
+    <view class="navContent {{ navId == '1'?'active':''}}" bindtap="changeNav" id="1">评论</view>
+  </view>
+</view>

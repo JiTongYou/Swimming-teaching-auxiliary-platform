@@ -1,5 +1,165 @@
-<text style="position: relative; left: 118rpx; top: 18rpx">教学视频</text>
-<text style="position: relative; left: 344rpx; top: 18rpx">训练计划</text>
+<!--pages/video/video.wxml-->
+<view class="video">
 
+<!--搜索栏-->
+   <view class="search">
+
+      <view class="searchColumn"> <input type="text" placeholder="搜索视频"/></view>
+   </view>
+
+<!--导航栏-->
+   <view class="navigation" enable-flex>
+      <view class="navigationColumn {{navId== '0' ?'active':''}}" id="0" wx:key="id" bindtap="changeNav">教学视频 </view>
+      <view class="navigationColumn {{navId== '1' ?'active':''}}" id="1" wx:key="id"  bindtap="changeNav">训练计划 </view>
+      <view class="categoryBar" bindtap="getCategory">dd</view>
+   </view> 
+
+<!--视频-->
+   <scroll-view bindrefresherrefresh="handleRefresher"
+                refresher-enabled
+                refresher-triggered="{{isTriggered}}"
+                bindscrolltolower="handleToLower"
+                scroll-y 
+                class="scrollVideo" 
+                enable-flex
+                wx:if="{{navId==0}}" 
+                scroll-with-animation="true">
+      <!--每个视频本体-->
+      <view class="videoItem"
+            wx:key="id"
+            data-video='{{id}}'>
+         <image class="common" 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.data.vid}}" 
+                bindtap="toVideo">
+         </image>
+            <view class="title">
+               Demo
+               {{item.title}}
+            </view>
+            <view class="ranking">
+               {{item.ranking}}
+               xingxingxingxingxi
+            </view>
+      </view>
+
+      <view class="videoItem">
+         <image class="common" 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.data.vid}}" 
+                bindtap="toVideo">
+         </image>
+            <view class="title">
+               Demo
+               {{item.data.title}}
+            </view>
+            <view class="ranking">
+               xingxingxingxingxi
+            </view>
+      </view>
+
+      <view class="videoItem">
+         <image class="common" 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.data.vid}}" 
+                bindtap="toVideo">
+         </image>
+            <view class="title">
+               Demo
+               {{item.data.title}}
+            </view>
+            <view class="ranking">
+               xingxingxingxingxi
+            </view>
+      </view>
+
+      <view class="videoItem">
+         <image class="common" 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.data.vid}}" 
+                bindtap="toVideo">
+         </image>
+            <view class="title">
+               Demo
+               {{item.data.title}}
+            </view>
+            <view class="ranking">
+               xingxingxingxingxi
+            </view>
+      </view>
+
+      <view class="videoItem">
+         <image class="common" 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.data.vid}}" 
+                bindtap="toVideo">
+         </image>
+            <view class="title">
+               Demo
+               {{item.data.title}}
+            </view>
+            <view class="ranking">
+               xingxingxingxingxi
+            </view>
+      </view>
+
+      <view class="videoItem">
+         <image class="common" 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.data.vid}}" 
+                bindtap="toVideo">
+         </image>
+            <view class="title">
+               Demo
+               {{item.data.title}}
+            </view>
+            <view class="ranking">
+               xingxingxingxingxi
+            </view>
+      </view>
+
+      <view class="videoItem">
+         <image class="common" 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.data.vid}}" 
+                bindtap="toVideo">
+         </image>
+            <view class="title">
+               Demo
+               {{item.data.title}}
+            </view>
+            <view class="ranking">
+               xingxingxingxingxi
+            </view>
+      </view>
+
+      <view class="videoItem">
+         <image class="common" 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.data.vid}}" 
+                bindtap="toVideo">
+         </image>
+            <view class="title">
+               Demo
+               {{item.data.title}}
+            </view>
+            <view class="ranking">
+               xingxingxingxingxi
+            </view>
+      </view>
+
+   </scroll-view>
+</view>
+
+<scroll-view bindrefresherrefresh="handleRefresher"
+                refresher-enabled
+                refresher-triggered="{{isTriggered}}"
+                bindscrolltolower="handleToLower"
+                scroll-y 
+                class="scrollVideo" 
+                enable-flex
+                wx:if="{{navId==1}}" 
+                scroll-with-animation="true">ss
+</scroll-view>
 
 

@@ -1,0 +1,27 @@
+/* miniprogram/pages/videoPage/videoPage.wxss */
+.videoItem{
+  display:flex
+}
+
+.common{
+  width:98%;
+  height: 380rpx;
+  border-radius:6rpx;
+  margin-left:9.5rpx;
+}
+
+.navItem{
+  display:flex;
+}
+
+.navContent{
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 50%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.active{
+  border-bottom: 5rpx solid #c4ebf7;
+}

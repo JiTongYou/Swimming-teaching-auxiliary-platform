@@ -1,1 +1,58 @@
 /* miniprogram/pages/vedio/vedio.wxss */
+.searchColumn{
+  border:1rpx solid rgba(0, 0, 0, 0.712);
+  font-size: 28rpx;
+  text-align:center;
+
+}
+.navigation{
+  display:flex;
+}
+.navigationColumn{
+  padding:  30 rpx 2;
+  margin-left:127.5rpx;
+  padding:25rpx;
+  font-size: 35rpx;
+}
+
+.categoryBar{
+  padding-top: 25rpx;
+  padding-left: 40rpx
+}
+
+.active{
+  border-bottom:5rpx solid #c4ebf7;
+}
+
+.scrollVideo{
+  display:flex;
+  flex-wrap:wrap;
+  margin-top: 10rpx;
+  height:90vh;
+}
+
+.videoItem{
+  height:300rpx;
+  width:50%;
+  margin-bottom: 50rpx;
+}
+
+
+ .common{
+  width: 82%;
+  height: 200rpx;
+  border-radius:10rpx;
+  margin-left:30rpx;
+  margin-right: 30rpx;
+  background-color: #557ea7;
+}
+
+
+
+.ranking{
+  margin-left: 11%;
+}
+
+.title{
+  margin-left: 37%;
+}
