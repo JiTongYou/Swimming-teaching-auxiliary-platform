@@ -39,6 +39,18 @@ Page({
     }).exec()
   },
 
+  toChat(){
+    wx.navigateTo({
+      url: '/pages/chat/chat',
+    })
+  },
+
+  toSingleClass(){
+    wx.navigateTo({
+      url: '/pages/single class/single class',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

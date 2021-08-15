@@ -1,0 +1,25 @@
+<!--miniprogram/pages/single class/single class.wxml-->
+<view>
+  <view class="singleClassNoticeContainer">
+    <text class="gonggao">公告</text>
+    <view class="header">
+      <text class="class">Lorem ipsum dolor sit amet.</text>
+      <text class="time">time</text>
+    </view>
+    <view class="content">
+      <text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, non!</text>
+    </view>
+  </view>
+  <view class="singleClassItem">
+    <text class="iconfont icon-mingdanku"></text>
+    <text>名单</text>
+  </view>
+  <view class="singleClassItem">
+    <text class="iconfont icon-xinbaniconshangchuan-"></text>
+    <text>作业</text>
+  </view>
+  <view class="singleClassItem">
+    <text class="iconfont icon-qunliao"></text>
+    <text>群聊</text>
+  </view>
+</view>

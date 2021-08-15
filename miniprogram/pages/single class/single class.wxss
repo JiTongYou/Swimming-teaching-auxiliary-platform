@@ -1,0 +1,44 @@
+/* miniprogram/pages/single class/single class.wxss */
+.singleClassNoticeContainer{
+  padding: 7rpx 5rpx 18rpx;
+  border-bottom: 1rpx solid #cfd6d8;
+}
+
+.singleClassNoticeContainer .gonggao{
+  padding: 0 10rpx;
+}
+
+.singleClassNoticeContainer .header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.singleClassNoticeContainer .header .class{
+  font-size: 35rpx;
+  font-weight: 500;
+  padding: 0 0 6rpx 10rpx;
+}
+
+.singleClassNoticeContainer .header .time{
+  font-size: 30rpx;
+  padding: 3rpx 10rpx
+}
+
+.singleClassNoticeContainer .content{
+  font-size: 30rpx;
+  padding: 0 10rpx;
+}
+
+.singleClassItem{
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #cfd6d8;
+}
+
+.singleClassItem .iconfont{
+  height: 60rpx;
+  margin: 10rpx
+}
+
+.singleClassItem text{
+  font-size: 36rpx;
+}

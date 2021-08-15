@@ -1,4 +1,4 @@
-// miniprogram/pages/teaching class/teaching class.js
+// miniprogram/pages/single class/single class.js
 Page({
 
   /**
@@ -8,12 +8,6 @@ Page({
 
   },
 
-  toSingleClass(){
-    wx.navigateTo({
-      url: '/pages/single class/single class',
-    })
-  },
-  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -69,5 +63,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-
 })

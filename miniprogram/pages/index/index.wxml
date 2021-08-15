@@ -7,19 +7,26 @@
             <text class="time">time</text>
          </view>
          <view class="content">
-            <text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, non!</text>
+            <text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem animi necessitatibus sapiente ab enim. Eum enim dolores sint minima maxime.</text>
          </view>
          <view>
-            <button class="detailButton" style="width:180rpx">查看详情>></button>
+            <button class="detailButton" catchtap="toSingleClass" style="width:180rpx">进入班级>></button>
          </view>
       </view>
 
       <!-- 上次观看 -->
       <view class="indexWatchingRecord">
          <text>上次观看</text>
-         <view>
-            <image class="videoCover" src=""></image>
-            <text class="videoName">Lorem, ipsum.</text>
+         <view class="recordItem">
+            <view>
+               <image class="videoCover" src=""></image>
+               <text class="videoName">Lorem, ipsum.</text>
+            </view>
+
+            <view>
+               <image class="videoCover" src=""></image>
+               <text class="videoName">Lorem, ipsum.</text>
+            </view>
          </view>
       </view>
 
@@ -91,7 +98,7 @@
 
       <!-- 聊天内容 -->
       <view class="indexChat" wx:if="{{navId==1}}">
-         <view class="indexChatItem">
+         <view class="indexChatItem" bindtap="toChat">
             <image class="userAvatar" src=""></image>
             <view class="info">
                <view>
@@ -102,7 +109,7 @@
             </view>
          </view>
 
-         <view class="indexChatItem">
+         <view class="indexChatItem" bindtap="toChat">
             <image class="userAvatar" src=""></image>
             <view class="info">
                <view>
@@ -113,7 +120,7 @@
             </view>
          </view>
 
-         <view class="indexChatItem">
+         <view class="indexChatItem" bindtap="toChat">
             <image class="userAvatar" src=""></image>
             <view class="info">
                <view>
@@ -124,7 +131,7 @@
             </view>
          </view>
 
-         <view class="indexChatItem">
+         <view class="indexChatItem" bindtap="toChat">
             <image class="userAvatar" src=""></image>
             <view class="info">
                <view>

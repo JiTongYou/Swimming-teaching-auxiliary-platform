@@ -4,7 +4,8 @@
     "pages/video/video",
     "pages/teaching class/teaching class",
     "pages/individual/individual",
-    "pages/chat/chat"
+    "pages/chat/chat",
+    "pages/single class/single class"
   ],
   "style": "v2",
   "window": {
@@ -14,7 +15,6 @@
   },
   "tabBar": {
     "selectedColor": "#81DAF5",
-
     "list": [
       {
         "pagePath": "pages/index/index",

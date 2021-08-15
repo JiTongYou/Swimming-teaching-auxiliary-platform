@@ -1,8 +1,32 @@
-<view
-  style="position: relative; width: 750rpx; background: #d3d3d3; min-height: 100px; height: 350rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
-  <button style="position: relative; left: 234rpx; top: 264rpx; width: 256rpx; height: 72rpx; display: block; box-sizing: border-box">进入班级</button>
+<scroll-view>
+  <!-- 单个课程条 -->
+  <view class="classItem">
+    <text class="className">class</text>
+    <view class="classDetail">
+      <text class="teacherName">teacher</text>
+      <button class="classEnterance" bindtap="toSingleClass" 
+      style="width:180rpx">进入班级>></button>
+    </view>
   </view>
-<button style="position: relative; left: 0rpx; top: 72rpx">加入新班级</button>
 
-<!--miniprogram/pages/teaching class/teaching class.wxml-->
+  <view class="classItem">
+    <text class="className">class</text>
+    <view class="classDetail">
+      <text class="teacherName">teacher</text>
+      <button class="classEnterance" bindtap="toSingleClass" 
+      style="width:180rpx">进入班级>></button>
+    </view>
+  </view>
 
+  <view class="classItem">
+    <text class="className">class</text>
+    <view class="classDetail">
+      <text class="teacherName">teacher</text>
+      <button class="classEnterance" bindtap="toSingleClass" 
+      style="width:180rpx">进入班级>></button>
+    </view>
+  </view>
+  
+  <!-- 加入新班级 -->
+  <button class="joinNewClass" style="width:300rpx">加入新班级</button>
+</scroll-view>

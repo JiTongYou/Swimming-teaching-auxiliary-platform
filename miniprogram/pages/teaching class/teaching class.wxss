@@ -1,1 +1,42 @@
 /* miniprogram/pages/teaching class/teaching class.wxss */
+
+/* 单个课程条 */
+.classItem{
+  padding: 30rpx;
+  border-bottom: 1rpx solid #cfd6d8;
+}
+
+.classItem .classDetail{
+  display: flex;
+}
+
+.classItem .className{
+  font-size: 40rpx;
+  padding-bottom: 30rpx;
+}
+
+.classItem .teacherName{
+  font-size: 32rpx;
+}
+
+.classItem .classEnterance{
+  position: relative;
+  text-align: center;
+  font-size: 25rpx;
+  height: 43rpx;
+  padding: 5rpx;
+  left: 200rpx;
+  background-color: #c4ebf7;
+}
+
+/* 加入新班级 */
+.joinNewClass{
+  position: relative;
+  text-align: center;
+  font-size: 30rpx;
+  height: 50rpx;
+  padding: 5rpx;
+  align-items: center;
+  background-color: #c4ebf7;
+  margin: 40rpx;
+}
