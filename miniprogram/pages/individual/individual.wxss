@@ -35,6 +35,10 @@
   margin:8rpx;
 }
 
+.others{
+  margin-top: 45rpx;
+}
+
 .name{
   display:flex;
 }
