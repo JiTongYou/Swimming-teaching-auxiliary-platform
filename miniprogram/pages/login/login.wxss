@@ -1,0 +1,16 @@
+/* miniprogram/pages/login/login.wxss */
+.login{
+  text-align: center;
+  font-size: 50rpx;
+  margin:30rpx;
+}
+
+.request{
+  text-align: center;
+  font-size: 30rpx;
+  margin:30rpx;
+}
+
+.permission{
+  background-color: aqua;
+}

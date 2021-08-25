@@ -1,0 +1,6 @@
+<!--miniprogram/pages/login/login.wxml-->
+<view>
+  <view class="login">登陆济同游</view>
+  <view class="request">将获取您公开的信息，如头像、昵称、性别等等</view>
+  <button class="permission" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" >授权登录</button>
+</view>
