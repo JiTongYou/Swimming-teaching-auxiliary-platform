@@ -148,7 +148,7 @@
   border-radius: 5rpx;
 }
 
-.indexSquareItem .user .name{
+.indexSquareItem .user .nickName{
   padding-left: 20rpx;
   line-height: 80rpx;
   font-size: 30rpx;
@@ -163,10 +163,57 @@
   -webkit-line-clamp: 3;
 }
 
+.indexSquareItem .timeAndTools{
+  margin-bottom: 10rpx;
+}
+
 .indexSquareItem .time{
   font-size: 30rpx;
   color: #9ca1a1;
   line-height: 30rpx;
+}
+
+.indexSquareItem .tools{
+  display: inline;
+  position: absolute;
+  right: 0;
+}
+
+.indexSquareItem .likes{
+  font-size: 30rpx;
+  color: #9ca1a1;
+  line-height: 30rpx;
+  position: relative;
+  bottom: 15rpx;
+  right: 5rpx;
+}
+
+.indexSquareItem .likeBtn{
+  height: 50rpx;
+  width: 50rpx;
+  position: relative;
+  bottom: 2rpx;
+}
+
+.indexSquareItem .commentBtn{
+  height: 50rpx;
+  width: 50rpx;
+  padding: 0 20rpx 0 5rpx;
+}
+
+.indexSquareItem .comment{
+  font-size: 32rpx;
+  line-height: 32rpx;
+  padding: 5rpx;
+  display:flex;
+}
+
+.indexSquareItem .comment .detail .nickName{
+  font-weight: 600;
+}
+
+.font-break {
+  word-break:break-all;
 }
 
 /* 聊天内容 */
@@ -184,7 +231,7 @@
   margin:25rpx;
 }
 
-.indexChatItem .userName{
+.indexChatItem .nickName{
   line-height: 70rpx;
   text-align: center;
   height: 70rpx;
@@ -210,3 +257,34 @@
   color: #9ca1a1;
 }
 
+.floatComment{
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+}
+
+.floatComment .commentInput{
+  height: 52rpx;
+  line-height: 52rpx;
+  font-size: 32rpx;
+  vertical-align: middle;
+  color: #181818;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 5rpx 20rpx;
+  background-color: #f3f3f3;
+  flex-grow: 1;
+}
+
+.floatComment .commentSend{
+  margin-right: 20rpx;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  background-color: #c4ebf7;
+  vertical-align: middle;
+}

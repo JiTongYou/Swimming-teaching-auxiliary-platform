@@ -1,3 +1,4 @@
+import mock from "./utils/mock";
 App({
 
   /**
@@ -8,6 +9,18 @@ App({
     wx.cloud.init({
       env:"cloud1-7gh3ock7a08defbd"
     })
+    
+    this.globalData = {}
+    // ES6提供了Object.assign()，用于合并/复制对象的属性。
+    Object.assign(this.globalData, mock)
+    try {
+      var value = wx.getStorageSync('userInfo')
+      if (value) {
+        this.globalData.userInfo = JSON.parse(value);
+      }
+    } catch (e) {
+      console.log('app js:', '用户未登录')
+    }
   },
 
   /**
@@ -29,5 +42,7 @@ App({
    */
   onError: function (msg) {
     
-  }
+  },
+
+  
 })

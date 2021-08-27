@@ -1,5 +1,5 @@
 <view>
-   <scroll-view bindscroll="floatNav" scroll-y style="height: 100vh;">
+   <scroll-view enable-back-to-top="true" scroll-y>
       <!-- 班级通知 -->
       <view class="indexNoticeContainer">
          <view class="header">
@@ -41,7 +41,7 @@
    -->
 
       <!-- 广场与消息 导航条 -->
-      <view id='indexNav' class="indexNav" style="{{navFixed?'position:fixed; top: 0':''}}">
+      <view id='indexNav' class="indexNav">
          <view class="navItem">
             <view class="navContent {{ navId == '0'?'active':''}}" bindtap="changeNav" id="0">广场</view>
             <view class="navContent {{ navId == '1'?'active':''}}" bindtap="changeNav" id="1">消息</view>
@@ -50,50 +50,34 @@
 
       <!-- 广场内容 -->
       <view class="indexSquare" wx:if="{{navId==0}}">
-         <view class="indexSquareItem">
+         <view class="indexSquareItem" wx:for="{{squareItem}}" wx:key="index" wx:index="index">
             <view class="user">
                <image class="avatar" src=""></image>
-               <text class="name">userName</text>
+               <text class="nickName">{{item.nickName}}</text>
             </view>
-            <text class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, in. Ullam doloribus aliquam molestias dolorum amet esse in quas nisi sequi! Maxime nam magnam facere, repellat natus eos praesentium ad.</text>
-            <view>
-               <text class="time">time</text>
+            <text class="content">{{item.content}}</text>
+            <view class="timeAndTools">
+               <text class="time">{{item.time}}</text>
+               <view class="tools">
+                  <text class="likes" wx:if="{{item.likes!=0}}">{{item.likes.length}}</text>
+                  <image class="likeBtn" 
+                     wx:if="{{haveLiked[index]==0}}" catchtap="clickLike" 
+                     data-index="{{index}}" 
+                     src="cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/iconfont/like.png"></image>
+                  <image class="likeBtn"
+                     wx:elif="{{haveLiked[index]==1}}" catchtap="clickLike" 
+                     data-index="{{index}}" 
+                     src="cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/iconfont/liked.png"></image>
+                  <image class="commentBtn"  
+                     catchtap="clickComment" 
+                     data-index="{{index}}"
+                     src="cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/iconfont/comment.png"></image>
+               </view>
             </view>
-         </view>
-
-         <view class="indexSquareItem">
-            <view class="user">
-               <image class="avatar" src=""></image>
-               <text class="name">userName</text>
-            </view>
-            <text class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, in. Ullam doloribus aliquam molestias dolorum amet esse in quas nisi sequi! Maxime nam magnam facere, repellat natus eos praesentium ad.</text>
-            <view>
-               <text class="time">time</text>
-            </view>
-         </view>
-
-         <view class="indexSquareItem">
-            <view class="user">
-               <image class="avatar" src=""></image>
-               <text class="name">userName</text>
-            </view>
-            <text class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, in. Ullam doloribus aliquam molestias dolorum amet esse in quas nisi sequi! Maxime nam magnam facere, repellat natus eos praesentium ad.</text>
-            <view>
-               <text class="time">time</text>
+            <view class="comment font-break" wx:if="{{item.comment.length > 0}}" wx:for="{{item.comment}}" wx:for-item="commentItem" wx:key="index">
+               <text class="detail"> <text class="nickName">{{commentItem.nickName}}：</text>{{commentItem.content}}</text>
             </view>
          </view>
-
-         <view class="indexSquareItem">
-            <view class="user">
-               <image class="avatar" src=""></image>
-               <text class="name">userName</text>
-            </view>
-            <text class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, in. Ullam doloribus aliquam molestias dolorum amet esse in quas nisi sequi! Maxime nam magnam facere, repellat natus eos praesentium ad.</text>
-            <view>
-               <text class="time">time</text>
-            </view>
-         </view>
-
       </view>
 
       <!-- 聊天内容 -->
@@ -102,40 +86,7 @@
             <image class="userAvatar" src=""></image>
             <view class="info">
                <view>
-                  <text class="userName">name</text>
-                  <text class="time">time</text>
-               </view>
-               <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
-            </view>
-         </view>
-
-         <view class="indexChatItem" bindtap="toChat">
-            <image class="userAvatar" src=""></image>
-            <view class="info">
-               <view>
-                  <text class="userName">name</text>
-                  <text class="time">time</text>
-               </view>
-               <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
-            </view>
-         </view>
-
-         <view class="indexChatItem" bindtap="toChat">
-            <image class="userAvatar" src=""></image>
-            <view class="info">
-               <view>
-                  <text class="userName">name</text>
-                  <text class="time">time</text>
-               </view>
-               <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
-            </view>
-         </view>
-
-         <view class="indexChatItem" bindtap="toChat">
-            <image class="userAvatar" src=""></image>
-            <view class="info">
-               <view>
-                  <text class="userName">name</text>
+                  <text class="nickName">name</text>
                   <text class="time">time</text>
                </view>
                <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
@@ -143,4 +94,9 @@
          </view>
       </view>
    </scroll-view>
+</view>
+
+<view class="floatComment" style="bottom:{{heightBottom != ''? heightBottom : 0}}rpx" wx:if="{{showCommentAdd}}">
+   <input class="commentInput" placeholder="评论" focus="{{showCommentAdd}}" bindinput="bindInput" bindfocus="bindFocus" />
+   <button class="commentSend" disabled="{{commentContent.length>0 ? false : true}}" catchtap="clickSend" size="mini">确认</button>
 </view>

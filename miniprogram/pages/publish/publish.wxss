@@ -1,0 +1,36 @@
+/* miniprogram/pages/publish/publish.wxss */
+
+/* 提示信息 */
+.formContainer{
+  padding: 10rpx 0;
+}
+
+.contentContainer{
+  border-top: 1rpx solid #cfd6d8;
+  border-bottom: 1rpx solid #cfd6d8;
+}
+
+.content{
+  padding: 10rpx;
+}
+
+.noticeContainer{
+  line-height: 32rpx;
+  font-size: 32rpx;
+  padding: 10rpx;
+  color: #c3c7c9;
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit{
+  position: relative;
+  text-align: center;
+  font-size: 35rpx;
+  height: 57rpx;
+  padding: 5rpx;
+  left: 280rpx;
+  background-color: #c4ebf7;
+  margin: 10rpx;
+  font-weight: 400;
+}

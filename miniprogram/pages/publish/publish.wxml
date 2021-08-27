@@ -1,0 +1,12 @@
+<view class="formContainer">
+  <button class="submit" catchtap="clickPublish" style="width:140rpx">发布</button>
+  <view class="contentContainer">
+    <textarea class="content" placeholder="今天你运动了吗" 
+  maxlength="200" bindinput="countWord"></textarea>
+  </view> 
+  <view class="noticeContainer">
+    <text class="notice">最多输入200字</text>
+    <text class="counter">{{wordNum}}/200</text>
+  </view>
+  
+</view>
