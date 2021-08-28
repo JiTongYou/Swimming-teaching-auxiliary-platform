@@ -9,9 +9,9 @@ App({
     wx.cloud.init({
       env:"cloud1-7gh3ock7a08defbd"
     })
-    
+
     this.globalData = {}
-    // ES6提供了Object.assign()，用于合并/复制对象的属性。
+   
     Object.assign(this.globalData, mock)
     try {
       var value = wx.getStorageSync('userInfo')
@@ -42,7 +42,7 @@ App({
    */
   onError: function (msg) {
     
-  },
+  }
 
-  
+
 })

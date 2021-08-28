@@ -1,6 +1,6 @@
 // miniprogram/pages/login/login.js
 var that;
-var db = wx.cloud.database().collection('defaultUserInfo');
+const db = wx.cloud.database().collection('defaultUserInfo');
 Page({
 
   /**
@@ -10,38 +10,72 @@ Page({
      userInfo: null,
   },
 
+  onLoad: function (options) {
+    that = this;
+    //console.log("login onload:", getApp().globalData.userInfo)
+    if (getApp().globalData.userInfo) {
+      wx.navigateBack({
+        delta: 0,
+      })
+      that.setData({
+        userInfo: getApp().globalData.userInfo
+      })
+    }
+ },
+
   bindGetUserInfo:function(e){
      if(e.detail.userInfo){
-        wx.setStorage({
-          data:JSON.stringify(e.detail.userInfo),
-          key:'userInfo',
-          success(res){
-            that.addUser(e.detail.userInfo)
-          }
-        })
+       // wx.setStorage({
+        //  data:JSON.stringify(e.detail.userInfo),
+        //  key:'userInfo',
+        //  success(res){
+        //    console.log('asd',res)
+        //    
+        //  }
+      //  })
+      that.addUser(e.detail.userInfo)
      }
      else{
-
+        wx.showToast({title:'拒绝授权',})
      }
   },
 
   addUser(userInfo){
-     db.add({
-       data:{
-         nickName:userInfo.nickName,
-         avatarUrl:userInfo.avatarUrl,
-         gender:userInfo.gender,
-         time: new Date()
-       }
-     })
+    //wx.showLoading({
+    //title:'正在登录',
+   // })
+    wx.cloud.callFunction({
+      name:'login',
+      data:userInfo
+    }).then(res=>{    
+      if(res.result.code==200){
+        userInfo._openid=res.result.userInfo._openid
+        console.log('sds',userInfo)
+     }
+
+      if(res.result.code==201){
+        console.log('aae',res.result)
+        userInfo._openid=res.result._openid;
+      }
+      
+      wx.setStorage({
+        data: JSON.stringify(userInfo),
+        key:'userInfo',
+        success(res){
+          getApp().globalData.userInfo=userInfo;
+          wx.hideLoading() 
+          wx.switchTab({
+        url: '/pages/index/index',
+      })
+        }
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-     that = this;
-  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
