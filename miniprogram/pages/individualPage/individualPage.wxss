@@ -1,0 +1,50 @@
+/* miniprogram/pages/individualPage/individualPage.wxss */
+.header{
+  height:400rpx;
+  display: flex;
+  background-color: rgba(250, 245, 240, 0.863);
+ /* background-image: */
+}
+
+.headerContent{
+  text-align: center;
+  width:400rpx;
+  margin-left: 25%;
+}
+
+.avatar{
+  width: 160rpx;
+  height:160rpx;
+  border-radius: 80rpx;
+  background-color: aqua;
+  margin-top: 40rpx;
+}
+
+.name{
+   font-size: 35rpx;
+   margin:8rpx;
+}
+
+.following{
+  font-size: 35rpx;
+  margin:8rpx;
+}
+
+.followers{
+  font-size: 35rpx;
+  margin:8rpx;
+}
+
+.ifFollow{
+  margin-top:40rpx
+}
+
+.follow{
+  background-color: aqua;
+  size:50rpx;
+}
+
+.followed{
+  background-color: beige;
+  size:50rpx;
+}
