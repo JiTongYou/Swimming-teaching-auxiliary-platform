@@ -130,6 +130,14 @@
 }
 */
 
+/* 发布信息按钮 */
+.toPublishButton{
+  font-size: 38rpx;
+  color: #878b8b;
+  line-height: 38rpx;
+  font-weight: 500;
+}
+
 /* 广场内容 */
 .indexSquareItem{
   padding: 20rpx;

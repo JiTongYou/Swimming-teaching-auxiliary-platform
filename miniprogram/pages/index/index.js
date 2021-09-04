@@ -56,6 +56,12 @@ Page({
   },
   */
 
+  toPublish(){
+    wx.navigateTo({
+      url: '/pages/publish/publish',
+    })
+  },
+
   //跳转至聊天页
   toChat() {
     wx.navigateTo({
@@ -115,10 +121,8 @@ Page({
           //判断当前用户是否点赞了该条广场信息，若是，则置haveLiked对应位置数字为1，否则不改变，仍为0
           for(var j = 0; j<res.result.data[i].likes.length; j++){
             //this.data.userInfo._openid
-            //
-            //
-            //
-            if(2 == res.result.data[i].likes[j]){
+            //测试数据：2
+            if(this.data.userInfo._openid == res.result.data[i].likes[j]){
               var tmp_str = 'haveLiked[' + (alreadyNum + i) + ']'
               this.setData({
                 [tmp_str]:1
@@ -166,11 +170,9 @@ Page({
       wx.cloud.callFunction({
         name:"squareAddLike",
         data:{
-          _openid:'2',
+          _openid:this.data.userInfo._openid,
           //this.data.userInfo._openid
-          //
-          //
-          //
+          //测试数据:'2'
           _id:this.data.squareItem[index]._id,
           type:0
         }
@@ -189,11 +191,9 @@ Page({
       wx.cloud.callFunction({
         name:"squareAddLike",
         data:{
-          _openid:'2',
+          _openid:this.data.userInfo._openid,
           //this.data.userInfo._openid
-          //
-          //
-          //
+          //测试数据:'2'
           _id:this.data.squareItem[index]._id,
           type:1
         }
@@ -238,17 +238,13 @@ Page({
     //console.log(commentList)
 
     var commentData = {};
-    commentData.nickName = '2';
+    commentData.nickName = this.data.userInfo.nickName;
     //this.data.userInfo.nickName
-    //
-    //
-    //
+    //测试数据:'2'
     commentData.content = this.data.commentContent;
-    commentData._openid = '2';
+    commentData._openid = this.data.userInfo._openid;
     //this.data.userInfo._openid
-    //
-    //
-    //
+    //测试数据:'2'
 
     commentList.push(commentData);
 
@@ -258,16 +254,12 @@ Page({
       name:"squareComment",
       data:{
         _id:squareData._id,
-        _openid:'2',
+        _openid: this.data.userInfo._openid,
         //this.data.userInfo._openid
-        //
-        //
-        //
-        nickName:'2',
+        //测试数据:'2'
+        nickName: this.data.userInfo.nickName,
         //this.data.userInfo.nickName
-        //
-        //
-        //
+        //测试数据:'2'
         commentContent:this.data.commentContent
       }
     })
@@ -287,17 +279,17 @@ Page({
   onLoad: function (options) {
     //this.getScrollHeight(),
 
-    /*8.27与同步用文档合并后报错
-
+    //不可省略var that=this，否则无法访问
+    var that=this
     wx.getStorage({
       key:"userInfo",
       success(res){
-        this.setData({
+        that.setData({
           userInfo:JSON.parse(res.data)
         })
       }
     })
-    */
+    
     this.getSquareData()
     this.getChatData()
   },
@@ -313,7 +305,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      squareItem:[],
+    })
+    this.getSquareData()
+    this.getChatData()
   },
 
   /**
@@ -334,7 +330,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      squareItem:[],
+    })
+    this.getSquareData()
+    this.getChatData()
   },
 
   /**

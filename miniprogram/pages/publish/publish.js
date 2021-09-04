@@ -6,7 +6,8 @@ Page({
    */
   data: {
     wordNum: 0,
-    publishContent: ''
+    publishContent: '',
+    userInfo: {},
   },
 
   countWord(e){
@@ -18,6 +19,7 @@ Page({
   },
 
   clickPublish(e){
+    console.log(this.data.userInfo._openid)
     if(this.data.wordNum==0){
       wx.showToast({
         title: '请发布点内容吧',
@@ -33,16 +35,13 @@ Page({
     wx.cloud.callFunction({
       name: "squarePublish",
       data:{
-        _openid: '2',
+        _openid: this.data.userInfo._openid,
         //this.data.userInfo._openid
-        //
-        //
-        //
-        nickName: '2',
+        //测试数据:'2'
+        nickName: this.data.userInfo.nickName,
         //this.data.userInfo.nickName
-        //
-        //
-        //
+        //测试数据:'2'
+
         content: this.data.publishContent,
         time: new Date(),
       }
@@ -68,14 +67,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
     wx.getStorage({
       key:"userInfo",
       success(res){
-        this.setData({
+        that.setData({
           userInfo:JSON.parse(Res.data)
         })
       }
     })
+  
   },
 
   /**
