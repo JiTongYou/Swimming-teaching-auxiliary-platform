@@ -27,126 +27,44 @@
       <!--每个视频本体-->
       <view class="videoItem"
             wx:key="id"
-            data-video='{{id}}'>
+            data-video='{{id}}'
+            bindtap="toVideo">
          <image class="common" 
-                src="{{item.data.coverUrl}}" 
-                id="{{item.data.vid}}" 
-                bindtap="toVideo">
+                src="cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/iconfont/comment.png" 
+                >
          </image>
             <view class="title">
-               Demo
+                demo
+               {{item.title}}
+            </view>
+            <view class="ranking">
+               ssssss
+               {{item.ranking}}
+            
+            </view>
+      </view>
+
+      <view class="videoItem"
+            wx:key="id"
+            data-video='{{id}}'
+            wx:for="{{videoList}}"
+            bindtap="toVideo">
+         <image class="common" 
+                src="{{item.data.cover}}" 
+                >
+         </image>
+            <view class="title">
+            
                {{item.title}}
             </view>
             <view class="ranking">
                {{item.ranking}}
-               xingxingxingxingxi
+            
             </view>
       </view>
+   
 
-      <view class="videoItem">
-         <image class="common" 
-                src="{{item.data.coverUrl}}" 
-                id="{{item.data.vid}}" 
-                bindtap="toVideo">
-         </image>
-            <view class="title">
-               Demo
-               {{item.data.title}}
-            </view>
-            <view class="ranking">
-               xingxingxingxingxi
-            </view>
-      </view>
 
-      <view class="videoItem">
-         <image class="common" 
-                src="{{item.data.coverUrl}}" 
-                id="{{item.data.vid}}" 
-                bindtap="toVideo">
-         </image>
-            <view class="title">
-               Demo
-               {{item.data.title}}
-            </view>
-            <view class="ranking">
-               xingxingxingxingxi
-            </view>
-      </view>
-
-      <view class="videoItem">
-         <image class="common" 
-                src="{{item.data.coverUrl}}" 
-                id="{{item.data.vid}}" 
-                bindtap="toVideo">
-         </image>
-            <view class="title">
-               Demo
-               {{item.data.title}}
-            </view>
-            <view class="ranking">
-               xingxingxingxingxi
-            </view>
-      </view>
-
-      <view class="videoItem">
-         <image class="common" 
-                src="{{item.data.coverUrl}}" 
-                id="{{item.data.vid}}" 
-                bindtap="toVideo">
-         </image>
-            <view class="title">
-               Demo
-               {{item.data.title}}
-            </view>
-            <view class="ranking">
-               xingxingxingxingxi
-            </view>
-      </view>
-
-      <view class="videoItem">
-         <image class="common" 
-                src="{{item.data.coverUrl}}" 
-                id="{{item.data.vid}}" 
-                bindtap="toVideo">
-         </image>
-            <view class="title">
-               Demo
-               {{item.data.title}}
-            </view>
-            <view class="ranking">
-               xingxingxingxingxi
-            </view>
-      </view>
-
-      <view class="videoItem">
-         <image class="common" 
-                src="{{item.data.coverUrl}}" 
-                id="{{item.data.vid}}" 
-                bindtap="toVideo">
-         </image>
-            <view class="title">
-               Demo
-               {{item.data.title}}
-            </view>
-            <view class="ranking">
-               xingxingxingxingxi
-            </view>
-      </view>
-
-      <view class="videoItem">
-         <image class="common" 
-                src="{{item.data.coverUrl}}" 
-                id="{{item.data.vid}}" 
-                bindtap="toVideo">
-         </image>
-            <view class="title">
-               Demo
-               {{item.data.title}}
-            </view>
-            <view class="ranking">
-               xingxingxingxingxi
-            </view>
-      </view>
 
    </scroll-view>
 </view>

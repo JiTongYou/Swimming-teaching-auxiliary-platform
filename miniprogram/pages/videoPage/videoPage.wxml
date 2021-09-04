@@ -1,7 +1,7 @@
 <!--miniprogram/pages/videoPage/videoPage.wxml-->
 <view class="videoItem">
    <video class="common"
-          src="" 
+          src="cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/video/DSC_7511.MOV" 
           bindplay="handlePlay"
           id="{{item.data.vid}} " 
           poster="{{item.data.coverUrl}}" 

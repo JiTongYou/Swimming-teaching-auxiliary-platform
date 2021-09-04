@@ -1,6 +1,11 @@
 // pages/video/video.js
+const DB=wx.cloud.database().collection("videos");
+var that;
+let id=" ";
+let title=" ";
+let ranking=" ";
+let videoList=[]
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -8,13 +13,13 @@ Page({
     videoList:[],//视频列表数据
     navId:'0',//导航标识
     vidId:'',
-    videoUpdateTime:[],
+    videoUpdateTime:new Date(),
     isTriggered: false,
   },
 
   //路由跳转至视频页面
   toVideo(event){
-    let video=event.currentTarget.dataset.video
+    //let video=event.currentTarget.dataset.video
     wx.navigateTo({
       url:'/pages/videoPage/videoPage'//?videoId=' + video.id  传参部分等获得数据再处理
     })
@@ -108,7 +113,7 @@ Page({
     let videoList=this.data.videoList;
     this.setData({
       videoList
-    })
+    })  
   },
 
   //跳转至分类页面
@@ -122,7 +127,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  },
+    that = this;
+    for(var i=1;i<8;i++){ 
+      var videoData={};
+      videoData.title="video-"+i;
+      videoData.ranking="videoRanking-"+i;
+      videoList.vidId="asd";
+      var cover = [];
+      that.data.videoList.push(videoData);
+    }
+    that.setData({
+     videoList:that.data.videoList
+    })
+  
+   DB.get({
+     success(res){
+       that.setData({
+         videoList:res.data.reverse
+       })
+       console.log(videoList)
+     }
+   })
+
+  //// wx.cloud.callFunction({
+   // name:'videoUpdateData', 
+   //data:videoList
+ // }).then(res=>{
+  //  console.log(res)
+  //})
+  },  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

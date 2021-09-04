@@ -20,7 +20,7 @@ Page({
    */
   onLoad: function (options) {
     let videoId=options.videoId;
-
+    console.log(videoId)
   },
 
   /**
