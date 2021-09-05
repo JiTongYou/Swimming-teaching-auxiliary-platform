@@ -10,18 +10,21 @@ const _ =db.command
 //入口参数_id:广场说说_id
 //入口参数nickName:发表评论的用户昵称
 //入口参数content:评论内容
+//入口参数reply:回复对象
 exports.main = async (event, context) => {
   try{
     const _id=event._id
     const _openid=event._openid
     const nickName=event.nickName
     const content=event.commentContent
+    const reply=event.reply
     return await db.collection("square").doc(_id).update({
       data:{
         comment:_.push({
           nickName:nickName,
           _openid:_openid,
-          content:content
+          content:content,
+          reply:reply
         })
       }
     })

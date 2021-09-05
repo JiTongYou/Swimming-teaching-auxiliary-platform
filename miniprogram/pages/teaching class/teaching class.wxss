@@ -1,5 +1,9 @@
 /* miniprogram/pages/teaching class/teaching class.wxss */
 
+.classContainer{
+  height: 100%
+}
+
 /* 单个课程条 */
 .classItem{
   padding: 30rpx;
@@ -19,13 +23,13 @@
   font-size: 32rpx;
 }
 
-.classItem .classEnterance{
-  position: relative;
+.classItem  .classEnterance{
+  position: absolute;
   text-align: center;
   font-size: 25rpx;
   height: 43rpx;
   padding: 5rpx;
-  left: 200rpx;
+  right: 40rpx;
   background-color: #c4ebf7;
 }
 
@@ -39,4 +43,37 @@
   align-items: center;
   background-color: #c4ebf7;
   margin: 40rpx;
+}
+
+/* 加入新班级弹窗 */
+.popupContainer{
+  width: 80%;
+  height: 24%;
+  position: absolute; 
+  left: 10vw;
+  top: 35vh;
+  background-color: #f7fdff;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.popupContainer .popupHeader{
+  width: 100%;
+  text-align: center;
+  padding: 10rpx;
+  font-size: 40rpx;
+}
+
+.popupContainer .classNum{
+  width: 90%;
+  padding:20rpx;
+}
+
+.popupContainer .button{
+  display: flex;
+}
+
+.popupContainer .button button{
+  background-color: #f7fdff;
 }

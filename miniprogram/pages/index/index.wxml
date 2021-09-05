@@ -1,13 +1,13 @@
 <view>
-   <scroll-view enable-back-to-top="true" scroll-y>
+   <scroll-view enable-back-to-top="true" scroll-y bindtouchstart="concealAddComment">
       <!-- 班级通知 -->
       <view class="indexNoticeContainer">
          <view class="header">
-            <text class="class">Lorem ipsum dolor sit amet.</text>
-            <text class="time">time</text>
+            <text class="class">{{userInfo.class[0].className}}</text>
+            <text class="time">{{userInfo.class[0].notice[0].time}}</text>
          </view>
          <view class="content">
-            <text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem animi necessitatibus sapiente ab enim. Eum enim dolores sint minima maxime.</text>
+            <text>{{userInfo.class[0].notice[0].content}}</text>
          </view>
          <view>
             <button class="detailButton" catchtap="toSingleClass" style="width:180rpx">进入班级>></button>
@@ -55,7 +55,7 @@
       <view class="indexSquare" wx:if="{{navId==0}}">
          <view class="indexSquareItem" wx:for="{{squareItem}}" wx:key="index" wx:index="index">
             <view class="user">
-               <image class="avatar" src=""></image>
+               <image class="avatar" src="{{item.avatarUrl}}"></image>
                <text class="nickName">{{item.nickName}}</text>
             </view>
             <text class="content">{{item.content}}</text>
@@ -77,8 +77,8 @@
                      src="cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/iconfont/comment.png"></image>
                </view>
             </view>
-            <view class="comment font-break" wx:if="{{item.comment.length > 0}}" wx:for="{{item.comment}}" wx:for-item="commentItem" wx:key="index">
-               <text class="detail"> <text class="nickName">{{commentItem.nickName}}：</text>{{commentItem.content}}</text>
+            <view class="comment font-break" wx:if="{{item.comment.length > 0}}" wx:for="{{item.comment}}" wx:for-item="commentItem" wx:key="index" wx:for-index="commentIndex" data-index="{{index}}" data-commentindex="{{commentIndex}}" catchtap="clickCommentItem">
+               <text class="detail"><text class="nickName">{{commentItem.nickName}}<text class="instructionWord" wx:if="{{commentItem.reply}}">回复</text><text class="nickName" wx:if="{{commentItem.reply}}">{{commentItem.reply}}</text>:</text>{{commentItem.content}}</text>
             </view>
          </view>
       </view>
@@ -100,6 +100,6 @@
 </view>
 
 <view class="floatComment" style="bottom:{{heightBottom != ''? heightBottom : 0}}rpx" wx:if="{{showCommentAdd}}">
-   <input class="commentInput" placeholder="评论" focus="{{showCommentAdd}}" bindinput="bindInput" bindfocus="bindFocus" />
+   <input class="commentInput" placeholder="{{reply.length>0 ? '回复' + reply : '评论'}}" focus="{{showCommentAdd}}" bindinput="bindInput" bindfocus="bindFocus" />
    <button class="commentSend" disabled="{{commentContent.length>0 ? false : true}}" catchtap="clickSend" size="mini">确认</button>
 </view>

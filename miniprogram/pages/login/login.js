@@ -50,11 +50,9 @@ Page({
     }).then(res=>{    
       if(res.result.code==200){
         userInfo._openid=res.result.userInfo._openid
-        console.log('sds',userInfo)
      }
 
       if(res.result.code==201){
-        console.log('aae',res.result)
         userInfo._openid=res.result._openid;
       }
       

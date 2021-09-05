@@ -134,7 +134,7 @@
 .toPublishButton{
   font-size: 38rpx;
   color: #878b8b;
-  line-height: 38rpx;
+  line-height: 60rpx;
   font-weight: 500;
 }
 
@@ -216,8 +216,16 @@
   display:flex;
 }
 
+.indexSquareItem .comment .detail{
+  display: inline;
+}
+
 .indexSquareItem .comment .detail .nickName{
   font-weight: 600;
+}
+
+.indexSquareItem .comment .detail .instructionWord{
+  font-weight: 400;
 }
 
 .font-break {

@@ -1,32 +1,22 @@
-<scroll-view>
+<view class="classContainer" bindtouchstart="concealAddClass">
   <!-- 单个课程条 -->
-  <view class="classItem">
-    <text class="className">class</text>
+  <view class="classItem" wx:for="{{userInfo.class}}" wx:key="index">
+    <text class="className">{{item.className}}</text>
     <view class="classDetail">
-      <text class="teacherName">teacher</text>
-      <button class="classEnterance" bindtap="toSingleClass" 
-      style="width:180rpx">进入班级>></button>
+      <text class="teacherName">{{item.classTeacher}}</text>
+      <button class="classEnterance" bindtap="toSingleClass" style="width:180rpx">进入班级>></button>
     </view>
   </view>
 
-  <view class="classItem">
-    <text class="className">class</text>
-    <view class="classDetail">
-      <text class="teacherName">teacher</text>
-      <button class="classEnterance" bindtap="toSingleClass" 
-      style="width:180rpx">进入班级>></button>
-    </view>
-  </view>
+<!-- 加入新班级 -->
+<button class="joinNewClass" catchtap="showPopup" style="width:300rpx">加入新班级</button>
+</view>
 
-  <view class="classItem">
-    <text class="className">class</text>
-    <view class="classDetail">
-      <text class="teacherName">teacher</text>
-      <button class="classEnterance" bindtap="toSingleClass" 
-      style="width:180rpx">进入班级>></button>
-    </view>
+<view class="popupContainer" wx:if="{{tapJoinNewClass}}">
+  <text class="popupHeader">加入新班级</text>
+  <input class="classNum" placeholder="请输入班级课号" bindinput="getClassNum"></input>
+  <view class="button">
+    <button class="cancel" bindtap="concealPopup">取消</button>
+    <button class="confirm" bindtap="joinClass">确认</button>
   </view>
-  
-  <!-- 加入新班级 -->
-  <button class="joinNewClass" style="width:300rpx">加入新班级</button>
-</scroll-view>
+</view>

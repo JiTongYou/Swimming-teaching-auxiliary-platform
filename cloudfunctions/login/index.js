@@ -11,6 +11,8 @@ exports.main = async (event, context) => {
     nickName,
     avatarUrl,
     gender,
+    following,
+    followers,
    // _openid,
   } = event;
   return db.where({
@@ -21,7 +23,7 @@ exports.main = async (event, context) => {
       return{
         code:200,
         errMsg:'用户已存在',
-        userInfo:res.data[0],
+       userInfo:res.data[0],
       //  _openid:wxContext.OPENID
       }
     }
@@ -32,6 +34,8 @@ exports.main = async (event, context) => {
           nickName:nickName,
           avatarUrl:avatarUrl,
           gender:gender,
+          following:following,
+          followers:followers,
           time: new Date()
         }
       }).then(res=>{

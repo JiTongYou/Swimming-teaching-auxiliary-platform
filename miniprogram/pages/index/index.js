@@ -22,6 +22,90 @@ Page({
     showCommentAdd: false,
     commentContent:'',
     heightBottom:'',
+    reply:'',
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    //this.getScrollHeight(),
+
+    //不可省略var that=this，否则无法访问
+    //promise风格，解决异步
+    var that = this
+    wx.getStorage({
+      key: "userInfo",
+    }).then(res => {
+      that.setData({
+        userInfo: JSON.parse(res.data)
+      })
+    }).then(res => {
+      //若放在外部，会因为异步操作而导致无法正常获取数据
+      that.setUserClassInfo()
+    })
+    
+    this.getSquareData()
+    this.getChatData()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    this.setData({
+      squareItem:[],
+    })
+    this.getSquareData()
+    this.getChatData()
+    this.setUserClassInfo()
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    if (this.data.navId == "0") {
+      var alreadyNum = this.data.squareItem.length
+      this.getSquareData(5, alreadyNum)
+    } else {
+
+    }
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   },
 
   //点击切换主页导航条的回调
@@ -67,6 +151,26 @@ Page({
     wx.navigateTo({
       url: '/pages/im/room/room',
     })
+  },
+
+  //获取用户课程信息并更新存储中用户课程信息
+  setUserClassInfo() {
+    wx.cloud.callFunction({
+      name: "getUserClassInfo",
+      data: {
+        _openid: this.data.userInfo._openid,
+      }
+    }).then(res => {
+      this.setData({
+        userInfo: res.result.data[0]
+      })
+    }).then(res => {
+      wx.setStorage({
+        key: "userClass",
+        data: this.data.userInfo.class
+      })
+    })
+
   },
 
   //跳转至通知中班级页面
@@ -208,6 +312,7 @@ Page({
     }
   },
   
+  //监听评论框中内容
   bindInput(e){
     //console.log('bindInput:', e)
     this.setData({
@@ -215,14 +320,16 @@ Page({
     })
   },
 
+  //单击评论后弹出键盘高度预留
   bindFocus(e){
     //console.log('bindFocus:',e)
-    var tmp_height = e.detail.height + 5
+    var tmp_height = e.detail.height + 10
     this.setData({
       heightBottom:tmp_height
     })
   },
 
+  //显示评论框
   clickComment(e){
     //console.log('clickComment:',e)
     this.setData({
@@ -231,6 +338,14 @@ Page({
     })
   },
 
+  //隐藏评论框
+  concealAddComment(e){
+    this.setData({
+      showCommentAdd: false
+    })
+  },
+
+  //发送评论
   clickSend(e){
     var squareData = this.data.squareItem[this.data.currentSquareIndex];
     var commentList = squareData.comment;
@@ -245,6 +360,7 @@ Page({
     commentData._openid = this.data.userInfo._openid;
     //this.data.userInfo._openid
     //测试数据:'2'
+    commentData.reply = this.data.reply;
 
     commentList.push(commentData);
 
@@ -260,99 +376,38 @@ Page({
         nickName: this.data.userInfo.nickName,
         //this.data.userInfo.nickName
         //测试数据:'2'
-        commentContent:this.data.commentContent
+        commentContent:this.data.commentContent,
+        reply:this.data.reply
       }
     })
 
     this.setData({
       [tmp_str]:this.data.squareItem[this.data.currentSquareIndex].comment,
       showCommentAdd: false,
-      commentContent:''
+      commentContent:'',
+      reply:''
     })
 
     console.log("评论成功")
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    //this.getScrollHeight(),
+  //回复评论
+  clickCommentItem(e){
+    //获取评论所属的朋友圈信息index
+    var circleIndex = e.currentTarget.dataset.index;
+    //获取评论在评论列表中的索引
+    var commentIndex = e.currentTarget.dataset.commentindex;
 
-    //不可省略var that=this，否则无法访问
-    var that=this
-    wx.getStorage({
-      key:"userInfo",
-      success(res){
-        that.setData({
-          userInfo:JSON.parse(res.data)
-        })
-      }
-    })
-    
-    this.getSquareData()
-    this.getChatData()
-  },
+    var squareData = this.data.squareItem[e.currentTarget.dataset.index];
+    var commentList = squareData.comment;
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    var commentData = commentList[commentIndex];
+    var nickName = commentData.nickName;
     this.setData({
-      squareItem:[],
+      currentSquareIndex:e.currentTarget.dataset.index,
+      showCommentAdd: true,
+      reply: nickName
     })
-    this.getSquareData()
-    this.getChatData()
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    this.setData({
-      squareItem:[],
-    })
-    this.getSquareData()
-    this.getChatData()
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    if (this.data.navId == "0") {
-      var alreadyNum = this.data.squareItem.length
-      this.getSquareData(5, alreadyNum)
-    } else {
-
-    }
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
 
