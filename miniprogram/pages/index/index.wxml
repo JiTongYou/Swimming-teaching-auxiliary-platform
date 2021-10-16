@@ -85,12 +85,12 @@
 
       <!-- 聊天内容 -->
       <view class="indexChat" wx:if="{{navId==1}}">
-         <view class="indexChatItem" bindtap="toChat">
-            <image class="userAvatar" src=""></image>
+         <view class="indexChatItem" bindtap="toChat" wx:for="{{chatItem}}" wx:key="index" wx:index="index" data-index="{{index}}" >
+            <image class="userAvatar" src="{{item.chat_members[0].avatarUrl == this.data.userInfo.avatarUrl ? item.chat_members[1].avatarUrl : item.chat_members[0].avatarUrl}}"></image>
             <view class="info">
                <view>
-                  <text class="nickName">name</text>
-                  <text class="time">time</text>
+                  <text class="nickName">{{item.chat_members[0].nickName == this.data.userInfo.nickName ? item.chat_members[1].nickName : item.chat_members[0].nickName}}</text>
+                  <text class="time">{{item.time}}</text>
                </view>
                <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
             </view>

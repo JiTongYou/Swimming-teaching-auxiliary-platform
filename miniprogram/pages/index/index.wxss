@@ -256,9 +256,9 @@
 
 .indexChatItem .time{
   float: right;
-  line-height: 75rpx;
+  line-height: 65rpx;
   text-align: center;
-  height: 75rpx;
+  height: 65rpx;
   font-size: 30rpx;
   color: #cfd6d8;
 }

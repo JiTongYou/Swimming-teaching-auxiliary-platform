@@ -9,44 +9,64 @@ Page({
   data: {
      userInfo: null,
   },
+ 
+  getUserProfile(){
+    wx.getUserProfile({
+      desc: '请填写个人信息',
+      success:(res)=>{
+        console.log(res)
+        // that.setData({
+        //   userInfo:res.userInfo,
+        // })
+        if(res.userInfo){
+            that.addUser(res.userInfo)
+        }
+       else{
+            wx.showToast({title:'拒绝授权',})
+        }
+      }
+    })
+
+  
+  },
 
   onLoad: function (options) {
     that = this;
-    //console.log("login onload:", getApp().globalData.userInfo)
     if (getApp().globalData.userInfo) {
-      wx.navigateBack({
-        delta: 0,
+      wx.switchTab({
+        url: '/pages/index/index',
       })
       that.setData({
         userInfo: getApp().globalData.userInfo
       })
     }
+    console.log(that.data.userInfo)
  },
 
-  bindGetUserInfo:function(e){
-     if(e.detail.userInfo){
-       // wx.setStorage({
-        //  data:JSON.stringify(e.detail.userInfo),
-        //  key:'userInfo',
-        //  success(res){
-        //    console.log('asd',res)
-        //    
-        //  }
-      //  })
-      that.addUser(e.detail.userInfo)
-     }
-     else{
-        wx.showToast({title:'拒绝授权',})
-     }
-  },
+  // bindGetUserInfo:function(e){
+  //    if(e.detail.userInfo){
+  //      // wx.setStorage({
+  //       //  data:JSON.stringify(e.detail.userInfo),
+  //       //  key:'userInfo',
+  //       //  success(res){
+  //       //    console.log('asd',res)
+  //       //    
+  //       //  }
+  //     //  })
+  //     that.addUser(e.detail.userInfo)
+  //    }
+  //    else{
+  //       wx.showToast({title:'拒绝授权',})
+  //    }
+  // },
 
   addUser(userInfo){
-    //wx.showLoading({
-    //title:'正在登录',
-   // })
+    wx.showLoading({
+    title:'正在登录', 
+    })
     wx.cloud.callFunction({
       name:'login',
-      data:userInfo
+      data:{userInfo}
     }).then(res=>{    
       if(res.result.code==200){
         userInfo._openid=res.result.userInfo._openid
@@ -55,7 +75,7 @@ Page({
       if(res.result.code==201){
         userInfo._openid=res.result._openid;
       }
-      
+      console.log(userInfo)
       wx.setStorage({
         data: JSON.stringify(userInfo),
         key:'userInfo',

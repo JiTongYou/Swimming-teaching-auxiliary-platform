@@ -43,10 +43,13 @@ Page({
     }).then(res => {
       //若放在外部，会因为异步操作而导致无法正常获取数据
       that.setUserClassInfo()
+      that.getChatData()
+      //that.inquireSpecificChatData()
+      that.getSquareData()
     })
     
-    this.getSquareData()
-    this.getChatData()
+
+    
   },
 
   /**
@@ -147,9 +150,9 @@ Page({
   },
 
   //跳转至聊天页
-  toChat() {
+  toChat(e) {
     wx.navigateTo({
-      url: '/pages/im/room/room',
+      url: '/pages/chat/chat?chat_msg_id=' + this.data.chatItem[e.currentTarget.dataset.index].chat_msg_id,
     })
   },
 
@@ -173,9 +176,41 @@ Page({
 
   },
 
+  getChatData(num = 5, alreadyNum = 0){
+    wx.cloud.callFunction({
+      name: "indexGetChatData",
+      data: {
+        currentId: this.data.userInfo._openid,
+        num: num,
+        alreadyNum: alreadyNum
+      }
+    }).then(res => {
+      this.setData({
+        chatItem: res.result.data
+      })
+    })
+  },
+
+  inquireSpecificChatData(){
+    //获取聊天数据
+    wx.cloud.callFunction({
+      name: "inquireChat",
+      data: {
+        currentId: this.data.userInfo._openid,
+        friendId: '2',
+        type: 1
+      }
+    }).then(res => {
+      //console.log('inquireChat:',res)
+      this.setData({
+        chatItem: res.result.data
+      })
+    })
+  },
+
   //跳转至通知中班级页面
   toSingleClass() {
-    wx.navigateTo({
+    wx.switchTab({
       url: '/pages/single class/single class',
     })
   },
@@ -246,6 +281,7 @@ Page({
   },
 
   //消息下拉触底新增
+  /*
   getChatData(num = 5, alreadyNum = 0) {
     wx.cloud.callFunction({
       name: "indexGetChatData",
@@ -263,6 +299,7 @@ Page({
       }
     })
   },
+  */
 
   clickLike(e){
     var index = e.currentTarget.dataset.index
@@ -323,7 +360,7 @@ Page({
   //单击评论后弹出键盘高度预留
   bindFocus(e){
     //console.log('bindFocus:',e)
-    var tmp_height = e.detail.height + 10
+    var tmp_height = e.detail.height + 20
     this.setData({
       heightBottom:tmp_height
     })
@@ -388,7 +425,7 @@ Page({
       reply:''
     })
 
-    console.log("评论成功")
+    //console.log("评论成功")
   },
 
   //回复评论
