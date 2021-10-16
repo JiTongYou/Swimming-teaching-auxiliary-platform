@@ -1,25 +1,56 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
-cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV})
-const db = cloud.database().collection('defaultUserInfo');
+cloud.init()
+const db = cloud.database();
+const _ = db.command
+
 // 云函数入口函数
 exports.main = async (event, context) => {
-  
-  const wxContext = cloud.getWXContext()
+  var userInfo = event.userInfo
+  const wxcontext = cloud.getWXContext()
+  userInfo.class = [];
+  userInfo.identity = 1;
+  userInfo.followers = '';
+  userInfo.following = '';
+  userInfo._openid = wxcontext.OPENID;
+
+  const result = db.collection('defaultUserInfo').where({
+    _openid: _.eq(userInfo._openid)
+  }).get()
+  if(result.length > 0){
+    return 0;
+  }else{
+    db.collection('defaultUserInfo').add({
+      data:{
+        nickName: userInfo.nickName,
+        avatarUrl: userInfo.avatarUrl,
+        _openid: wxcontext.OPENID,
+        gender: userInfo.gender,
+        class: [],
+        identity: 1,
+        following: '',
+        followers: '',
+      }
+    })
+    return userInfo;
+  }
+
+}
+  /*const wxContext = cloud.getWXContext()
   const {
     nickName,
     avatarUrl,
     gender,
     following,
     followers,
-   // _openid,
+    class:[],
   } = event;
   return db.where({
     _openid: wxContext.OPENID
   }).get()
     .then(res=>{
-    if(res.data.length>0){
+    if(res.data.length<0){
       return{
         code:200,
         errMsg:'用户已存在',
@@ -36,9 +67,10 @@ exports.main = async (event, context) => {
           gender:gender,
           following:following,
           followers:followers,
-          time: new Date()
+          time: new Date(),
         }
       }).then(res=>{
+        console.log(res.data.nickname)
         return{
           code:201,
           errMsg:'用户注册成功',
@@ -65,3 +97,4 @@ exports.main = async (event, context) => {
     //unionid: wxContext.UNIONID,
   //}
 }
+*/
