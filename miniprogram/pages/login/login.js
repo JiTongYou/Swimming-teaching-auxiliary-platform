@@ -1,6 +1,6 @@
 // miniprogram/pages/login/login.js
 var that;
-const db = wx.cloud.database().collection('defaultUserInfo');
+
 Page({
 
   /**
@@ -14,7 +14,7 @@ Page({
     wx.getUserProfile({
       desc: '请填写个人信息',
       success:(res)=>{
-        console.log(res)
+        //console.log(res)
         // that.setData({
         //   userInfo:res.userInfo,
         // })
@@ -40,7 +40,7 @@ Page({
         userInfo: getApp().globalData.userInfo
       })
     }
-    console.log(that.data.userInfo)
+    //console.log(that.data.userInfo)
  },
 
   // bindGetUserInfo:function(e){
@@ -64,20 +64,17 @@ Page({
     wx.showLoading({
     title:'正在登录', 
     })
+    
     wx.cloud.callFunction({
       name:'login',
       data:{userInfo}
-    }).then(res=>{    
-      if(res.result.code==200){
-        userInfo._openid=res.result.userInfo._openid
-     }
-
-      if(res.result.code==201){
-        userInfo._openid=res.result._openid;
-      }
-      console.log(userInfo)
+    }).then(res=>{
+      //console.log(res);
+      this.setData({
+        userInfo:res.result.data[0]
+      })
       wx.setStorage({
-        data: JSON.stringify(userInfo),
+        data: JSON.stringify(res.result.data[0]),
         key:'userInfo',
         success(res){
           getApp().globalData.userInfo=userInfo;

@@ -28,6 +28,7 @@ input {
 }
 
 .leftMsg {
+  display: inline-block;
   font-size: 35rpx;
   color: #444;
   line-height: 7vw;
@@ -38,7 +39,13 @@ input {
   z-index: 10;
 }
 
+.msgAndTime{
+  text-align: end;
+}
+
 .rightMsg {
+  display: inline-block;
+  text-align: left;
   font-size: 35rpx;
   color: #444;
   line-height: 7vw;
@@ -57,4 +64,9 @@ input {
   height: 60rpx;
   background-color: #c4ebf7;
   vertical-align: middle;
+}
+
+.time{
+  margin-top: 0.1vh;
+  font-size: 20rpx
 }

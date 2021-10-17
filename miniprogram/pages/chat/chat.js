@@ -55,9 +55,9 @@ Page({
     msgContent: '',
     userInfo: {},
     msgList: [],
-    chat_msg_id: '',
     scrollHeight: '',
     keyHeight:0,
+    userHeadIcon:'',
   },
 
   /**
@@ -72,19 +72,21 @@ Page({
       that.setData({
         userInfo: JSON.parse(res.data)
       })
+    }).then(res=>{
+      this.setData({
+        userHeadIcon: this.data.userInfo.avatarUrl,
+        chat_group: JSON.parse(options.detail),
+        //msgList: [],
+      })
     })
     //calScrollHeight();
     //initData(this);
-    this.setData({
-      cusHeadIcon: this.data.userInfo.avatarUrl,
-      chat_msg_id: options.chat_msg_id,
-      //msgList: [],
-    })
+    
 
     wx.cloud.callFunction({
       name:"inquireChat",
       data:{
-        chat_id:options.chat_msg_id,
+        chat_id:JSON.parse(options.detail).chat_msg_id,
       }
     }).then(res =>{
       this.setData({
@@ -152,6 +154,23 @@ Page({
     })
   },
 
+    //转换时间
+    js_date_time(unixtime) {
+      var date = new Date(unixtime);
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      m = m < 10 ? ('0' + m) : m;
+      var d = date.getDate();
+      d = d < 10 ? ('0' + d) : d;
+      var h = date.getHours();
+      h = h < 10 ? ('0' + h) : h;
+      var minute = date.getMinutes();
+      var second = date.getSeconds();
+      minute = minute < 10 ? ('0' + minute) : minute;
+      second = second < 10 ? ('0' + second) : second;
+      return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second; //年月日时分秒
+    },
+
   /**
    * 发送点击监听
    */
@@ -160,13 +179,13 @@ Page({
     msgData.nickName = this.data.userInfo.nickName;
     msgData.content = this.data.msgContent;
     msgData._openid = this.data.userInfo._openid;
-    msgData.time = new Date();
+    msgData.time = this.js_date_time(new Date());
     this.data.msgList.push(msgData);
 
     wx.cloud.callFunction({
       name:"sendMsg",
       data:{
-        chat_id: this.data.chat_msg_id,
+        chat_id: this.data.chat_group.chat_msg_id,
         _openid: this.data.userInfo._openid,
         content: this.data.msgContent,
         nickName: this.data.userInfo.nickName,
@@ -188,6 +207,7 @@ Page({
    */
   toBackClick: function () {
     wx.navigateBack({})
-  }
+  },
+
 
 })

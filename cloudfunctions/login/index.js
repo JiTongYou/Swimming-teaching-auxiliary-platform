@@ -15,29 +15,40 @@ exports.main = async (event, context) => {
   userInfo.following = '';
   userInfo._openid = wxcontext.OPENID;
 
-  const result = db.collection('defaultUserInfo').where({
-    _openid: _.eq(userInfo._openid)
-  }).get()
-  if(result.length > 0){
-    return 0;
-  }else{
-    db.collection('defaultUserInfo').add({
-      data:{
-        nickName: userInfo.nickName,
-        avatarUrl: userInfo.avatarUrl,
-        _openid: wxcontext.OPENID,
-        gender: userInfo.gender,
-        class: [],
-        identity: 1,
-        following: '',
-        followers: '',
-      }
-    })
-    return userInfo;
-  }
-
+  //promise处理异步
+  return await new Promise((resolve) => {
+    db.collection('defaultUserInfo').where({
+        _openid: _.eq(userInfo._openid)
+      }).get()
+      .then(res => {
+        //console.log(res)
+        if (res.data.length > 0) {
+          resolve(res);
+        } else {
+          db.collection('defaultUserInfo').add({
+            data: {
+              nickName: userInfo.nickName,
+              avatarUrl: userInfo.avatarUrl,
+              _openid: wxcontext.OPENID,
+              gender: userInfo.gender,
+              class: [],
+              identity: 1,
+              following: '',
+              followers: '',
+            }
+          }).then(res=>{
+            db.collection('defaultUserInfo').where({
+              _openid: _.eq(userInfo._openid)
+            }).get()
+            .then(res => {
+              resolve(res);
+            })
+          })
+        }
+      })
+  })
 }
-  /*const wxContext = cloud.getWXContext()
+/*const wxContext = cloud.getWXContext()
   const {
     nickName,
     avatarUrl,
