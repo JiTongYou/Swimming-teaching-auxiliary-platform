@@ -1,27 +1,28 @@
 <!--pages/individual/individual.wxml-->
-<view class="header">
+<view class="header" >
+  <image class="headerBackground" bindtap="changeBackground" src="{{backgroundPicPath}}"></image>
   <view class="headerContent">
-     <image class="avatar" src=""></image>
-     <view class="ID">
-       ID:jty1111 {{}}
+     <image class="avatar"  src="{{userInfo.avatarUrl}}"></image>
+     <view class="name">
+       昵称: {{userInfo.nickName}}
      </view>
      <view class="following">
-      关注：  {{}}
+      关注：  {{userInfo.following}}
      </view>
      <view class="followers">
-       粉丝： {{}}
+       粉丝： {{userInfo.followers}}
      </view>
   </view>
 </view>
 
 <view class="others">
-  <view class="name">
-      <view class="nickname" >昵称</view>
-      <view class="nameInput" ><input type="text" placeholder="更改昵称"/></view>
+  
+  <view class="changeInformation"  bindtap="changeInfo">
+      修改个人信息
   </view>
 
-  <view class="level"  bindtap="levelTap">
-      等级
+  <view class="individualPage" bindtap="toIndividual">
+      个人主页       
   </view>
 
   <view class="favorites"  bindtap="favoriteTap">
@@ -40,8 +41,11 @@
       通用
   </view>
 
-  <view class="ifNotice"  bindtap="ifTap">
-      通知提醒
+  <view class="ifNotice">
+    <view class="notice">通知提醒</view>
+    <view class="switchBar">
+    <switch checked bindchange="noti ceOff"/>
+    </view>
   </view>
 
   <view class="aboutUs"  bindtap="usTap">

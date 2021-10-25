@@ -14,6 +14,34 @@
   display:flex;
 }
 
+.like{
+  margin-top:40rpx
+}
+
+.likeButton{
+  background-color: aqua;
+  size:50rpx;
+}
+
+.liked{
+  background-color: #81DAF5;
+  size:50rpx;
+}
+
+.collect{
+  margin-top:40rpx
+}
+
+.collectButton{
+  background-color: aqua;
+  size:50rpx;
+}
+
+.collected{
+  background-color: #81DAF5;
+  size:50rpx;
+}
+
 .navContent{
   height: 80rpx;
   line-height: 80rpx;

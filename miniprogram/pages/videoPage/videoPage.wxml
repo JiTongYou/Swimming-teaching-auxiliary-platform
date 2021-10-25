@@ -1,10 +1,8 @@
 <!--miniprogram/pages/videoPage/videoPage.wxml-->
 <view class="videoItem">
    <video class="common"
-          src="cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/video/DSC_7511.MOV" 
-          bindplay="handlePlay"
-          id="{{item.data.vid}} " 
-          poster="{{item.data.coverUrl}}" 
+          src="{{vidUrl}}"
+          bindplay="handlePlay"  
           object-fit="fill"
           bindtimeupdate="handleTimeUpdate"
           bindended="handleEnded">
@@ -16,4 +14,46 @@
     <view class="navContent {{ navId == '0'?'active':''}}" bindtap="changeNav" id="0">简介</view>
     <view class="navContent {{ navId == '1'?'active':''}}" bindtap="changeNav" id="1">评论</view>
   </view>
+</view>
+
+<view  wx:if="{{navId==0}}" >
+
+<view class="introduction" >
+{{introduction}}
+</view>
+
+<view class="collect">
+  <button class="collectButton"
+          wx:if="{{ifCollected==0}}"
+          catchtap="clickCollect" >
+  收藏
+  </button>
+
+  <button class="collected" 
+          wx:if="{{ifCollected==1}}"
+          catchtap="clickCollect" >取消收藏
+  </button>
+
+  <view class="collectNumber">
+  
+  </view>
+</view>
+
+<view class="like">
+  <button class="likeButton"
+          wx:if="{{ifLiked==0}}"
+          catchtap="clickLike" >
+  点赞
+  </button>
+
+  <button class="liked" 
+          wx:if="{{ifLiked==1}}"
+          catchtap="clickLike" >取消点赞
+  </button>
+
+  <view class="likeNumber">
+  
+  </view>
+</view>
+
 </view>

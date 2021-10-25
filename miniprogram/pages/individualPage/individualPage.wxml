@@ -1,14 +1,14 @@
 <view class="header">
   <view class="headerContent">
-     <image class="avatar"  bindtap="changeInfo" src=""></image>
+     <image class="avatar"  bindtap="changeInfo" src="{{otherUserAvatar}}"></image>
      <view class="name">
-       昵称: {{userInfo.nickName}}
+      昵称: {{otherUserNickName}}
      </view>
      <view class="following">
-      关注：  {{}}
+      关注：  {{otherUserFollowing}}
      </view>
      <view class="followers">
-       粉丝： {{}}
+      粉丝： {{otherUserFollowers}}
      </view>
   </view>
 </view>
@@ -16,7 +16,6 @@
 <view class="ifFollow">
   <button class="follow" 
           wx:if="{{ifFollowed==0}}"
-          data-index="{{index}}"
           catchtap="clickFollow" >关注
   </button>
   <button class="followed" 

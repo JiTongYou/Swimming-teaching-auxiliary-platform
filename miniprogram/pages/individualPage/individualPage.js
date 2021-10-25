@@ -1,17 +1,21 @@
 // miniprogram/pages/individualPage/individualPage.js
 var that;
+const DB=wx.cloud.database().collection("defaultUserInfo");
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
      ifFollowed:0,
-     userInfo:[]
+     haveFollowed:[],
+     otherUserId:"",
+     otherUserAvatar:"",
+     otherUserFollowing:0,
+     otherUserFollowers:0,
+     otherUserNickName:"",
   },
 
   clickFollow(e){
-    var index = e.currentTarget.dataset.index
     var tmp_str='ifFollowed';
     if(that.data.ifFollowed == 1){
       that.setData({
@@ -20,13 +24,11 @@ Page({
       wx.cloud.callFunction({
         name:"individualAddFollower",
         data:{
-          _openid: that.data.userInfo._openid,
-         
+          _openid: that.data.userInfo._openid,   
          //_id:that.data.squareItem[index]._id,
         type:0
         }
       })
-      console.log(_openid)
     }else{
       that.setData({
         [tmp_str]:1
@@ -35,13 +37,12 @@ Page({
         name:"individualAddFollower",
         data:{
           _openid:
-          this.data.userInfo._openid,
+          that.data.userInfo._openid,
        //   _id:this.data.squareItem[index]._id,
           type:1
         }
       })
-      
-    }console.log(userInfo)
+    }
   },
 
   /**
@@ -49,15 +50,33 @@ Page({
    */
   onLoad: function (options) {
       that = this;
+      console.log(options)
+      that.setData({otherUserId:options.personId})
+      
 
-      wx.getStorage({
-        key:"userInfo",
-        success(res){
-          that.setData({
-            userInfo:JSON.parse(res.data)
-          })
+      DB.where({
+          _openid:that.data.otherUserId
+      }).get().then(res=>{
+         console.log('s',res)
+              that.setData({
+              otherUserAvatar:res.data[0].avatarUrl,
+              otherUserNickName:res.data[0].nickName,
+              otherUserFollowing:res.data[0].following,
+              otherUserFollowers:res.data[0].otherUserFollowers,
+            }) 
+            console.log(res.data[0].nickName)
+    })
+
+      for(var i=0;i<that.data.haveFollowed.length;i++){
+        if(that.data.haveFollowed[i]==that.data.userInfo._openid){
+           that.setData({
+              ifFollowed:1,
+           })
+           //console.log("Sdadasddadad")
         }
-      })
+      }
+    
+    
   },
 
   /**

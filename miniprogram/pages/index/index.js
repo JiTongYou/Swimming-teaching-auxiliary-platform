@@ -262,6 +262,7 @@ Page({
             //this.data.userInfo._openid
             //测试数据：2
             if(this.data.userInfo._openid == res.result.data[i].likes[j]){
+              //console.log(this.data.userInfo._openid)
               var tmp_str = 'haveLiked[' + (alreadyNum + i) + ']'
               this.setData({
                 [tmp_str]:1
@@ -447,5 +448,15 @@ Page({
     })
 
   },
+
+  //点击头像到个人主页
+  toIndividualPageSquare(event){
+    let person=event.currentTarget.dataset.person;
+    console.log(person._openid)
+    wx.navigateTo({
+      url:'/pages/individualPage/individualPage?personId=' + person._openid
+    })
+  },
+
 
 })

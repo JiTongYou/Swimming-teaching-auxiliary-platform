@@ -55,7 +55,7 @@
       <view class="indexSquare" wx:if="{{navId==0}}">
          <view class="indexSquareItem" wx:for="{{squareItem}}" wx:key="index" wx:index="index">
             <view class="user">
-               <image class="avatar" src="{{item.avatarUrl}}"></image>
+               <image class="avatar" src="{{item.avatarUrl}}" data-person="{{item}}" bindtap="toIndividualPageSquare"></image>
                <text class="nickName">{{item.nickName}}</text>
             </view>
             <text class="content">{{item.content}}</text>

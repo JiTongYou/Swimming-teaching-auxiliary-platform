@@ -25,34 +25,67 @@
 }
 
 .scrollVideo{
-  display:flex;
+   height: 90vh;
+}
+
+.Video{
+   display:flex;
   flex-wrap:wrap;
+  flex-direction: row;
   margin-top: 10rpx;
-  height:90vh;
+  height:800rpx;
 }
 
 .videoItem{
-  height:300rpx;
   width:50%;
-  margin-bottom: 50rpx;
+  height:25%;
 }
-
 
  .common{
-  width: 82%;
-  height: 200rpx;
+  width:82%; 
+  height: 200rpx; 
   border-radius:10rpx;
   margin-left:30rpx;
-  margin-right: 30rpx;
+  margin-right: 20rpx; 
   background-color: #557ea7;
-}
-
-
-
-.ranking{
-  margin-left: 11%;
-}
+} 
 
 .title{
   margin-left: 37%;
+}
+
+.addVideo{
+  position: relative;
+  text-align: center;
+  font-size: 25rpx;
+  height: 43rpx;
+  padding: 5rpx;
+  left: 50rpx;
+  background-color: #c4ebf7;
+}
+
+.ranking{
+  margin-left: 20%;
+}
+
+
+.floatCategory{
+  position: fixed;
+  margin-left: 73.5%;
+ 
+ bottom:0rpx;
+  width: 200rpx;
+  height: 91%;
+  display: flex;
+  align-items: center;
+   flex-direction: column;
+   background-color: #ffffff;
+}
+
+.category{
+  text-align: center;
+  display:block;
+  width:130rpx;
+  margin-top:35rpx;
+  border-bottom:2rpx solid rgba(77, 99, 91, 0.336);
 }

@@ -1,17 +1,10 @@
 <!--pages/video/video.wxml-->
-<view class="video">
-
-<!--搜索栏-->
-   <view class="search">
-
-      <view class="searchColumn"> <input type="text" placeholder="搜索视频"/></view>
-   </view>
-
+<view class="video"  bindtouchstart="concealShowCategory">
 <!--导航栏-->
    <view class="navigation" enable-flex>
       <view class="navigationColumn {{navId== '0' ?'active':''}}" id="0" wx:key="id" bindtap="changeNav">教学视频 </view>
       <view class="navigationColumn {{navId== '1' ?'active':''}}" id="1" wx:key="id"  bindtap="changeNav">训练计划 </view>
-      <view class="categoryBar" bindtap="getCategory">dd</view>
+      <view class="categoryBar" bindtap="getCategory">CAT</view>
    </view> 
 
 <!--视频-->
@@ -20,53 +13,62 @@
                 refresher-triggered="{{isTriggered}}"
                 bindscrolltolower="handleToLower"
                 scroll-y 
+            
                 class="scrollVideo" 
-                enable-flex
+                enable-flex 
                 wx:if="{{navId==0}}" 
                 scroll-with-animation="true">
       <!--每个视频本体-->
-      <view class="videoItem"
-            wx:key="id"
-            data-video='{{id}}'
-            bindtap="toVideo">
-         <image class="common" 
-                src="cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/iconfont/comment.png" 
-                >
-         </image>
-            <view class="title">
-                demo
-               {{item.title}}
-            </view>
-            <view class="ranking">
-               ssssss
-               {{item.ranking}}
-            
-            </view>
-      </view>
 
+<view class="Video">
+<!-- 全部视频 -->
       <view class="videoItem"
-            wx:key="id"
-            data-video='{{id}}'
             wx:for="{{videoList}}"
-            bindtap="toVideo">
-         <image class="common" 
-                src="{{item.data.cover}}" 
-                >
+            wx:if="{{toCategory==1}}"
+      >
+         <image class="common"  
+         data-video='{{item}}'
+         bindtap="toVideo"
+         src="{{item.cover}}">
          </image>
-            <view class="title">
-            
-               {{item.title}}
-            </view>
-            <view class="ranking">
-               {{item.ranking}}
-            
-            </view>
+
+         <view class="title">            
+         {{item.title}}
+         </view>
+
+            <!-- <view class="ranking">
+               {{item.ranking}}         
+            </view> -->
+
       </view>
+</view>
+       <!-- 分类的视频
+      <view wx:if="{{toCategory!=1}}"
+           class="videoItem"
+            wx:for="{{videoList}}"
+      >
+         <image class="common"  
+         data-video='{{item}}'
+         bindtap="toVideo"
+         src="{{item.cover}}"  
+         >
+         </image>
+
+         <view 
+         class="title">            
+         {{item.title}}
+         </view>
+
+         <view    
+         class="ranking">
+         {{item.ranking}}         
+         </view> 
+         
+      </view>  -->
    
-
-
-
+    <!-- <button class="addVideo" bindtap="addVideo" style="width:180rpx"> add </button> -->
    </scroll-view>
+
 </view>
 
 <scroll-view bindrefresherrefresh="handleRefresher"
@@ -79,5 +81,15 @@
                 wx:if="{{navId==1}}" 
                 scroll-with-animation="true">ss
 </scroll-view>
+
+<view class="floatCategory"  wx:if="{{showCategory}}">
+   <view class="category" bindtap="toAll">全部</view>
+    <view class="category" bindtap="toBreast">蛙泳</view>
+    <view class="category" bindtap="toFree">自由泳</view>
+    <view class="category" bindtap="toBack">仰泳</view>
+    <view class="category" bindtap="toButter">蝶泳</view>
+    <view class="category" bindtap="toWater">水性</view>
+    <view class="category" bindtap="toBody">身体素质</view>
+</view>
 
 
