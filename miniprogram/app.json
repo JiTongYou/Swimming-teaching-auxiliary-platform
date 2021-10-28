@@ -1,15 +1,16 @@
 {
-  "pages": [       
+  "pages": [
     "pages/login/login",
-    "pages/chat/chat",
     "pages/index/index",
     "pages/publish/publish",
+    "pages/chat/chat",
     "pages/video/video",
+    "pages/single class/single class",
     "pages/teaching class/teaching class",
     "pages/individual/individual",
-    "pages/individualPage/individualPage",
-    "pages/single class/single class",
-    "pages/videoPage/videoPage"
+    "pages/videoPage/videoPage",
+    "pages/class name list/class name list",
+    "pages/publishNotice/publishNotice"
   ],
   "style": "v2",
   "window": {
@@ -33,7 +34,7 @@
         "selectedIconPath": "static/iconfont/inonfontImages/video_selected.png"
       },
       {
-        "pagePath": "pages/teaching class/teaching class",
+        "pagePath": "pages/single class/single class",
         "text": "班级",
         "iconPath": "static/iconfont/inonfontImages/class.png",
         "selectedIconPath": "static/iconfont/inonfontImages/class_selected.png"

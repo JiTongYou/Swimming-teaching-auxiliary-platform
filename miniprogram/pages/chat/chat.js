@@ -81,7 +81,6 @@ Page({
     })
     //calScrollHeight();
     //initData(this);
-    
 
     wx.cloud.callFunction({
       name:"inquireChat",
@@ -92,6 +91,10 @@ Page({
       this.setData({
         msgList: res.result.data[0].msgList
       })
+      wx.setStorage({
+        key: 'chat' + this.data.chat_group.chat_msg_id,
+        data: JSON.stringify(res.result.data[0].msgList)
+      })  
     }).then(res=>{
       this.setData({
         toView: 'msg-' + (this.data.msgList.length - 1)

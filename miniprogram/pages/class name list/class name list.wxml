@@ -1,0 +1,6 @@
+<!--miniprogram/pages/class name list/class name list.wxml-->
+<scroll-view wx:for='{{student}}' wx:key='index'>
+  <view class='studentContainer'>
+    <text class='studentName'>{{item._openid}}</text>
+  </view>
+</scroll-view>

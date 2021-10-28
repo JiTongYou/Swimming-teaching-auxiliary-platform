@@ -9,7 +9,9 @@ const _ = db.command
 //入口参数_openid:用户_openid
 exports.main = async (event, context) => {
   var _openid = event._openid
-  return await db.collection("defaultUserInfo").where({
-    _openid: _.eq(_openid)
+  return await db.collection("class").where({
+    student: _.elemMatch({
+      _openid: _.eq(_openid),
+    })
   }).get()
 }

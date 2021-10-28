@@ -1,13 +1,13 @@
 <view>
    <scroll-view enable-back-to-top="true" scroll-y bindtouchstart="concealAddComment">
       <!-- 班级通知 -->
-      <view class="indexNoticeContainer">
+      <view wx:if='{{userClass&&userInfo.identity}}' class="indexNoticeContainer">
          <view class="header">
-            <text class="class">{{userInfo.class[0].className}}</text>
-            <text class="time">{{userInfo.class[0].notice[0].time}}</text>
+            <text class="class">{{userClass[0].className}}</text>
+            <text class="time">{{userClass[0].notice[0].time}}</text>
          </view>
          <view class="content">
-            <text>{{userInfo.class[0].notice[0].content}}</text>
+            <text>{{userClass[0].notice[0].content}}</text>
          </view>
          <view>
             <button class="detailButton" catchtap="toSingleClass" style="width:180rpx">进入班级>></button>

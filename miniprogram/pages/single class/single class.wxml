@@ -1,25 +1,70 @@
-<!--miniprogram/pages/single class/single class.wxml-->
-<view>
-  <view class="singleClassNoticeContainer">
-    <text class="gonggao">公告</text>
-    <view class="header">
-      <text class="class">Lorem ipsum dolor sit amet.</text>
-      <text class="time">time</text>
+<!--学生界面-->
+<view wx:if='{{userInfo.identity == 1}}' bindtouchstart="concealJoinNewClassPopup">
+  <view wx:if='{{userClass}}'>
+    <view class="singleClassNoticeContainer">
+      <text class="gonggao">公告</text>
+      <view class="header">
+        <text class="class">{{userClass[0].notice[0].head}}</text>
+        <text class="time">{{userClass[0].notice[0].time}}</text>
+      </view>
+      <view class="content">
+        <text>{{userClass[0].notice[0].content}}</text>
+      </view>
     </view>
-    <view class="content">
-      <text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, non!</text>
+    <view class="singleClassItem" bindtap="toNameList">
+      <text class="iconfont icon-mingdanku"></text>
+      <text>名单</text>
     </view>
-  </view>
-  <view class="singleClassItem">
-    <text class="iconfont icon-mingdanku"></text>
-    <text>名单</text>
-  </view>
+    <!--
   <view class="singleClassItem">
     <text class="iconfont icon-xinbaniconshangchuan-"></text>
     <text>作业</text>
   </view>
+-->
+    <!--
   <view class="singleClassItem">
     <text class="iconfont icon-qunliao"></text>
     <text>群聊</text>
   </view>
-</view>
+-->
+  </view>
+
+    <view wx:else>
+      <text>你目前还没有班级哦，赶快加入一个吧~</text>
+      <button class="joinNewClass" catchtap="showJoinNewClassPopup" style="width:300rpx">加入新班级</button>
+    </view>
+  </view>
+
+  <view class="popupContainer" wx:if="{{tapJoinNewClass}}">
+    <text class="popupHeader">加入新班级</text>
+    <input class="classNum" placeholder="请输入班级课号" bindinput="getClassNum"></input>
+    <view class="button">
+      <button class="cancel" bindtap="concealJoinNewClassPopup">取消</button>
+      <button class="confirm" bindtap="joinClass">确认</button>
+    </view>
+  </view>
+
+  <!--教师界面-->
+  <view wx:if='{{userInfo.identity == 0}}' class="classContainer" bindtouchstart="concealCreateNewClassPopup">
+    <!-- 单个课程条 -->
+    <view wx:if='{{userClass}}' class="classItem" wx:for="{{userClass}}" wx:key="index" wx:index="index">
+      <text class="className">{{item.className}}</text>
+      <view class="classDetail">
+        <text class="teacherName">{{item.classTeacher}}</text>
+        <button class="classEnterance" data-index='{{index}}' bindtap="toTeachingClass" style="width:180rpx">进入班级>></button>
+      </view>
+    </view>
+
+    <!-- 创建新班级 -->
+    <button class="createNewClass" catchtap="showCreateNewClassPopup" style="width:300rpx">创建新班级</button>
+
+  </view>
+
+  <view class="popupContainer" wx:if="{{tapCreateNewClass}}">
+    <text class="popupHeader">创建新班级</text>
+    <input class="className" placeholder="请输入班级名称" bindinput="getClassName"></input>
+    <view class="button">
+      <button class="cancel" bindtap="concealCreateNewClassPopup">取消</button>
+      <button class="confirm" bindtap="createClass">确认</button>
+    </view>
+  </view>

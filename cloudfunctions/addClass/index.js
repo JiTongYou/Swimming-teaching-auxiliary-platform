@@ -27,6 +27,13 @@ exports.main = async (event, context) => {
       })
     }).get()
     if (exist.data.length > 0) {
+      db.collection("defaultUserInfo").where({
+        _openid: _.eq(_openid)
+      }).update({
+        data:{
+          class: _.push([classNum])
+        }
+      })
       return 2
     } else {
       //加入班级

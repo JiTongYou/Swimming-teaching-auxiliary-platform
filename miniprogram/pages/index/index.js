@@ -23,14 +23,15 @@ Page({
     commentContent:'',
     heightBottom:'',
     reply:'',
+    //用户班级信息
+    userClass:{},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //this.getScrollHeight(),
-
+//this.getScrollHeight(),
     //不可省略var that=this，否则无法访问
     //promise风格，解决异步
     var that = this
@@ -42,7 +43,12 @@ Page({
       })
     }).then(res => {
       //若放在外部，会因为异步操作而导致无法正常获取数据
-      that.setUserClassInfo()
+      that.syncUserInfoFromDataBase()
+      if(that.data.userInfo.identity){
+        that.setUserClassInfo()
+        }else{
+          that.setTeacherClassInfo()
+        }
       that.getChatData()
       //that.inquireSpecificChatData()
       that.getSquareData()
@@ -89,8 +95,14 @@ Page({
     })
     this.getSquareData()
     this.getChatData()
+    if(this.data.userInfo.identity){
     this.setUserClassInfo()
+    }else{
+      this.setTeacherClassInfo()
+    }
+    wx.stopPullDownRefresh()
   },
+
 
   /**
    * 页面上拉触底事件的处理函数
@@ -151,10 +163,29 @@ Page({
 
   //跳转至聊天页
   toChat(e) {
+    var detail= this.data.chatItem[e.currentTarget.dataset.index];
     wx.navigateTo({
-      url: '/pages/chat/chat?chat_msg_id=' + this.data.chatItem[e.currentTarget.dataset.index].chat_msg_id,
+      url: '/pages/chat/chat?detail=' + JSON.stringify(detail),
     })
   },
+
+    //从云端重新拉取用户数据信息，以保证后端进行操作后，用户端能够正常操作
+    syncUserInfoFromDataBase(){
+      wx.cloud.callFunction({
+        name: "syncUserInfo",
+        data:{
+          _openid: this.data.userInfo._openid,
+        }
+      }).then(res =>{
+        this.setData({
+          userInfo: res.result.data[0]
+        })
+        wx.setStorage({
+          key: 'userInfo',
+          data: JSON.stringify(res.result.data[0])
+        })
+      })
+    },
 
   //获取用户课程信息并更新存储中用户课程信息
   setUserClassInfo() {
@@ -165,15 +196,33 @@ Page({
       }
     }).then(res => {
       this.setData({
-        userInfo: res.result.data[0]
+        userClass: res.result.data
       })
     }).then(res => {
       wx.setStorage({
         key: "userClass",
-        data: this.data.userInfo.class
+        data: JSON.stringify(this.data.userClass)
       })
     })
 
+  },
+
+  //教师账号用于获取班级信息
+  setTeacherClassInfo(){
+    wx.cloud.callFunction({
+      name:'getTeacherClassInfo',
+      data:{
+        _openid: this.data.userInfo._openid
+      }
+    }).then(res=>{
+      this.setData({
+        userClass: res.result.data
+      })
+      wx.setStorage({
+        key: 'userClass',
+        data: JSON.stringify(res.result.data)
+      })
+    })
   },
 
   getChatData(num = 5, alreadyNum = 0){

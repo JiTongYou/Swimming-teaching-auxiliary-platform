@@ -16,7 +16,7 @@
   width: 160rpx;
   height:160rpx;
   border-radius: 80rpx;
-  background-color: aqua;
+  background-color: #81DAF5;
   margin-top: 40rpx;
 }
 
@@ -40,11 +40,11 @@
 }
 
 .follow{
-  background-color: aqua;
+  background-color: #c0effd;
   size:50rpx;
 }
 
 .followed{
-  background-color: beige;
+  background-color: #81DAF5;
   size:50rpx;
 }

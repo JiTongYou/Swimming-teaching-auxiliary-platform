@@ -1,22 +1,31 @@
-<view class="classContainer" bindtouchstart="concealAddClass">
-  <!-- 单个课程条 -->
-  <view class="classItem" wx:for="{{userInfo.class}}" wx:key="index">
-    <text class="className">{{item.className}}</text>
-    <view class="classDetail">
-      <text class="teacherName">{{item.classTeacher}}</text>
-      <button class="classEnterance" bindtap="toSingleClass" style="width:180rpx">进入班级>></button>
+<view>
+  <view class="singleClassNoticeContainer">
+    <text class="gonggao">公告</text>
+    <view class="header">
+      <text class="class">{{classInfo.notice[0].head}}</text>
+      <text class="time">{{classInfo.notice[0].time}}</text>
+    </view>
+    <view class="content">
+      <text>{{classInfo.notice[0].content}}</text>
+    </view>
+    <view>
+      <button class="publishNotice" catchtap="toPublishNotice" style="width:180rpx">发布新公告>></button>
     </view>
   </view>
-
-<!-- 加入新班级 -->
-<button class="joinNewClass" catchtap="showPopup" style="width:300rpx">加入新班级</button>
-</view>
-
-<view class="popupContainer" wx:if="{{tapJoinNewClass}}">
-  <text class="popupHeader">加入新班级</text>
-  <input class="classNum" placeholder="请输入班级课号" bindinput="getClassNum"></input>
-  <view class="button">
-    <button class="cancel" bindtap="concealPopup">取消</button>
-    <button class="confirm" bindtap="joinClass">确认</button>
+  <view class="singleClassItem" bindtap="toNameList">
+    <text class="iconfont icon-mingdanku"></text>
+    <text>名单</text>
   </view>
+  <!--
+  <view class="singleClassItem">
+    <text class="iconfont icon-xinbaniconshangchuan-"></text>
+    <text>作业</text>
+  </view>
+-->
+  <!--
+  <view class="singleClassItem">
+    <text class="iconfont icon-qunliao"></text>
+    <text>群聊</text>
+  </view>
+-->
 </view>

@@ -1,79 +1,53 @@
-/* miniprogram/pages/teaching class/teaching class.wxss */
-
-.classContainer{
-  height: 100%
-}
-
-/* 单个课程条 */
-.classItem{
-  padding: 30rpx;
+.singleClassNoticeContainer{
+  padding: 7rpx 5rpx 18rpx;
   border-bottom: 1rpx solid #cfd6d8;
 }
 
-.classItem .classDetail{
+.singleClassNoticeContainer .gonggao{
+  padding: 0 10rpx;
+}
+
+.singleClassNoticeContainer .header{
   display: flex;
+  justify-content: space-between;
 }
 
-.classItem .className{
-  font-size: 40rpx;
-  padding-bottom: 30rpx;
+.singleClassNoticeContainer .header .class{
+  font-size: 35rpx;
+  font-weight: 500;
+  padding: 0 0 6rpx 10rpx;
 }
 
-.classItem .teacherName{
-  font-size: 32rpx;
+.singleClassNoticeContainer .header .time{
+  font-size: 30rpx;
+  padding: 3rpx 10rpx
 }
 
-.classItem  .classEnterance{
-  position: absolute;
+.singleClassNoticeContainer .content{
+  font-size: 30rpx;
+  padding: 0 10rpx;
+}
+
+.singleClassItem{
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #cfd6d8;
+}
+
+.singleClassItem .iconfont{
+  height: 60rpx;
+  margin: 10rpx
+}
+
+.singleClassItem text{
+  font-size: 36rpx;
+}
+
+.publishNotice{
+  position: relative;
   text-align: center;
   font-size: 25rpx;
   height: 43rpx;
   padding: 5rpx;
-  right: 40rpx;
+  left: 250rpx;
   background-color: #c4ebf7;
-}
-
-/* 加入新班级 */
-.joinNewClass{
-  position: relative;
-  text-align: center;
-  font-size: 30rpx;
-  height: 50rpx;
-  padding: 5rpx;
-  align-items: center;
-  background-color: #c4ebf7;
-  margin: 40rpx;
-}
-
-/* 加入新班级弹窗 */
-.popupContainer{
-  width: 80%;
-  height: 24%;
-  position: absolute; 
-  left: 10vw;
-  top: 35vh;
-  background-color: #f7fdff;
-  border-radius: 20rpx;
-  display: flex;
-  flex-direction: column;
-}
-
-.popupContainer .popupHeader{
-  width: 100%;
-  text-align: center;
-  padding: 10rpx;
-  font-size: 40rpx;
-}
-
-.popupContainer .classNum{
-  width: 90%;
-  padding:20rpx;
-}
-
-.popupContainer .button{
-  display: flex;
-}
-
-.popupContainer .button button{
-  background-color: #f7fdff;
 }
