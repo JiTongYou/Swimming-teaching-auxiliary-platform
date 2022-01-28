@@ -39,6 +39,7 @@
 .videoItem{
   width:50%;
   height:25%;
+  margin-bottom: 60rpx;
 }
 
  .common{
@@ -88,4 +89,22 @@
   width:130rpx;
   margin-top:35rpx;
   border-bottom:2rpx solid rgba(77, 99, 91, 0.336);
+}
+
+.scrollTraining{
+  height: 90vh;
+}
+
+.Training{
+  display:flex;
+ flex-wrap:wrap;
+ flex-direction: row;
+ margin-top: 10rpx;
+ height:800rpx;
+}
+
+.trainingItem{
+ width:50%;
+ height:25%;
+ margin-bottom: 60rpx;
 }

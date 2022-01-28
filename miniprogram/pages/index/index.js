@@ -506,6 +506,4 @@ Page({
       url:'/pages/individualPage/individualPage?personId=' + person._openid
     })
   },
-
-
 })

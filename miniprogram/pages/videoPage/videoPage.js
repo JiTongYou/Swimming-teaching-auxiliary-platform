@@ -34,7 +34,6 @@ Page({
   onLoad: function (options) {
     that = this;
     that.data.vidId=options;
-
     //获取openid
     wx.getStorage({
       key:"userInfo",
@@ -123,7 +122,6 @@ Page({
     }
   },
 
-
   async clickLike(e){
     // console.log(that.data.userInfo._openid)
      var tmp_str='ifLiked';
@@ -147,7 +145,7 @@ Page({
       // console.log(_openid)
      }
      else{
-       console.log("喜欢" ,that.data.userInfo._openid)
+     //  console.log("喜欢" ,that.data.userInfo._openid)
       // console.log("sad",that.data.vidId.vidId)
        that.setData({
          [tmp_str]:1

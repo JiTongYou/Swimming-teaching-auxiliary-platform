@@ -2,12 +2,12 @@
 <view class="header" >
   <image class="headerBackground" bindtap="changeBackground" src="{{backgroundPicPath}}"></image>
   <view class="headerContent">
-     <image class="avatar"  src="{{userInfo.avatarUrl}}"></image>
+     <image class="avatar"  src="{{userInfo.avatarUrl}}"  data-person="{{item}}" bindtap="toIndividualPage"></image>
      <view class="name">
        昵称: {{userInfo.nickName}}
-     </view>
+     </view>    
      <view class="following">
-      关注：  {{userInfo.following}}
+       关注： {{userInfo.following}}
      </view>
      <view class="followers">
        粉丝： {{userInfo.followers}}

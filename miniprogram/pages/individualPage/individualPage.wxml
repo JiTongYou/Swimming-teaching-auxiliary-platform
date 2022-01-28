@@ -5,10 +5,10 @@
       昵称: {{otherUserNickName}}
      </view>
      <view class="following">
-      关注：  {{otherUserFollowing}}
+      关注：{{otherUserFollowing}}
      </view>
      <view class="followers">
-      粉丝： {{otherUserFollowers}}
+      粉丝：{{otherUserFollowers}}
      </view>
   </view>
 </view>

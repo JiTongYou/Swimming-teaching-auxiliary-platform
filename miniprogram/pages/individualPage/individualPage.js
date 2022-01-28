@@ -1,12 +1,15 @@
 // miniprogram/pages/individualPage/individualPage.js
 var that;
-const DB=wx.cloud.database().collection("defaultUserInfo");
+const DB=wx.cloud.database();//.collection("defaultUserInfo");
+const _ = DB.command
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    //_openid,
      ifFollowed:0,
+     userInfo:{},
      haveFollowed:[],
      otherUserId:"",
      otherUserAvatar:"",
@@ -15,7 +18,7 @@ Page({
      otherUserNickName:"",
   },
 
-  clickFollow(e){
+  async clickFollow(e){
     var tmp_str='ifFollowed';
     if(that.data.ifFollowed == 1){
       that.setData({
@@ -24,9 +27,9 @@ Page({
       wx.cloud.callFunction({
         name:"individualAddFollower",
         data:{
-          _openid: that.data.userInfo._openid,   
-         //_id:that.data.squareItem[index]._id,
-        type:0
+          currentId: that.data.userInfo._openid,   
+          _id:that.data.otherUserId,
+          type:0
         }
       })
     }else{
@@ -36,35 +39,46 @@ Page({
       wx.cloud.callFunction({
         name:"individualAddFollower",
         data:{
-          _openid:
-          that.data.userInfo._openid,
-       //   _id:this.data.squareItem[index]._id,
+          currentId:that.data.userInfo._openid,
+          _id:that.data.otherUserId,
           type:1
         }
+      }).then(res=>{
+        console.log(res)
+        console.log(this.data.userInfo._openid)
       })
     }
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
       that = this;
-      console.log(options)
+      wx.getStorage({
+        key: "userInfo",
+      }).then(res => {
+        that.setData({
+          userInfo: JSON.parse(res.data)
+        })
+      })
       that.setData({otherUserId:options.personId})
-      
+      console.log(that.data.otherUserId)
 
-      DB.where({
-          _openid:that.data.otherUserId
-      }).get().then(res=>{
-         console.log('s',res)
+ wx.cloud.callFunction({
+      name: "individualGetInfo",
+      data: {
+        _openid: that.data.otherUserId,
+      }
+    }).then(res=>{
+         console.log('s',res.result)
               that.setData({
-              otherUserAvatar:res.data[0].avatarUrl,
-              otherUserNickName:res.data[0].nickName,
-              otherUserFollowing:res.data[0].following,
-              otherUserFollowers:res.data[0].otherUserFollowers,
+              otherUserAvatar:res.result.data[0].avatarUrl,
+              otherUserNickName:res.result.data[0].nickName,
+              otherUserFollowing:res.result.data[0].following.length,
+              otherUserFollowers:res.result.data[0].followers.length,
             }) 
-            console.log(res.data[0].nickName)
+         console.log(that.data.otherUserId)
     })
 
       for(var i=0;i<that.data.haveFollowed.length;i++){
@@ -72,7 +86,6 @@ Page({
            that.setData({
               ifFollowed:1,
            })
-           //console.log("Sdadasddadad")
         }
       }
     

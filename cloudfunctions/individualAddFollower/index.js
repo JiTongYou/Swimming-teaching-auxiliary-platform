@@ -7,25 +7,25 @@ const _ =db.command
 
 // 云函数入口函数
 //入口参数_openid:用户_openid
-//入口参数_id:广场说说_id
-//入口参数type:1:点赞;0:取消点赞
+//入口参数_id:被关注用户_openid
+//入口参数type:1:关注;0:取消关注
 exports.main = async (event, context) => {
   try{
-    const _openid=event._openid
-    const _id=event._id
+    const currentId=event.currentId
+    const _openid=event._id
     const type=event.type
     if(type == 1){
-      return await db.collection("individual").doc(_id).update({
+      return await db.collection("defaultUserInfo").doc(_openid).update({
         data:{
           followers:_.push({
-            each: [_openid]
+            each: [currentId]
           })
         }
       })
-    }else if(type == 0){
-      return await db.collection("individual").doc(_id).update({
+    }else{
+      return await db.collection("defaultUserInfo").doc(_openid).update({
         data:{
-          followers:_.pull(_openid)
+          followers:_.pull(currentId)
         }
       })
     }

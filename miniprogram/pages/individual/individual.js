@@ -83,6 +83,7 @@ Page({
      }
    })
 
+   
 
    //DB.add({
     //data:{
@@ -93,6 +94,13 @@ Page({
    // console.log(res.data)
   },
 
+  // toIndividualPage(event){
+  //   let person=event.currentTarget.dataset.person;
+  // //  console.log(person._openid)
+  //   wx.navigateTo({
+  //     url:'/pages/individualPage/individualPage?personId=' + person._openid
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

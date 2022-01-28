@@ -115,7 +115,7 @@ Page({
       noticeContent:''
     })
 
-    let pages = getCurrentPages();
+    //let pages = getCurrentPages();
     //let before = pages[pages.length - 2]
     //刷新页面
     /*
@@ -125,8 +125,8 @@ Page({
     before.getSquareData()
     */
     //回到先前页面
-    wx.switchTab({
-      url: '/pages/teaching class/teaching class',
+    wx.navigateBack({
+      delta: 1
     })
   },
 

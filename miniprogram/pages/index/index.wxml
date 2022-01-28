@@ -52,7 +52,7 @@
       <button class="toPublishButton" style="width:100%" catchtap="toPublish" wx:if="{{navId==0}}">点我发布广场~</button>
 
       <!-- 广场内容 -->
-      <view class="indexSquare" wx:if="{{navId==0}}">
+      <view class="indexSquare" wx:if  ="{{navId==0}}">
          <view class="indexSquareItem" wx:for="{{squareItem}}" wx:key="index" wx:index="index">
             <view class="user">
                <image class="avatar" src="{{item.avatarUrl}}" data-person="{{item}}" bindtap="toIndividualPageSquare"></image>

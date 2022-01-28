@@ -18,7 +18,10 @@ exports.main = async (event, context) => {
     _id:class_id
   }).update({
     data:{
-      notice:_.push([notice])
+      notice:_.push({
+        each: [notice],
+        position: 0,
+      })
     }
   })
 }
