@@ -48,3 +48,13 @@
   background-color: #81DAF5;
   size:50rpx;
 }
+
+.Chat{
+  margin-top:40rpx
+}
+
+.chat{
+  background-color: #c0effd;
+  size:50rpx;
+}
+

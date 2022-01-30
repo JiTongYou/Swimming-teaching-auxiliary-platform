@@ -22,5 +22,10 @@
           wx:if="{{ifFollowed==1}}"
           catchtap="clickFollow" >取消关注
   </button>
+</view>
 
+<view class="Chat">
+  <button class="chat" 
+          catchtap="clickChat" >聊天
+  </button>
 </view>

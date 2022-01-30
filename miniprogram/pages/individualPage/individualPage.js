@@ -1,5 +1,4 @@
 // miniprogram/pages/individualPage/individualPage.js
-var that;
 const DB=wx.cloud.database();//.collection("defaultUserInfo");
 const _ = DB.command
 Page({
@@ -20,32 +19,33 @@ Page({
 
   async clickFollow(e){
     var tmp_str='ifFollowed';
-    if(that.data.ifFollowed == 1){
-      that.setData({
+    console.log(this.data.userInfo._openid)
+    if(this.data.ifFollowed == 1){
+      this.setData({
         [tmp_str]:0
       })
       wx.cloud.callFunction({
         name:"individualAddFollower",
         data:{
-          currentId: that.data.userInfo._openid,   
-          _id:that.data.otherUserId,
+          currentId: this.data.userInfo._openid,   
+          _id:this.data.otherUserId,
           type:0
         }
       })
     }else{
-      that.setData({
+      this.setData({
         [tmp_str]:1
       })
       wx.cloud.callFunction({
         name:"individualAddFollower",
         data:{
-          currentId:that.data.userInfo._openid,
-          _id:that.data.otherUserId,
+          currentId:this.data.userInfo._openid,
+          _id:this.data.otherUserId,
           type:1
         }
       }).then(res=>{
         console.log(res)
-        console.log(this.data.userInfo._openid)
+        console.log(this.data.otherUserId)
       })
     }
   },
@@ -54,7 +54,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      that = this;
+     var that = this;
       wx.getStorage({
         key: "userInfo",
       }).then(res => {
@@ -63,23 +63,19 @@ Page({
         })
       })
       that.setData({otherUserId:options.personId})
-      console.log(that.data.otherUserId)
-
- wx.cloud.callFunction({
-      name: "individualGetInfo",
-      data: {
-        _openid: that.data.otherUserId,
+      wx.cloud.callFunction({
+         name: "individualGetInfo",
+         data: {
+         _openid: that.data.otherUserId,
       }
-    }).then(res=>{
-         console.log('s',res.result)
-              that.setData({
-              otherUserAvatar:res.result.data[0].avatarUrl,
-              otherUserNickName:res.result.data[0].nickName,
-              otherUserFollowing:res.result.data[0].following.length,
-              otherUserFollowers:res.result.data[0].followers.length,
-            }) 
-         console.log(that.data.otherUserId)
-    })
+      }).then(res=>{
+          that.setData({
+            otherUserAvatar:res.result.data[0].avatarUrl,
+            otherUserNickName:res.result.data[0].nickName,
+            otherUserFollowing:res.result.data[0].following.length,
+            otherUserFollowers:res.result.data[0].followers.length,
+          }) 
+      })
 
       for(var i=0;i<that.data.haveFollowed.length;i++){
         if(that.data.haveFollowed[i]==that.data.userInfo._openid){
@@ -91,6 +87,16 @@ Page({
     
     
   },
+
+//跳转至聊天页面
+  clickChat(event){
+    console.log(this.data.otherUserId)
+    wx.navigateTo({
+      url:'/pages/chat/chat?userId=' + this.data.otherUserId//跳转传当前主页对应用户的_openid给chat页面
+    })
+  },
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
