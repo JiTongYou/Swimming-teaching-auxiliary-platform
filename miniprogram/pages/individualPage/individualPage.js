@@ -15,6 +15,7 @@ Page({
      otherUserFollowing:0,
      otherUserFollowers:0,
      otherUserNickName:"",
+     chat_data:-1,
   },
 
   async clickFollow(e){
@@ -59,9 +60,11 @@ Page({
         key: "userInfo",
       }).then(res => {
         that.setData({
-          userInfo: JSON.parse(res.data)
+          userInfo: JSON.parse(res.data),
         })
+        
       })
+
       that.setData({otherUserId:options.personId})
       wx.cloud.callFunction({
          name: "individualGetInfo",
@@ -84,24 +87,33 @@ Page({
            })
         }
       }
-    
-    
-  },
-
-//跳转至聊天页面
-  clickChat(event){
-    console.log(this.data.otherUserId)
-    wx.navigateTo({
-      url:'/pages/chat/chat?userId=' + this.data.otherUserId//跳转传当前主页对应用户的_openid给chat页面
-    })
-  },
-
   
+    
+  },  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+      wx.cloud.callFunction({
+        name: "indexGetChatData",
+        data: {
+          currentId: this.data.userInfo._openid
+        }
+      }).then(res=>{
+        //console.log(res)
+        for(var i = 0; i < res.result.data.length; i++){
+          if((res.result.data[i].chat_members[0]._openid == this.data.userInfo._openid && 
+            res.result.data[i].chat_members[1]._openid == this.data.otherUserId) ||
+            (res.result.data[i].chat_members[1]._openid == this.data.userInfo._openid && 
+            res.result.data[i].chat_members[0]._openid == this.data.otherUserId)){
+            this.setData({
+              chat_data: res.result.data[i]
+            })
+            break;
+          }
+        }
+      })
 
   },
 
@@ -145,5 +157,54 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  //跳转至聊天页面
+  clickChat(event){
+    // console.log(typeof this.data.chat_data)
+    if(typeof this.data.chat_data == 'number'){
+      // 创建聊天
+      var chat_members = [{
+        _openid: this.data.userInfo._openid,
+        avatarUrl: this.data.userInfo.avatarUrl,
+        nickName: this.data.userInfo.nickName
+      },
+      {
+        _openid: this.data.otherUserId,
+        avatarUrl: this.data.otherUserAvatar,
+        nickName: this.data.otherUserNickName
+      }]
+      wx.cloud.callFunction({
+        name: "addChat",
+        data:{
+          chat_members: chat_members,
+          time: new Date()
+        }
+      }).then(
+        wx.cloud.callFunction({
+          name: "countChat",
+        }).then(res=>{
+          console.log(res)
+          this.setData({
+            chat_data: {
+              chat_members: chat_members,
+              time: new Date(),
+              chat_msg_id: res.result.total + 1,
+              type: "1"
+            }
+          })
+          wx.navigateTo({
+            url:'/pages/chat/chat?detail=' + JSON.stringify(this.data.chat_data)
+          })
+        })
+      )
+    }
+    else{
+      wx.navigateTo({
+        url:'/pages/chat/chat?detail=' + JSON.stringify(this.data.chat_data)
+      })
   }
+  }
+
+
 })

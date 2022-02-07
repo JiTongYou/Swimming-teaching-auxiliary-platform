@@ -246,8 +246,7 @@ Page({
       name: "inquireChat",
       data: {
         currentId: this.data.userInfo._openid,
-        friendId: '2',
-        type: 1
+        // type: 1 本来用于区分群聊与私聊，现暂时不实现群聊，故弃置
       }
     }).then(res => {
       //console.log('inquireChat:',res)

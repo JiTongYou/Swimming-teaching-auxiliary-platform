@@ -8,10 +8,7 @@ const $ = db.command.aggregate
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var num=event.num;
-  var alreadyNum=event.alreadyNum;
   var currentId=event.currentId;
-
   
   return await db.collection('chat_group')
   .where({
