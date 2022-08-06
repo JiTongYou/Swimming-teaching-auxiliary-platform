@@ -15,15 +15,17 @@ exports.main = async (event, context) => {
     const _openid=event._id
     const type=event.type
     if(type == 1){
-      return await db.collection("defaultUserInfo").doc(_openid).update({
+      return await db.collection("defaultUserInfo").where({
+        _openid: _openid
+      }).update({
         data:{
-          followers:_.push({
-            each: [currentId]
-          })
+          followers:_.push([currentId])
         }
       })
     }else{
-      return await db.collection("defaultUserInfo").doc(_openid).update({
+      return await db.collection("defaultUserInfo").where({
+        _openid: _openid
+      }).update({
         data:{
           followers:_.pull(currentId)
         }

@@ -8,10 +8,11 @@
    </view> 
 
 <!--视频-->
-<scroll-view
+<scroll-view bindrefresherrefresh="onPullDownRefresh"
+            
              scroll-y 
-             class="scrollVideo" 
-             enable-flex 
+             bindscrolltolower="onReachBottom"
+             class="scrollVideo"  
              wx:if="{{navId==0}}" 
              scroll-with-animation="true">
 
@@ -65,7 +66,7 @@
 
 <!-- 训练计划 -->
 <scroll-view bindrefresherrefresh="handleRefresher"
-                refresher-enabled
+
                 refresher-triggered="{{isTriggered}}"
                 bindscrolltolower="handleToLower"
                 scroll-y 

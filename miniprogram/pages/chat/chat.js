@@ -191,7 +191,7 @@ Page({
         chat_id: this.data.chat_group.chat_msg_id,
         _openid: this.data.userInfo._openid,
         content: this.data.msgContent,
-        nickName: this.data.userInfo.nickName,
+        // nickName: this.data.userInfo.nickName,
         time: msgData.time,
       }
     })

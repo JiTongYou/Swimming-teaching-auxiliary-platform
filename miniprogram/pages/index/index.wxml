@@ -18,15 +18,15 @@
       <view class="indexWatchingRecord">
          <text>上次观看</text>
          <view class="recordItem">
-            <view>
-               <image class="videoCover" src=""></image>
-               <text class="videoName">Lorem, ipsum.</text>
+            <view wx:key="watchingRecord" wx:for="{{recordItem}}">
+               <image class="videoCover"  data-video='{{item}}' bindtap="toVideo" src="{{item.cover}}"></image>
+               <text class="videoName">{{item.title}}</text>
             </view>
 
-            <view>
-               <image class="videoCover" src=""></image>
-               <text class="videoName">Lorem, ipsum.</text>
-            </view>
+            <!-- <view>
+               <image class="videoCover" src="{{item.cover}}"></image>
+               <text class="videoName">s{{title}}</text>
+            </view> -->
          </view>
       </view>
 
@@ -86,13 +86,15 @@
       <!-- 聊天内容 -->
       <view class="indexChat" wx:if="{{navId==1}}">
          <view class="indexChatItem" bindtap="toChat" wx:for="{{chatItem}}" wx:key="index" wx:index="index" data-index="{{index}}" >
-            <image class="userAvatar" src="{{item.chat_members[0]._openid == userInfo._openid ? item.chat_members[1].avatarUrl : item.chat_members[0].avatarUrl}}"></image>
+            <image class="userAvatar" src="{{item.chat_members[item.other].avatarUrl}}"></image>
             <view class="info">
                <view>
-                  <text class="nickName">{{item.chat_members[0]._openid == userInfo._openid ? item.chat_members[1].nickName : item.chat_members[0].nickName}}</text>
-                  <text class="time">{{item.time}}</text>
+                  <text class="nickName">{{item.chat_members[item.other].nickName}}</text>
+                  <!-- <text class="time">{{item.time}}</text> -->
                </view>
+               <!--
                <text class="detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum eveniet expedita tempora numquam voluptates a veritatis voluptatem possimus dolore provident!</text>
+               -->
             </view>
          </view>
       </view>

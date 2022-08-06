@@ -13,8 +13,7 @@ exports.main = async (event, context) => {
   return await db.collection('chat_msg')
   .where({
     _id: chat_id,
-  })
-  .get()
+  }).get()
   /*
   ({
     success: res=>{

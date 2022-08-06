@@ -2,10 +2,10 @@
 <view class="videoItem">
    <video class="common"
           src="{{vidUrl}}"
-          bindplay="handlePlay"  
+          bindplay="handlePlay"   
           object-fit="fill"
-          bindtimeupdate="handleTimeUpdate"
-          bindended="handleEnded">
+          bindended="handleEnded"
+          bindtap="getHistory">
    </video>
 </view>
 

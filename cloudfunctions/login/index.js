@@ -11,8 +11,10 @@ exports.main = async (event, context) => {
   const wxcontext = cloud.getWXContext()
   userInfo.class = [];
   userInfo.identity = 1;
-  userInfo.followers = '';
-  userInfo.following = '';
+  userInfo.followers = [];
+  userInfo.following = [];
+  userInfo.videoCollected = [];
+  userInfo.history = [];
   userInfo._openid = wxcontext.OPENID;
 
   //promise处理异步
@@ -21,7 +23,6 @@ exports.main = async (event, context) => {
         _openid: _.eq(userInfo._openid)
       }).get()
       .then(res => {
-        //console.log(res)
         if (res.data.length > 0) {
           resolve(res);
         } else {
@@ -33,8 +34,10 @@ exports.main = async (event, context) => {
               gender: userInfo.gender,
               class: [],
               identity: 1,
-              following: '',
-              followers: '',
+              following: [],
+              followers: [],
+              videoCollected: [],
+              history:[],
             }
           }).then(res=>{
             db.collection('defaultUserInfo').where({

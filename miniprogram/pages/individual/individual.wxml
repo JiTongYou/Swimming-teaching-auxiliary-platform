@@ -7,46 +7,46 @@
        昵称: {{userInfo.nickName}}
      </view>    
      <view class="following">
-       关注： {{userInfo.following}}
+       关注： {{userInfo.following.length}}
      </view>
      <view class="followers">
-       粉丝： {{userInfo.followers}}
+       粉丝： {{userInfo.followers.length}}
      </view>
   </view>
 </view>
 
 <view class="others">
-  
+<!--   
   <view class="changeInformation"  bindtap="changeInfo">
       修改个人信息
-  </view>
+  </view> -->
 
-  <view class="individualPage" bindtap="toIndividual">
+  <!-- <view class="individualPage" bindtap="toIndividual">
       个人主页       
-  </view>
+  </view> -->
 
   <view class="favorites"  bindtap="favoriteTap">
       收藏夹
   </view>
 
-  <view class="blacklist"  bindtap="listTap">
+  <!-- <view class="blacklist"  bindtap="listTap">
       黑名单
-  </view>
+  </view> -->
 
-  <view class="privacy"  bindtap="privacyTap">
+  <!-- <view class="privacy"  bindtap="privacyTap">
       隐私
-  </view>
+  </view> -->
 
-  <view class="generals"  bindtap="generalTap">
+  <!-- <view class="generals"  bindtap="generalTap">
       通用
-  </view>
+  </view> -->
 
-  <view class="ifNotice">
+  <!-- <view class="ifNotice">
     <view class="notice">通知提醒</view>
     <view class="switchBar">
     <switch checked bindchange="noti ceOff"/>
     </view>
-  </view>
+  </view> -->
 
   <view class="aboutUs"  bindtap="usTap">
       关于我们

@@ -1,0 +1,25 @@
+<scroll-view bindrefresherrefresh="onPullDownRefresh"
+             refresher-enabled
+             scroll-y 
+             bindscrolltolower="onReachBottom"
+             class="scrollVideo"  
+             scroll-with-animation="true">
+
+<!--每个视频本体-->
+<view class="Video">
+      <view class="videoItem"
+            wx:key="video"
+            wx:for="{{videoList}}"
+           >
+
+      <image class="common"  
+             data-video='{{item}}'
+             bindtap="toVideo"
+             src="{{item.cover}}"> </image>
+
+      <view class="title">            
+            {{item.title}}</view>
+      </view>
+</view>
+
+</scroll-view>

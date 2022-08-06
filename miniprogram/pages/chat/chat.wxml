@@ -7,7 +7,7 @@
     <!--（左） -->
     <view wx:if='{{item._openid!=userInfo._openid}}' id='msg-{{index}}' style='display: flex; padding: 2vw 11vw 2vw 2vw;'>
       <view style='width: 11vw; height: 11vw;'>
-        <image style='width: 11vw; height: 11vw; border-radius: 10rpx;' src='{{item._openid==chat_group.chat_members[0]._openid ? chat_group.chat_members[0].avatarUrl : chat_group.chat_members[1].avatarUrl}}'></image>
+        <image style='width: 11vw; height: 11vw; border-radius: 10rpx;' src='{{chat_group.chat_members[chat_group.other].avatarUrl}}'></image>
       </view>
       <view style='width: 4vw; height: 11vw; margin-left: 0.5vw; display: flex; align-items: center; z-index: 9;'>
         <image style='width: 4vw;' src='' mode='widthFix'></image>

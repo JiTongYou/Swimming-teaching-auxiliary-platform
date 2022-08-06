@@ -15,6 +15,7 @@ Page({
     oldSquareItem: [],
     oldChatItem: [],
     chatItem: [],
+    recordItem:[],
     haveLiked: [],
     userInfo:{},
     //用于实现评论功能
@@ -52,6 +53,7 @@ Page({
       that.getChatData()
       //that.inquireSpecificChatData()
       that.getSquareData()
+      that.getVideoHistory()
     })
     
 
@@ -155,6 +157,24 @@ Page({
   },
   */
 
+ async getVideoHistory(){
+   if(this.data.userInfo.history.length==0){}else{
+  wx.cloud.callFunction({
+    name: "videoGetHistory",
+    data: {
+      _id:this.data.userInfo.history,
+      length:this.data.userInfo.history.length
+    }
+  }).then(res => {
+    console.log(res)
+    this.setData({
+      recordItem:res.result.data
+    })
+    console.log(this.data.recordItem)
+  })
+}
+},
+
   toPublish(){
     wx.navigateTo({
       url: '/pages/publish/publish',
@@ -246,7 +266,9 @@ Page({
       name: "inquireChat",
       data: {
         currentId: this.data.userInfo._openid,
-        // type: 1 本来用于区分群聊与私聊，现暂时不实现群聊，故弃置
+        // friendId: '2',
+        // type: 1
+         // type: 1 本来用于区分群聊与私聊，现暂时不实现群聊，故弃置
       }
     }).then(res => {
       //console.log('inquireChat:',res)
@@ -388,7 +410,7 @@ Page({
           type:1
         }
       }).then(res =>{
-        this.data.squareItem[index].likes.push(2)
+        this.data.userInfo.followers.push(2)
         var tmp_str='squareItem[' + index + '].likes'
         this.setData({
           [tmp_str]:this.data.squareItem[index].likes
@@ -505,4 +527,16 @@ Page({
       url:'/pages/individualPage/individualPage?personId=' + person._openid
     })
   },
+
+//路由跳转至视频页面
+  toVideo(event){
+    let video=event.currentTarget.dataset.video;
+    // console.log(event.currentTarget.dataset.video)
+    wx.navigateTo({
+      url:'/pages/videoPage/videoPage?vidId=' + video._id
+    })
+  },
+
 })
+
+

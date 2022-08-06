@@ -1,0 +1,31 @@
+/* miniprogram/pages/videoCollected/videoCollected.wxss */
+.scrollVideo{
+  height: 90vh;
+}
+
+.Video{
+  display:flex;
+ flex-wrap:wrap;
+ flex-direction: row;
+ margin-top: 10rpx;
+ height:800rpx;
+}
+.videoItem{
+  width:50%;
+  height:25%;
+  margin-bottom: 60rpx;
+}
+
+ .common{
+  width:82%; 
+  height: 200rpx; 
+  border-radius:10rpx;
+  margin-left:30rpx;
+  margin-right: 20rpx; 
+  background-color: #557ea7;
+} 
+
+.title{
+  margin-left: 37%;
+}
+

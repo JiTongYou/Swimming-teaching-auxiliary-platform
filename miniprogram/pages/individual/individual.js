@@ -30,7 +30,7 @@ Page({
 
   favoriteTap(){
     wx.navigateTo({
-      url:'/pages/favorites/favorites'
+      url:'/pages/videoCollected/videoCollected'
     })
   },
 

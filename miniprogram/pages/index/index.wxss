@@ -63,11 +63,12 @@
 .indexWatchingRecord .videoCover{
   height: 180rpx;
   width: 90%;
+  border-radius:10rpx;
 }
 
 .indexWatchingRecord .videoName{
   display: block;
-  text-align: left;
+  text-align: center;
   font-size: 26rpx;
   font-weight: 800;
 }
@@ -240,11 +241,17 @@
 }
 
 .indexChatItem .userAvatar{
-  width: 125rpx;
-  height: 125rpx;
+  width: 10vw;
+  height: 10vw;
   border-radius: 50%;
   flex-shrink: 0;
-  margin:25rpx;
+  margin:2vw;
+}
+
+.indexChatItem .info{
+  display: flex;
+  align-items: center;
+  width: 80vw;
 }
 
 .indexChatItem .nickName{
@@ -252,15 +259,17 @@
   text-align: center;
   height: 70rpx;
   font-size: 35rpx;
+  padding-left: 20rpx;
 }
 
 .indexChatItem .time{
   float: right;
   line-height: 65rpx;
-  text-align: center;
+  text-align: right;
   height: 65rpx;
   font-size: 30rpx;
   color: #cfd6d8;
+  padding-left: 40rpx;
 }
 
 .indexChatItem .detail{

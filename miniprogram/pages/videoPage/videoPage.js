@@ -44,6 +44,14 @@ Page({
       }
     })
 
+    wx.getStorage({
+      key: "homeCurrentTime",
+      success(res){
+        console.log("获取缓存成功",res);   
+        //that.videoContext.seek(res.data)
+      }
+    })
+
     DB.where({
       _id: that.data.vidId.vidId
     }).get().then(res=>{
@@ -95,9 +103,8 @@ Page({
          //_id:that.data.squareItem[index]._id,
         type:0
         },
-        success(){
-          console.log("yeepy")
-      }
+      }).then(res=>{
+        console.log(res)
       })
      // console.log(_openid)
     }
@@ -138,9 +145,8 @@ Page({
           //_id:that.data.squareItem[index]._id,
          type:0
          },
-      //    success(){
-      //      console.log("yeepy")
-      //  }
+       }).then(res=>{
+         console.log(res)
        })
       // console.log(_openid)
      }
@@ -164,6 +170,46 @@ Page({
        })
      }
    },
+
+  //  handleTimeUpdate(event){
+  //   var detail = event.detail;
+  //   wx.setStorage({
+  //    key:"homeCurrentTime",
+  //    data:detail.currentTime,
+  //    success(res){
+  //      console.log("保存成功")
+  //    }
+  //    })
+  //  },
+
+   handlePlay(){
+     console.log(that.data.vidId.vidId)
+       if(this.data.userInfo.history.length<2){
+        wx.cloud.callFunction({
+          name:"addHistory",
+          data:{
+            _openid: that.data.userInfo._openid,   
+            _id:that.data.vidId.vidId,
+          type:1
+          },
+        }).then(res=>{
+            console.log(res)
+        })
+       }
+      else{
+       wx.cloud.callFunction({
+         name:"addHistory",
+         data:{
+           _openid:that.data.userInfo._openid,
+           _id:that.data.vidId.vidId,
+           type:0
+         },
+       }).then(res=>{
+        console.log(res.result)
+       })
+     }
+   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

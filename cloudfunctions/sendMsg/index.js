@@ -9,7 +9,7 @@ const _ = db.command
 exports.main = async (event, context) => {
   const _openid = event._openid;
   const content = event.content;
-  const nickName = event.nickName;
+  // const nickName = event.nickName;
   const time = event.time;
   const chat_id = event.chat_id;
 
@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
       msgList: _.push({
         _openid: _openid,
         content: content,
-        nickName: nickName,
+        // nickName: nickName,
         time: time
       })
     }

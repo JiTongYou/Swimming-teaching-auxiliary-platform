@@ -19,7 +19,7 @@
 }
 
 .likeButton{
-  background-color: aqua;
+  background-color: #9ca1a1;
   size:50rpx;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .collectButton{
-  background-color: aqua;
+  background-color: #9ca1a1;
   size:50rpx;
 }
 

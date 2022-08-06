@@ -5,27 +5,28 @@
       昵称: {{otherUserNickName}}
      </view>
      <view class="following">
-      关注：{{otherUserFollowing}}
+      关注：{{otherUserFollowing.length}}
      </view>
      <view class="followers">
-      粉丝：{{otherUserFollowers}}
+      粉丝：{{otherUserFollowers.length}}
      </view>
   </view>
 </view>
 
 <view class="ifFollow">
   <button class="follow" 
-          wx:if="{{ifFollowed==0}}"
+          wx:if="{{ifFollowed==0 && (userInfo._openid != otherUserId)}}"
           catchtap="clickFollow" >关注
   </button>
   <button class="followed" 
-          wx:if="{{ifFollowed==1}}"
+          wx:if="{{ifFollowed==1 && (userInfo._openid != otherUserId)}}"
           catchtap="clickFollow" >取消关注
   </button>
 </view>
 
 <view class="Chat">
-  <button class="chat" 
+  <button wx:if="{{userInfo._openid != otherUserId}}"
+          class="chat" 
           catchtap="clickChat" >聊天
   </button>
 </view>

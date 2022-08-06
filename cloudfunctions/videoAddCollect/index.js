@@ -19,13 +19,31 @@ exports.main = async (event, context) => {
             each: [_openid]
           })
         }
-      })
+      }).then(
+        db.collection("defaultUserInfo").where({
+          _openid:_openid
+        }).update({
+          data:{
+            videoCollected:_.push({
+            each: [_id]
+          })
+          }
+        })
+      )    
     }else if(type == 0){
       return await db.collection("videos").doc(_id).update({
         data:{
           collect:_.pull(_openid)
         }
-      })
+      }).then(
+        db.collection("defaultUserInfo").where({
+          _openid:_openid
+        }).update({
+          data:{
+            videoCollected:_.pull(_id)
+          }
+        })
+      )
     }
   }catch(e){
     console.error(e)

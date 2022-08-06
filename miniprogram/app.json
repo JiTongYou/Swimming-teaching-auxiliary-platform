@@ -1,7 +1,8 @@
 {
-  "pages": [
+  "pages": [ 
     "pages/login/login",
-    "pages/index/index",
+    "pages/index/index",   
+    "pages/videoCollected/videoCollected",
     "pages/publish/publish",
     "pages/chat/chat",
     "pages/video/video",
@@ -10,7 +11,9 @@
     "pages/individual/individual",
     "pages/videoPage/videoPage",
     "pages/class name list/class name list",
-    "pages/publishNotice/publishNotice"
+    "pages/publishNotice/publishNotice",
+    "pages/individualPage/individualPage"
+
   ],
   "style": "v2",
   "window": {

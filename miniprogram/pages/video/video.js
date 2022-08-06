@@ -41,11 +41,11 @@ Page({
         alreadyNum: alreadyNum
       }
     }).then(res => {
-     // console.log("yeepy",res)
+      //console.log("yeepy",res)
      if (res.result.data.length == "0"){}else {
        var oldVideoItem = that.data.videoList;
        var newVideoItem = oldVideoItem.concat(res.result.data);
-       that.setData({
+        this.setData({
          videoList:newVideoItem,
        })
     }
@@ -66,7 +66,7 @@ Page({
     //   isTriggered: false
     // })
    },
-
+ 
   //切换导航回调
   changeNav(event){
     let navId=event.currentTarget.id;
@@ -130,6 +130,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    console.log("Asd")
     this.setData({
       videoList:[],
     })
@@ -145,7 +146,6 @@ Page({
       var alreadyNum = this.data.videoList.length
       this.getVideoList(4, alreadyNum)
     } 
-    console.log('s')
   },
 
 
@@ -216,50 +216,6 @@ Page({
   onLoad: function (options) {
     that = this;
     that.getVideoList();
-
-
-    // for(var i=0;i<6;i++){
-    //   that.data.videoCategory[i]={i};
-    // }
-
-  //   wx.cloud.callFunction({
-  //     name: "videoGetData",
-  //   }).then(res => {
-  //     var lengths = res.result.data.length; 
-  //   //  for (var i = 0; i < lengths; i++) {
-  //       //let temp_str='that.data.videoCategory[res.result.data['+i+'].vidCategory-2]';
-  //       that.setData({
-  //          //[`that.data.videoCategory[res.result.data[${i}].vidCategory-2]`]:res.result.data[i],
-  //        //  [temp_str]:res.result.data[i],
-  //          videoList:res.result.data,
-  //       })
-  //     //}
-  //  // console.log(res.result.data[lengths-1])
-  //   //  console.log(that.data.videoCategory[1])
-  //   })
-   
-
-    // for(var i=1;i<8;i++){ 
-    //   var videoData={};
-    //   videoData.title="video-"+i;
-    //   videoData.ranking="videoRanking-"+i;
-    //   videoData.vidId="as";
-    //  // var cover = [];
-    //   that.data.videoList.push(videoData);
-    // }     
-    // console.log('a')
-    // that.setData({
-    //   videoList:that.data.videoList
-    // })
-   
-    //  wx.cloud.callFunction({
-    //    name:'videoUpdateData',
-    //    data:{
-    //      videoList:{}
-    //    }
-    //  }).then(res=>{ 
-    //    console.log(res)
-    //   })
    
  },
 

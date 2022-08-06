@@ -11,16 +11,15 @@ const db=cloud.database()
 //入口参数content:用户发表的内容
 exports.main = async (event, context) => {
     var _openid=event._openid
-    var nickName=event.nickName
-    var avatarUrl=event.avatarUrl
+    // var nickName=event.nickName
+    // var avatarUrl=event.avatarUrl
     var content=event.content
     var time=event.time
-
     db.collection('square').add({
       data:{
         _openid:_openid,
-        nickName:nickName,
-        avatarUrl:avatarUrl,
+        // nickName:nickName,
+        // avatarUrl:avatarUrl,
         content:content,
         time:time,
         likes:[],
