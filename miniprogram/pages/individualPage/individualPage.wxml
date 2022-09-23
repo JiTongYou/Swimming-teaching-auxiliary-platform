@@ -1,6 +1,6 @@
 <view class="header">
   <view class="headerContent">
-     <image class="avatar"  bindtap="changeInfo" src="{{otherUserAvatar}}"></image>
+     <image class="avatar"  src="{{otherUserAvatar}}"></image>
      <view class="name">
       昵称: {{otherUserNickName}}
      </view>

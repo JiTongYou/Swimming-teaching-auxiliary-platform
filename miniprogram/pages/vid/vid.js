@@ -1,15 +1,15 @@
-// pages/video/video.js
-const DB=wx.cloud.database().collection("videos");
+// pages/vid/vid.js
+const DB=wx.cloud.database().collection("vids");
 const _ = DB.command
 var that;
-//let videoList=[]
+//let vidList=[]
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    videoList:[],//视频列表数据
-   // videoCategory:[], //视频分类
+    vidList:[],//视频列表数据
+   // vidCategory:[], //视频分类
    // favorites:[],
     navId:'0',//导航标识
     vidId:'',
@@ -19,34 +19,34 @@ Page({
   },
 
   //路由跳转至视频页面
-  toVideo(event){
-    let video=event.currentTarget.dataset.video;
-    // console.log(event.currentTarget.dataset.video)
+  tovid(event){
+    let vid=event.currentTarget.dataset.vid;
+    // console.log(event.currentTarget.dataset.vid)
     wx.navigateTo({
-      url:'/pages/videoPage/videoPage?vidId=' + video._id
+      url:'/pages/vidPage/vidPage?vidId=' + vid._id
     })
   },
 
   // toCategory(event){
-  //   let category=event.currentTarget.dataset.video.vidCategory;
+  //   let category=event.currentTarget.dataset.vid.vidCategory;
   //   console.log(category);
   // },
 
   //获取视频列表
-  async getVideoList(num = 8, alreadyNum = 0){
+  async getvidList(num = 8, alreadyNum = 0){
     wx.cloud.callFunction({
-      name: "videoGetData",
+      name: "vidGetData",
       data: {
         num: num,
         alreadyNum: alreadyNum
       }
     }).then(res => {
-      //console.log("yeepy",res)
+    console.log(res)
      if (res.result.data.length == "0"){}else {
-       var oldVideoItem = that.data.videoList;
-       var newVideoItem = oldVideoItem.concat(res.result.data);
+       var oldvidItem = that.data.vidList;
+       var newvidItem = oldvidItem.concat(res.result.data);
         this.setData({
-         videoList:newVideoItem,
+         vidList:newvidItem,
        })
     }
     })
@@ -54,15 +54,15 @@ Page({
     // if(!navId){
     //   return;
     // }
-    // let videoListData=await request("", {id:navId});
+    // let vidListData=await request("", {id:navId});
     // wx.hideLoading();
     // let index=0;
-    // let videoList=videoListData.datas.map(item=>{
+    // let vidList=vidListData.datas.map(item=>{
     //   item.id=index++;
     //   return item;
     // })
     // this.setData({
-    //   videoList,
+    //   vidList,
     //   isTriggered: false
     // })
    },
@@ -72,58 +72,58 @@ Page({
     let navId=event.currentTarget.id;
     this.setData({
       navId:navId*1,
-      videoList:[]
+      vidList:[]
     })
    // wx.showLoading({
      // title: '加载中',
     //})
-    this.getVideoList();
+    this.getvidList();
   },
 
   // //点击播放/继续播放的回调
   // handlePlay(event){
-  //   let videoContext=wx.createVideoContext();
-  //  // this.videoContext !==vid && this.videoContext && this.videoContext.stop();
+  //   let vidContext=wx.createvidContext();
+  //  // this.vidContext !==vid && this.vidContext && this.vidContext.stop();
   //   //this.vid=vid;   
   //   this.setData({
-  //     videoId:vid
+  //     vidId:vid
   //   })
-  //   this.videoContext=wx.createVideoContext(vid);
-  //   let {videoUpdateTime}=this.data;
-  //   let videoItem=videoUpdateTime.find(item => item.vid === vid);
-  //   if(videoItem){
-  //     this.videoContext.seek(videoItem.currentTime);
+  //   this.vidContext=wx.createvidContext(vid);
+  //   let {vidUpdateTime}=this.data;
+  //   let vidItem=vidUpdateTime.find(item => item.vid === vid);
+  //   if(vidItem){
+  //     this.vidContext.seek(vidItem.currentTime);
   //   }
-  //   this.videoContext.play();
+  //   this.vidContext.play();
   // },
 
   // //控制播放暂停的功能函数
-  // videoControl(isPlay){
+  // vidControl(isPlay){
   //    if(isPlay){
   //      let backgroundAudioManger=wx.getBackgroundAudioManager();
-  //      let musicLinkData=await_request('/song/detail',{ids: videoId})
+  //      let musicLinkData=await_request('/song/detail',{ids: vidId})
   //      backgroundAudioManger
   //    }
   // },
 
   // //视频播放结束的回调
   // handleEneded(event){
-  //    let {videoUpdateTime}=this.data;
-  //    videoUpdateTime.splice(videoUpdateTime.findIndex(item => item.vid === event.currentTarget),1);
+  //    let {vidUpdateTime}=this.data;
+  //    vidUpdateTime.splice(vidUpdateTime.findIndex(item => item.vid === event.currentTarget),1);
   //    this.setData({
-  //      videoUpdateTime
+  //      vidUpdateTime
   //    })
   // },
 
   // //监听视频播放进度的回调
   // handleTimeUpdate(event){
-  //   let videoTimeObj={vid:event.currentTarget.id,currentTime:event.detail.currentTime};
-  //   let {videoUpdateTime} = this.data;
-  //   if(videoItem){
-  //     videoItem.currentTime = event.detail.currentTime;
+  //   let vidTimeObj={vid:event.currentTarget.id,currentTime:event.detail.currentTime};
+  //   let {vidUpdateTime} = this.data;
+  //   if(vidItem){
+  //     vidItem.currentTime = event.detail.currentTime;
   //   }
-  //   videoUpdateTime.push(videoTimeobj);
-  //   this.setData({videoUpdateTime});
+  //   vidUpdateTime.push(vidTimeobj);
+  //   this.setData({vidUpdateTime});
   // },
 
   /**
@@ -132,9 +132,9 @@ Page({
   onPullDownRefresh: function () {
     console.log("Asd")
     this.setData({
-      videoList:[],
+      vidList:[],
     })
-    this.getVideoList()
+    this.getvidList()
     wx.stopPullDownRefresh()
   },
 
@@ -143,8 +143,8 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.navId == "0") {
-      var alreadyNum = this.data.videoList.length
-      this.getVideoList(4, alreadyNum)
+      var alreadyNum = this.data.vidList.length
+      this.getvidList(4, alreadyNum)
     } 
   },
 
@@ -215,18 +215,18 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    that.getVideoList();
+    that.getvidList();
    
  },
 
-  addVideo(){
+  addvid(){
     DB.add({
       data:{
           
             //  title:'test10',
             //  ranking:'ssss',
             // cover:'cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/cover/DSC_7627.JPG',
-            // vidUrl:'cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/video/DSC_7511.MOV',
+            // vidUrl:'cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/vid/DSC_7511.MOV',
             // collect:0,
             // likes:0,
             //  vidCategory:7,
@@ -239,7 +239,7 @@ Page({
             // title:'test2',
             // ranking:'sssss',
             // cover:'cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/cover/DSC_7654.JPG',
-            // vidUrl:'cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/video/DSC_7520.MOV',
+            // vidUrl:'cloud://cloud1-7gh3ock7a08defbd.636c-cloud1-7gh3ock7a08defbd-1306690875/vid/DSC_7520.MOV',
             // vidCategory:1,
             // vidUpdateTime:new Date(),
       }

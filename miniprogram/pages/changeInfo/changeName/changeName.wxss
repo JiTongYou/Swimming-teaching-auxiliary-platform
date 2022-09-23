@@ -1,0 +1,14 @@
+/* miniprogram/pages/changeInfo/changeName/changeName.wxss */
+.input{
+  border-bottom:3rpx solid rgb(0, 0, 0);
+  padding:10rpx;
+  margin-top:40rpx;
+  margin-bottom:200rpx;
+  display:flex;
+  height:50rpx;
+  width:100%;
+}
+
+.comfirm{
+  background-color: #c0effd;
+}

@@ -2,19 +2,19 @@
              refresher-enabled
              scroll-y 
              bindscrolltolower="onReachBottom"
-             class="scrollVideo"  
+             class="scrollvid"  
              scroll-with-animation="true">
 
 <!--每个视频本体-->
-<view class="Video">
-      <view class="videoItem"
-            wx:key="video"
-            wx:for="{{videoList}}"
+<view class="vid">
+      <view class="vidItem"
+            wx:key="vid"
+            wx:for="{{vidList}}"
            >
 
       <image class="common"  
-             data-video='{{item}}'
-             bindtap="toVideo"
+             data-vid='{{item}}'
+             bindtap="tovid"
              src="{{item.cover}}"> </image>
 
       <view class="title">            

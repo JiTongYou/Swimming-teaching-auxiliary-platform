@@ -60,13 +60,13 @@
   padding: 10rpx;
 }
 
-.indexWatchingRecord .videoCover{
+.indexWatchingRecord .vidCover{
   height: 180rpx;
   width: 90%;
   border-radius:10rpx;
 }
 
-.indexWatchingRecord .videoName{
+.indexWatchingRecord .vidName{
   display: block;
   text-align: center;
   font-size: 26rpx;

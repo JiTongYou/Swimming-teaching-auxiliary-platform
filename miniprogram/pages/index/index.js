@@ -53,7 +53,7 @@ Page({
       that.getChatData()
       //that.inquireSpecificChatData()
       that.getSquareData()
-      that.getVideoHistory()
+      that.getvidHistory()
     })
     
 
@@ -157,10 +157,10 @@ Page({
   },
   */
 
- async getVideoHistory(){
+ async getvidHistory(){
    if(this.data.userInfo.history.length==0){}else{
   wx.cloud.callFunction({
-    name: "videoGetHistory",
+    name: "vidGetHistory",
     data: {
       _id:this.data.userInfo.history,
       length:this.data.userInfo.history.length
@@ -529,11 +529,11 @@ Page({
   },
 
 //路由跳转至视频页面
-  toVideo(event){
-    let video=event.currentTarget.dataset.video;
-    // console.log(event.currentTarget.dataset.video)
+  tovid(event){
+    let vid=event.currentTarget.dataset.vid;
+    // console.log(event.currentTarget.dataset.vid)
     wx.navigateTo({
-      url:'/pages/videoPage/videoPage?vidId=' + video._id
+      url:'/pages/vidPage/vidPage?vidId=' + vid._id
     })
   },
 

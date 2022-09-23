@@ -1,20 +1,28 @@
 // pages/individual/individual.js
-const DB=wx.cloud.database().collection("individual")
 var that;
 Page({
-  changeAvatar(){
-    var that=this;
-    wx.chooseImage({
-      count:1,
-      sizeType:['original','compressed'],
-      sourceType:['album','camera'],
-      success(res){
-        that.setData({
-          backgroundPicPath:res.backgroundPicPath
-        })
-      }
-    })
-  },
+  // changeAvatar(){
+  //   var that=this;
+  //   wx.chooseImage({
+  //     count:1,
+  //     sizeType:['original','compressed'],
+  //     sourceType:['album','camera'],
+  //     success(res){
+  //       that.setData({
+  //         backgroundPicPath:res.backgroundPicPath
+  //       })
+  //     }
+  //   })
+  // },
+
+    // //点击头像到个人主页
+    // toIndividualPage(event){
+    //   let person=event.currentTarget.dataset.person;
+    //   console.log(event.currentTarget);
+    //   wx.navigateTo({
+    //     url:'/pages/individualPage/individualPage?personId=' + person._openid
+    //   })
+    // },
 
   changeInfo(){
     wx.navigateTo({
@@ -30,41 +38,43 @@ Page({
 
   favoriteTap(){
     wx.navigateTo({
-      url:'/pages/videoCollected/videoCollected'
+      url:'/pages/vidCollected/vidCollected'
     })
   },
 
-  toIndividual(){
-    wx.navigateTo({
-      url:'/pages/individualPage/individualPage'
-    })
-  },
+  // toIndividual(){
+  //   wx.navigateTo({
+  //     url:'/pages/individualPage/individualPage'
+  //   })
+  // },
    
-  listTap(){
-    wx.navigateTo({
-      url:'/pages/blacklist/blacklist'
-    })
- },
+//   listTap(){
+//     wx.navigateTo({
+//       url:'/pages/blacklist/blacklist'
+//     })
+//  },
 
-  changeBackground(){
-      var that=this;
-      wx.chooseImage({
-        count:1,
-        sizeType:['original','compressed'],
-        sourceType:['album','camera'],
-        success(res){
-          that.setData({
-            backgroundPicPath:res.backgroundPicPath
-          })
-        }
-      })
-  },
+  // changeBackground(){
+  //     var that=this;
+  //     wx.chooseImage({
+  //       count:1,
+  //       sizeType:['original','compressed'],
+  //       sourceType:['album','camera'],
+  //       success(res){
+  //         that.setData({
+  //           backgroundPicPath:res.backgroundPicPath
+  //         })
+  //       }
+  //     })
+  // },
+
   /**
    * 页面的初始数据
    */
   data: {
       userInfo:[],
-      backgroundPicPath:''
+      following:0,
+      followers:0,
   },
 
   /**
@@ -75,32 +85,15 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success (res) {
-       console.log('get storage success', JSON.parse(res.data))
+
       that.setData({
         userInfo:JSON.parse(res.data),
       })
-      console.log(res.data)
      }
    })
-
-   
-
-   //DB.add({
-    //data:{
-      //  following:5,
-      //  followers:followers
- //   },
-  //})
-   // console.log(res.data)
   },
 
-  // toIndividualPage(event){
-  //   let person=event.currentTarget.dataset.person;
-  // //  console.log(person._openid)
-  //   wx.navigateTo({
-  //     url:'/pages/individualPage/individualPage?personId=' + person._openid
-  //   })
-  // },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -112,7 +105,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.userInfo.length!=0){
+    wx.cloud.callFunction({
+      name: "individualGetInfo",
+      data: {
+        _openid: this.data.userInfo._openid,
+      }
+    }).then(res => {
+      this.setData({
+        userInfo:res.result.data[0],
+        following: res.result.data[0].following.length,
+        followers: res.result.data[0].followers.length,
+      })
+    })
+  }
   },
 
   /**

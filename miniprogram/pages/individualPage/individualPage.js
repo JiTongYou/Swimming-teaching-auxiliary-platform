@@ -31,13 +31,27 @@ Page({
           _id: this.data.otherUserId,
           type: 0
         }
-      }).then(
-        this.setData({
-          ifFollowed: 0,
-          otherUserFollowers: _.pull()
+      })
+      // .then(
+      //   this.setData({
+      //     ifFollowed: 0,
+      //     otherUserFollowers: _.pull()
+      //   })
+      // )
+      .then(res => {
+        wx.cloud.callFunction({
+          name: "individualGetInfo",
+          data: {
+            _openid: this.data.otherUserId,
+          }
+        }).then(res => {
+          this.setData({
+            otherUserFollowers: res.result.data[0].followers,
+          })
         })
-      )
-    } else {
+      })
+    } 
+    else {
       this.setData({
         [tmp_str]: 1
       })
@@ -49,7 +63,6 @@ Page({
           type: 1
         }
       }).then(res => {
-
         wx.cloud.callFunction({
           name: "individualGetInfo",
           data: {
@@ -57,16 +70,9 @@ Page({
           }
         }).then(res => {
           this.setData({
-            otherUserAvatar: res.result.data[0].avatarUrl,
-            otherUserNickName: res.result.data[0].nickName,
-            otherUserFollowing: res.result.data[0].following,
             otherUserFollowers: res.result.data[0].followers,
           })
         })
-        // this.setData({
-        //   [tmp_str]:this.data.squareItem[index].likes
-        // })
-        // console.log("点赞成功")
       })
     }
   },
@@ -109,10 +115,6 @@ Page({
         }
       }
     })
-
-
-
-
   },
 
   /**

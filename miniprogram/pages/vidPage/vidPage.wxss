@@ -1,5 +1,5 @@
-/* miniprogram/pages/videoPage/videoPage.wxss */
-.videoItem{
+/* miniprogram/pages/vidPage/vidPage.wxss */
+.vidItem{
   display:flex
 }
 
