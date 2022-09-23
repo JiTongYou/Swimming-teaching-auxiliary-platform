@@ -1,8 +1,9 @@
 <!--学生界面-->
 <view wx:if='{{userInfo.identity == 1}}' bindtouchstart="concealJoinNewClassPopup">
-  <view wx:if='{{userClass}}'>
+  <view wx:if='{{userClass.length != 0}}'>
     <view class="singleClassNoticeContainer">
-      <text class="gonggao">公告</text>
+      <text class="gonggao" wx:if='{{userClass[0].notice.length != 0}}'>公告</text>
+      <text class="gonggao" wx:else>目前教师暂未发布公告~</text>
       <view class="header">
         <text class="class">{{userClass[0].notice[0].head}}</text>
         <text class="time">{{userClass[0].notice[0].time}}</text>
@@ -30,7 +31,8 @@
   </view>
 
     <view wx:else>
-      <text>你目前还没有班级哦，赶快加入一个吧~</text>
+      <text class="noClassNotice" style="margin-top:38vh;">你目前还没有班级哦~</text>
+      <text class="noClassNotice" style="margin-bottom: 3vh;">赶快加入一个吧~</text>
       <button class="joinNewClass" catchtap="showJoinNewClassPopup" style="width:300rpx">加入新班级</button>
     </view>
   </view>
@@ -41,6 +43,16 @@
     <view class="button">
       <button class="cancel" bindtap="concealJoinNewClassPopup">取消</button>
       <button class="confirm" bindtap="joinClass">确认</button>
+    </view>
+  </view>
+
+  <button wx:if='{{userInfo.identity == 1 && userClass.length != 0}}' catchtap='showExitClass' class="exitClass" style="width: 200rpx;">退出班级</button>
+
+  <view class="popupContainer" wx:if="{{tapExitClass == 1}}" style="height: 14%; top: 38vh;">
+    <text class="popupHeader">是否要退出该班级？</text>
+    <view class="button">
+      <button class="cancel" bindtap="concealExitClassPopup">取消</button>
+      <button class="confirm" bindtap="exitClass">退出</button>
     </view>
   </view>
 
@@ -56,6 +68,7 @@
     </view>
 
     <!-- 创建新班级 -->
+    <text wx:if='{{userClass.length == 0}}' class="noClassNotice" style="margin-top:2vh;">您目前还未创建班级~</text>
     <button class="createNewClass" catchtap="showCreateNewClassPopup" style="width:300rpx">创建新班级</button>
 
   </view>

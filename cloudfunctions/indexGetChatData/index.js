@@ -28,8 +28,8 @@ exports.main = async (event, context) => {
   }
   var i = 0;
   return (await Promise.all(tasks)).reduce((acc, cur) => {
-    console.log("cur",cur);
-    console.log("acc",acc)
+    // console.log("cur",cur);
+    // console.log("acc",acc)
     if(acc.data[i].chat_members[0]._openid == currentId){
       acc.data[i].chat_members[0].avatarUrl = cur.data[0].avatarUrl;
       acc.data[i].chat_members[0].nickName = cur.data[0].nickName;
@@ -41,7 +41,7 @@ exports.main = async (event, context) => {
       acc.data[i].other = 1;
     }
     i++;
-    console.log("result", result);
+    // console.log("result", result);
     return {
       data: acc.data
     }

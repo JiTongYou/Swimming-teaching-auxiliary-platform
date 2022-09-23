@@ -10,10 +10,11 @@ exports.main = async (event, context) => {
   const class_id = event.class_id;
   const head = event.head;
   const content = event.content;
+  const time = event.time;
   let notice = {};
   notice.head = head;
   notice.content = content;
-  notice.time = new Date();
+  notice.time = time;
   db.collection('class').where({
     _id:class_id
   }).update({

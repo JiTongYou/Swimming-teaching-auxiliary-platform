@@ -56,7 +56,13 @@ Page({
       that.getVideoHistory()
     })
     
-
+    setInterval(()=>{
+    if(this.data.userInfo.identity){
+      this.setUserClassInfo()
+      }else{
+        this.setTeacherClassInfo()
+      }
+    }, 1000 * 60)
     
   },
 
@@ -71,7 +77,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if(this.data.userInfo.identity){
+      this.setUserClassInfo()
+      }else{
+        this.setTeacherClassInfo()
+      }
   },
 
   /**
@@ -215,6 +225,7 @@ Page({
         _openid: this.data.userInfo._openid,
       }
     }).then(res => {
+      // console.log("StudentClassInfo", res)
       this.setData({
         userClass: res.result.data
       })

@@ -28,4 +28,13 @@
     <text>群聊</text>
   </view>
 -->
+<button wx:if='{{userInfo.identity == 0}}' catchtap='showDismissClass' class="dismissClass" style="width: 200rpx;">解散班级</button>
 </view>
+
+<view class="popupContainer" wx:if="{{tapDismissClass == 1}}">
+    <text class="popupHeader">是否要解散该班级？</text>
+    <view class="button">
+      <button class="cancel" bindtap="concealDismissClassPopup">取消</button>
+      <button class="confirm" bindtap="dismissClass">删除</button>
+    </view>
+  </view>

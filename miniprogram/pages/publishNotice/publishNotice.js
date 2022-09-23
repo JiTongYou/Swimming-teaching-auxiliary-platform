@@ -101,15 +101,16 @@ Page({
         class_id:this.data.class_id,
         head:this.data.headContent,
         content:this.data.noticeContent,
+        time:this.js_date_time(new Date())
       }
+    }).then(res=>{
+      wx.hideLoading()
+      wx.showToast({
+        title: '发布成功',
+        icon: 'none',
+      })
+      console.log('发布成功')
     })
-    wx.hideLoading()
-    wx.showToast({
-      title: '发布成功',
-      icon: 'none',
-    })
-    console.log('发布成功')
-
     this.setData({
       wordNum:0,
       noticeContent:''
@@ -128,6 +129,23 @@ Page({
     wx.navigateBack({
       delta: 1
     })
+  },
+
+  //转换时间
+  js_date_time(unixtime) {
+    var date = new Date(unixtime);
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    var h = date.getHours();
+    h = h < 10 ? ('0' + h) : h;
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    second = second < 10 ? ('0' + second) : second;
+    return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second; //年月日时分秒
   },
 
 })

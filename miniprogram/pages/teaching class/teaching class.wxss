@@ -51,3 +51,51 @@
   left: 250rpx;
   background-color: #c4ebf7;
 }
+
+.dismissClass{
+  display: block;
+  text-align: center;
+  font-size: 35rpx;
+  height: 60rpx;
+  padding: 5rpx;
+  margin-top: 5vh;
+  background-color: #fc4f4f;
+}
+
+/* 加入/创建新班级弹窗（部分样式共用） */
+.popupContainer{
+  width: 80%;
+  height: 14%;
+  position: absolute; 
+  left: 10vw;
+  top: 38vh;
+  background-color: #f7fdff;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.popupContainer .popupHeader{
+  width: 100%;
+  text-align: center;
+  padding: 10rpx;
+  font-size: 40rpx;
+}
+
+.popupContainer .classNum{
+  width: 90%;
+  padding:20rpx;
+}
+
+.popupContainer .className{
+  width: 90%;
+  padding:20rpx;
+}
+
+.popupContainer .button{
+  display: flex;
+}
+
+.popupContainer .button button{
+  background-color: #f7fdff;
+}

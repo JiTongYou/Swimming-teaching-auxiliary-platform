@@ -93,6 +93,21 @@
   background-color: #f7fdff;
 }
 
+.noClassNotice{
+  display: block;
+  text-align: center;
+}
+
+.exitClass{
+  display: block;
+  text-align: center;
+  font-size: 35rpx;
+  height: 60rpx;
+  padding: 5rpx;
+  margin-top: 5vh;
+  background-color: #fc4f4f;
+}
+
 /***********************************************
 
 教师界面

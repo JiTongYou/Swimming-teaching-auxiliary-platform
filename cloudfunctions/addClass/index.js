@@ -45,25 +45,25 @@ exports.main = async (event, context) => {
         }
       })
       //在个人数据的class中加入当前班级信息
-      const targetClass = await db.collection("class").where({
-        _id: _.eq(classNum)
-      }).get()
-      var teachingClass = {
-        classNum: targetClass.data[0]._id,
-        className: targetClass.data[0].className,
-        classTeacher: targetClass.data[0].classTeacher,
-        classTime: targetClass.data[0].classTime,
-        notice: targetClass.data[0].notice
-      }
-      await db.collection("defaultUserInfo").where({
-        _openid: _.eq(_openid)
-      }).update({
-        data:{
-          class: _.push({
-            each: [teachingClass]
-          })
-        }
-      })
+      // const targetClass = await db.collection("class").where({
+      //   _id: _.eq(classNum)
+      // }).get()
+      // var teachingClass = {
+      //   classNum: targetClass.data[0]._id,
+      //   className: targetClass.data[0].className,
+      //   classTeacher: targetClass.data[0].classTeacher,
+      //   classTime: targetClass.data[0].classTime,
+      //   notice: targetClass.data[0].notice
+      // }
+      // await db.collection("defaultUserInfo").where({
+      //   _openid: _.eq(_openid)
+      // }).update({
+      //   data:{
+      //     class: _.push({
+      //       each: [teachingClass]
+      //     })
+      //   }
+      // })
       return 1
     }
   } else {

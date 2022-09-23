@@ -23,7 +23,7 @@ Page({
     wx.getStorage({
       key: "userClass",
       success(res) {
-        //console.log(res)
+        // console.log("userClass", res)
         that.setData({
           userClass: JSON.parse(res.data)
         })
@@ -50,7 +50,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.concealAddClass();
+    this.concealCreateNewClassPopup;
+    this.concealJoinNewClassPopup();
+    setTimeout(()=>{
+      if(this.data.userInfo.identity){
+        this.setUserClassInfo()
+      }else{
+        this.setTeacherClassInfo()
+      }
+    }, 1000)
   },
 
   /**
@@ -101,7 +110,8 @@ Page({
   },
 
   toTeachingClass(e){
-    var detail= this.data.userClass[e.currentTarget.dataset.index];
+    var detail = this.data.userClass[e.currentTarget.dataset.index];
+    // console.log(detail)
     wx.navigateTo({
       url: '/pages/teaching class/teaching class?detail=' + JSON.stringify(detail),
     })
@@ -158,6 +168,40 @@ Page({
         key: 'userClass',
         data: JSON.stringify(res.result.data)
       })
+    })
+  },
+
+  showExitClass(){
+    this.setData({
+      tapExitClass: 1,
+    })
+  },
+
+  concealExitClassPopup(){
+    this.setData({
+      tapExitClass: 0,
+    })
+  },
+
+  exitClass(){
+    this.setData({
+      tapExitClass: 0,
+    })
+    wx.showLoading({
+      title: '退出班级中...',
+    })
+    wx.cloud.callFunction({
+      name:"exitClass",
+      data:{
+        classId:this.data.userClass[0]._id,
+        studentId:this.data.userInfo._openid
+      }
+    }).then(res=>{
+      wx.hideLoading()
+      wx.showToast({
+        title: '退出班级成功',
+      })
+      this.onShow()
     })
   },
 
@@ -277,7 +321,7 @@ Page({
       name: "createClass",
       data: {
         className: this.data.className,
-        classTeacher: 'test',
+        classTeacher: this.data.userInfo.nickName,
         _openid: this.data.userInfo._openid,
       }
     }).then(res=>{
