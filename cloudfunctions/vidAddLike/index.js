@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
     const _id=event._id
     const type=event.type
     if(type == 1){
-      return await db.collection("videos").doc(_id).update({
+      return await db.collection("vids").doc(_id).update({
         data:{
           likes:_.push({
             each: [_openid]
@@ -21,7 +21,7 @@ exports.main = async (event, context) => {
         }
       })
     }else if(type == 0){
-      return await db.collection("videos").doc(_id).update({
+      return await db.collection("vids").doc(_id).update({
         data:{
           likes:_.pull(_openid)
         }
