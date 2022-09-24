@@ -19,12 +19,12 @@
 }
 
 .likeButton{
-  background-color: #9ca1a1;
+  background-color: #81DAF5;
   size:50rpx;
 }
 
 .liked{
-  background-color: #81DAF5;
+  background-color: #9ca1a1;
   size:50rpx;
 }
 
@@ -33,12 +33,12 @@
 }
 
 .collectButton{
-  background-color: #9ca1a1;
+  background-color: #81DAF5;
   size:50rpx;
 }
 
 .collected{
-  background-color: #81DAF5;
+  background-color: #9ca1a1;
   size:50rpx;
 }
 

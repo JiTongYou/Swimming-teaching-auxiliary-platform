@@ -1,10 +1,10 @@
 /* miniprogram/pages/vedio/vedio.wxss */
-.searchColumn{
+/* .searchColumn{
   border:1rpx solid rgba(0, 0, 0, 0.712);
   font-size: 28rpx;
   text-align:center;
 
-}
+} */
 .navigation{
   display:flex;
 }
@@ -15,10 +15,10 @@
   font-size: 35rpx;
 }
 
-.categoryBar{
+/* .categoryBar{
   padding-top: 25rpx;
   padding-left: 40rpx
-}
+} */
 
 .active{
   border-bottom:5rpx solid #c4ebf7;

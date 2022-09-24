@@ -7,7 +7,8 @@
           bindended="handleEnded"
           bindtap="getHistory">
    </vid> -->
-   <view>src</view>
+   <image src="{{vidUrl}}"></image>    <!--使用二维码分享 -->
+
 </view>
 
 <view id='vidNav' class="vidNav" style="{{navFixed?'position:fixed; top: 0':''}}">
