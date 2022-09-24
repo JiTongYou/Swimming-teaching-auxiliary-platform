@@ -1,44 +1,44 @@
-// miniprogram/pages/videoCollected/videoCollected.js
-const DB=wx.cloud.database().collection("videos");
+// miniprogram/pages/vidCollected/vidCollected.js
+const DB=wx.cloud.database().collection("vids");
 const _ = DB.command
 var that;
-//let videoList=[]
+//let vidList=[]
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    videoList:[],//视频列表数据
+    vidList:[],//视频列表数据
     vidId:'',
     isTriggered: false,
     userInfo:{},
   },
 
   //路由跳转至视频页面
-  toVideo(event){
-    let video=event.currentTarget.dataset.video;
-    // console.log(event.currentTarget.dataset.video)
+  tovid(event){
+    let vid=event.currentTarget.dataset.vid;
+    // console.log(event.currentTarget.dataset.vid)
     wx.navigateTo({
-      url:'/pages/videoPage/videoPage?vidId=' + video._id
+      url:'/pages/vidPage/vidPage?vidId=' + vid._id
     })
   },
 
   //获取视频列表
-  async getVideoList(){
-    for(var i = 0;i<this.data.userInfo.videoCollected.length;i++){
+  async getvidList(){
+    for(var i = 0;i<this.data.userInfo.vidCollected.length;i++){
       console.log("s")
     wx.cloud.callFunction({
       name: "getCollectData",
       data: {
-        _id:this.data.userInfo.videoCollected[i]
+        _id:this.data.userInfo.vidCollected[i]
       }
     }).then(res => {
       console.log(res.result.data.length)
      if (res.result.data.length == "0"){}else {
-       var oldVideoItem = this.data.videoList;
-       var newVideoItem = oldVideoItem.concat(res.result.data);
+       var oldvidItem = this.data.vidList;
+       var newvidItem = oldvidItem.concat(res.result.data);
         this.setData({
-         videoList:newVideoItem,
+         vidList:newvidItem,
        })
     }
     
@@ -64,7 +64,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getVideoList()
+    this.getvidList()
   },
 
   /**
@@ -100,8 +100,8 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.navId == "0") {
-      var alreadyNum = this.data.videoList.length
-      this.getVideoList(4, alreadyNum)
+      var alreadyNum = this.data.vidList.length
+      this.getvidList(4, alreadyNum)
     } 
   },
 

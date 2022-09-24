@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
     const _id=event._id
     const type=event.type
     if(type == 1){
-      return await db.collection("videos").doc(_id).update({
+      return await db.collection("vids").doc(_id).update({
         data:{
           collect:_.push({
             each: [_openid]
@@ -24,14 +24,14 @@ exports.main = async (event, context) => {
           _openid:_openid
         }).update({
           data:{
-            videoCollected:_.push({
+            vidCollected:_.push({
             each: [_id]
           })
           }
         })
       )    
     }else if(type == 0){
-      return await db.collection("videos").doc(_id).update({
+      return await db.collection("vids").doc(_id).update({
         data:{
           collect:_.pull(_openid)
         }
@@ -40,7 +40,7 @@ exports.main = async (event, context) => {
           _openid:_openid
         }).update({
           data:{
-            videoCollected:_.pull(_id)
+            vidCollected:_.pull(_id)
           }
         })
       )

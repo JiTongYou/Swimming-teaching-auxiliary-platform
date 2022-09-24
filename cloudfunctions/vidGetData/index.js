@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
   try{ 
     const num=event.num;
     const alreadyNum=event.alreadyNum;
-    return await db.collection("videos").skip(alreadyNum).limit(num).get()
+    return await db.collection("vids").skip(alreadyNum).limit(num).get()
   }catch(e){
     console.error(e)
   }

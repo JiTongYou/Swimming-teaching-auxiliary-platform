@@ -1,7 +1,7 @@
 <!--miniprogram/pages/aboutUs/aboutUs.wxml-->
 <view class="introduction">
   <view class="developers">
-  开发者：    朱瑞麒 叶陈常 冯镜泽 王相栋
+  开发者：    朱瑞麒 王相栋
   </view>
 
   <view class="introduction">
@@ -9,6 +9,6 @@
   </view>
 
   <view class="edition">
-   版本：         1.0.0.0
+   版本：         1.1
   </view>
 </view>

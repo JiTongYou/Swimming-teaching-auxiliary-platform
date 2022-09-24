@@ -19,26 +19,12 @@
          <text>上次观看</text>
          <view class="recordItem">
             <view wx:key="watchingRecord" wx:for="{{recordItem}}">
-               <image class="videoCover"  data-video='{{item}}' bindtap="toVideo" src="{{item.cover}}"></image>
-               <text class="videoName">{{item.title}}</text>
+               <image class="vidCover"  data-vid='{{item}}' bindtap="tovid" src="{{item.cover}}"></image>
+               <text class="vidName">{{item.title}}</text>
             </view>
 
-            <!-- <view>
-               <image class="videoCover" src="{{item.cover}}"></image>
-               <text class="videoName">s{{title}}</text>
-            </view> -->
          </view>
       </view>
-
-      <!-- 广场与消息（老） -->
-      <!--
-   <view class="indexSquareAndChatContainer">
-      <ul class="navigationBar">
-         <li class="listItem"><button class="navigationBarButton" style="width:100%">广场</button></li>
-         <li class="listItem"><button class="navigationBarButton" style="width:100%">消息</button></li>
-      </ul>
-   </view>
-   -->
 
       <!-- 广场与消息 导航条 -->
       <view id='indexNav' class="indexNav">

@@ -1,25 +1,26 @@
 <!--pages/individual/individual.wxml-->
 <view class="header" >
-  <image class="headerBackground" bindtap="changeBackground" src="{{backgroundPicPath}}"></image>
+  <!-- <image class="headerBackground" bindtap="changeBackground" src="{{backgroundPicPath}}"></image> -->
   <view class="headerContent">
-     <image class="avatar"  src="{{userInfo.avatarUrl}}"  data-person="{{item}}" bindtap="toIndividualPage"></image>
+     <image class="avatar"  src="{{userInfo.avatarUrl}}"  
+     bindtap="toIndividualPage"></image>
      <view class="name">
        昵称: {{userInfo.nickName}}
      </view>    
      <view class="following">
-       关注： {{userInfo.following.length}}
+       关注： {{following}}
      </view>
      <view class="followers">
-       粉丝： {{userInfo.followers.length}}
+       粉丝： {{followers}}
      </view>
   </view>
 </view>
 
 <view class="others">
-<!--   
+  
   <view class="changeInformation"  bindtap="changeInfo">
       修改个人信息
-  </view> -->
+  </view>
 
   <!-- <view class="individualPage" bindtap="toIndividual">
       个人主页       

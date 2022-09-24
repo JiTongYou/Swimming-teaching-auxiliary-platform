@@ -24,22 +24,22 @@
   border-bottom:5rpx solid #c4ebf7;
 }
 
-.scrollVideo{
+.scrollvid{
    height: 90vh;
 }
 
-.Video{
-   display:flex;
+.vid{
+  display:flex;
   flex-wrap:wrap;
   flex-direction: row;
   margin-top: 10rpx;
-  height:800rpx;
+  height:700rpx;
 }
 
-.videoItem{
+.vidItem{
   width:50%;
-  height:25%;
-  margin-bottom: 60rpx;
+  height:30%;
+  margin-bottom: 0rpx;
 }
 
  .common{
@@ -55,7 +55,7 @@
   text-align: center;
 }
 
-.addVideo{
+.addvid{
   position: relative;
   text-align: center;
   font-size: 25rpx;

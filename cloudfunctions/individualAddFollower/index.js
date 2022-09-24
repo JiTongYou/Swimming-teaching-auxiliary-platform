@@ -6,9 +6,9 @@ const db=cloud.database();
 const _ =db.command
 
 // 云函数入口函数
-//入口参数_openid:用户_openid
-//入口参数_id:被关注用户_openid
-//入口参数type:1:关注;0:取消关注
+//入口参数 currentId:用户_openid
+//入口参数 _id:被关注用户_openid
+//入口参数 type:1:关注;0:取消关注
 exports.main = async (event, context) => {
   try{
     const currentId=event.currentId
@@ -21,7 +21,15 @@ exports.main = async (event, context) => {
         data:{
           followers:_.push([currentId])
         }
-      })
+      }).then(
+        db.collection("defaultUserInfo").where({
+          _openid:currentId
+        }).update({
+          data:{
+            following:_.push([_openid])
+          }
+        })
+      )
     }else{
       return await db.collection("defaultUserInfo").where({
         _openid: _openid
@@ -29,7 +37,15 @@ exports.main = async (event, context) => {
         data:{
           followers:_.pull(currentId)
         }
-      })
+      }).then(
+        db.collection("defaultUserInfo").where({
+          _openid:currentId
+        }).update({
+          data:{
+            following:_.pull(_openid)
+          }
+        })
+      )
     }
   }catch(e){
     console.error(e)

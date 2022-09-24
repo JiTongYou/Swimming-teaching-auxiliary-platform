@@ -10,12 +10,12 @@ exports.main = async (event, context) => {
   const _id= [].concat(event._id);
   const length=event.length
   if(length==1){
-    return await db.collection("videos").where({
+    return await db.collection("vids").where({
       _id:_id[0],
     }).get()
   }
   if(length==2){
-    return await db.collection("videos").where(_.or([
+    return await db.collection("vids").where(_.or([
     {
       _id:_id[0]
     },
@@ -25,7 +25,7 @@ exports.main = async (event, context) => {
   ])).get()
   }
   
-  // return await db.collection("videos").where({
+  // return await db.collection("vids").where({
   //   _id:_id[0],
   // }).get()
   // .then(res=>{

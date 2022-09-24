@@ -1,19 +1,21 @@
 {
-  "pages": [ 
+  "pages": [
+
     "pages/login/login",
-    "pages/index/index",   
-    "pages/videoCollected/videoCollected",
+    "pages/index/index",
+    "pages/vidCollected/vidCollected",
     "pages/publish/publish",
     "pages/chat/chat",
-    "pages/video/video",
+    "pages/vid/vid",
     "pages/single class/single class",
     "pages/teaching class/teaching class",
     "pages/individual/individual",
-    "pages/videoPage/videoPage",
+    "pages/vidPage/vidPage",
     "pages/class name list/class name list",
     "pages/publishNotice/publishNotice",
-    "pages/individualPage/individualPage"
-
+    "pages/individualPage/individualPage",
+    "pages/changeInfo/changeInfo",
+    "pages/changeInfo/changeName/changeName"
   ],
   "style": "v2",
   "window": {
@@ -31,10 +33,10 @@
         "selectedIconPath": "static/iconfont/inonfontImages/homepage_selected.png"
       },
       {
-        "pagePath": "pages/video/video",
+        "pagePath": "pages/vid/vid",
         "text": "视频",
-        "iconPath": "static/iconfont/inonfontImages/video.png",
-        "selectedIconPath": "static/iconfont/inonfontImages/video_selected.png"
+        "iconPath": "static/iconfont/inonfontImages/vid.png",
+        "selectedIconPath": "static/iconfont/inonfontImages/vid_selected.png"
       },
       {
         "pagePath": "pages/single class/single class",

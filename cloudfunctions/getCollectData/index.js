@@ -7,7 +7,7 @@ const _ =db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
     const _id=event._id
-    return await db.collection("videos").where({
+    return await db.collection("vids").where({
       _id: _id
     }).get()
 }

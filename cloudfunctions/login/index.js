@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
   userInfo.identity = 1;
   userInfo.followers = [];
   userInfo.following = [];
-  userInfo.videoCollected = [];
+  userInfo.vidCollected = [];
   userInfo.history = [];
   userInfo._openid = wxcontext.OPENID;
 
@@ -36,7 +36,7 @@ exports.main = async (event, context) => {
               identity: 1,
               following: [],
               followers: [],
-              videoCollected: [],
+              vidCollected: [],
               history:[],
             }
           }).then(res=>{

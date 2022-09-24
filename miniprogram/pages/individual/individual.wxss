@@ -62,7 +62,7 @@
 }
 
 .changeInformation{
-  margin-bottom:65rpx;
+  margin-bottom:45rpx;
   margin-left: 20rpx;
   border-bottom:2rpx solid rgba(0, 0, 0, 0.336);
 }

@@ -1,0 +1,4 @@
+<!--miniprogram/pages/changeInfo/changeName/changeName.wxml-->
+<textarea class="input" placeholder="请输入修改后的昵称" bindinput="changename"> </textarea>
+
+<button class="comfirm" bindtap="comfirmed">确认</button>

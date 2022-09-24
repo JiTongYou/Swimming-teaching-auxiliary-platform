@@ -1,16 +1,16 @@
-/* miniprogram/pages/videoCollected/videoCollected.wxss */
-.scrollVideo{
+/* miniprogram/pages/vidCollected/vidCollected.wxss */
+.scrollvid{
   height: 90vh;
 }
 
-.Video{
+.vid{
   display:flex;
  flex-wrap:wrap;
  flex-direction: row;
  margin-top: 10rpx;
  height:800rpx;
 }
-.videoItem{
+.vidItem{
   width:50%;
   height:25%;
   margin-bottom: 60rpx;

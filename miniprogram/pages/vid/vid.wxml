@@ -1,5 +1,5 @@
-<!--pages/video/video.wxml-->
-<view class="video" >
+<!--pages/vid/vid.wxml-->
+<view class="vid" >
 <!--导航栏-->
    <view class="navigation" enable-flex>
       <view class="navigationColumn {{navId== '0' ?'active':''}}" id="0" wx:key="id" bindtap="changeNav" enable-back-to-top="true">教学视频 </view>
@@ -9,23 +9,22 @@
 
 <!--视频-->
 <scroll-view bindrefresherrefresh="onPullDownRefresh"
-            
              scroll-y 
              bindscrolltolower="onReachBottom"
-             class="scrollVideo"  
+             class="scrollvid"  
              wx:if="{{navId==0}}" 
              scroll-with-animation="true">
 
 <!--每个视频本体-->
-<view class="Video">
-      <view class="videoItem"
-            wx:key="video"
-            wx:for="{{videoList}}"
+<view class="vid">
+      <view class="vidItem"
+            wx:key="vid"
+            wx:for="{{vidList}}"
             wx:if="{{toCategory==1}}">
 
       <image class="common"  
-             data-video='{{item}}'
-             bindtap="toVideo"
+             data-vid='{{item}}'
+             bindtap="tovid"
              src="{{item.cover}}"> </image>
 
       <view class="title">            
@@ -36,12 +35,12 @@
 
        <!-- 分类的视频
       <view wx:if="{{toCategory!=1}}"
-           class="videoItem"
-            wx:for="{{videoList}}"
+           class="vidItem"
+            wx:for="{{vidList}}"
       >
          <image class="common"  
-         data-video='{{item}}'
-         bindtap="toVideo"
+         data-vid='{{item}}'
+         bindtap="tovid"
          src="{{item.cover}}"  
          >
          </image>
@@ -58,7 +57,7 @@
          
       </view>  -->
    
-    <!-- <button class="addVideo" bindtap="addVideo" style="width:180rpx"> add </button> -->
+    <!-- <button class="addvid" bindtap="addvid" style="width:180rpx"> add </button> -->
    </scroll-view>
 
 </view>

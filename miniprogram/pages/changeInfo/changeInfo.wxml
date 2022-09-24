@@ -1,0 +1,6 @@
+<!--miniprogram/pages/changeInfo/changeInfo1.wxml-->
+<view class="changeName"  bindtap="nameTap">
+      名字
+      <text class="name">{{userInfo.nickName}} ></text>
+  </view>
+

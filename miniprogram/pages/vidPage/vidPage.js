@@ -1,5 +1,5 @@
-// miniprogram/pages/videoPage/videoPage.js
-const DB=wx.cloud.database().collection("videos");
+// miniprogram/pages/vidPage/vidPage.js
+const DB=wx.cloud.database().collection("vids");
 const _ = DB.command
 var that;
 Page({
@@ -48,7 +48,7 @@ Page({
       key: "homeCurrentTime",
       success(res){
         console.log("获取缓存成功",res);   
-        //that.videoContext.seek(res.data)
+        //that.vidContext.seek(res.data)
       }
     })
 
@@ -96,7 +96,7 @@ Page({
         [tmp_str]:0
       })
       wx.cloud.callFunction({
-        name:"videoAddCollect",
+        name:"vidAddCollect",
         data:{
           _openid: that.data.userInfo._openid,   
           _id:that.data.vidId.vidId,
@@ -115,7 +115,7 @@ Page({
         [tmp_str]:1
       })
       wx.cloud.callFunction({
-        name:"videoAddCollect",
+        name:"vidAddCollect",
         data:{
           _openid:that.data.userInfo._openid,
           _id:that.data.vidId.vidId,
@@ -138,7 +138,7 @@ Page({
          [tmp_str]:0
        })
        wx.cloud.callFunction({
-         name:"videoAddLike",
+         name:"vidAddLike",
          data:{
            _openid: that.data.userInfo._openid,   
            _id:that.data.vidId.vidId,
@@ -157,7 +157,7 @@ Page({
          [tmp_str]:1
        })
        wx.cloud.callFunction({
-         name:"videoAddLike",
+         name:"vidAddLike",
          data:{
            _openid:that.data.userInfo._openid,
            _id:that.data.vidId.vidId,
