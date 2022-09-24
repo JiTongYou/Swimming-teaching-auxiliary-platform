@@ -2,12 +2,12 @@
 <view class="vid" >
 <!--导航栏-->
    <view class="navigation" enable-flex>
-      <view class="navigationColumn {{navId== '0' ?'active':''}}" id="0" wx:key="id" bindtap="changeNav" enable-back-to-top="true">教学视频 </view>
+      <view class="navigationColumn {{navId== '0' ?'active':''}}" id="0" wx:key="id" bindtap="changeNav" enable-back-to-top="true">教学资源 </view>
       <view class="navigationColumn {{navId== '1' ?'active':''}}" id="1" wx:key="id"  bindtap="changeNav" enable-back-to-top="true">训练计划 </view>
      <!-- <view class="categoryBar" bindtap="getCategory">CAT</view> -->
    </view> 
 
-<!--视频-->
+<!--资源-->
 <scroll-view bindrefresherrefresh="onPullDownRefresh"
              scroll-y 
              bindscrolltolower="onReachBottom"
@@ -33,7 +33,7 @@
 </view>
 
 
-       <!-- 分类的视频
+       <!-- 分类的资源
       <view wx:if="{{toCategory!=1}}"
            class="vidItem"
             wx:for="{{vidList}}"

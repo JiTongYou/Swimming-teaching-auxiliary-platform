@@ -34,7 +34,7 @@
       },
       {
         "pagePath": "pages/vid/vid",
-        "text": "视频",
+        "text": "资源",
         "iconPath": "static/iconfont/inonfontImages/vid.png",
         "selectedIconPath": "static/iconfont/inonfontImages/vid_selected.png"
       },
