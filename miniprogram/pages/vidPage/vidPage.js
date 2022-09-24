@@ -33,7 +33,7 @@ Page({
 
   onLoad: function (options) {
     that = this;
-    that.data.vidId=options;
+    //that.data.vidId=options;
     //获取openid
     wx.getStorage({
       key:"userInfo",
@@ -44,17 +44,20 @@ Page({
       }
     })
 
-    wx.getStorage({
-      key: "homeCurrentTime",
-      success(res){
-        console.log("获取缓存成功",res);   
-        //that.vidContext.seek(res.data)
-      }
-    })
+    // wx.getStorage({
+    //   key: "homeCurrentTime",
+    //   success(res){
+    //     console.log("获取缓存成功",res);   
+    //     //that.vidContext.seek(res.data)
+    //   }
+    // })
 
     DB.where({
-      _id: that.data.vidId.vidId
-    }).get().then(res=>{
+      _id: options.vidId
+  }).get()
+  .then(res=>{
+    console.log(res.data)
+    
       if(res.data.length>0) {
           that.setData({
             vidUrl:res.data[0].vidUrl,
@@ -73,7 +76,6 @@ Page({
            that.setData({
               ifCollected:1,
            })
-           console.log("Sdadasddadad")
         }
       }
 
@@ -110,7 +112,6 @@ Page({
     }
     else{
       console.log("收藏" ,that.data.userInfo._openid)
-      console.log("sad",that.data.vidId.vidId)
       that.setData({
         [tmp_str]:1
       })
