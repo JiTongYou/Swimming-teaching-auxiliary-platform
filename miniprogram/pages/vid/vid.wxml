@@ -1,11 +1,12 @@
 <!--pages/vid/vid.wxml-->
 <view class="vid" >
 <!--导航栏-->
-   <view class="navigation" enable-flex>
+
+   <!-- <view class="navigation" enable-flex>
       <view class="navigationColumn {{navId== '0' ?'active':''}}" id="0" wx:key="id" bindtap="changeNav" enable-back-to-top="true">教学资源 </view>
-      <!-- <view class="navigationColumn {{navId== '1' ?'active':''}}" id="1" wx:key="id"  bindtap="changeNav" enable-back-to-top="true">训练计划 </view> -->
-     <!-- <view class="categoryBar" bindtap="getCategory">CAT</view> -->
-   </view> 
+      <view class="navigationColumn {{navId== '1' ?'active':''}}" id="1" wx:key="id"  bindtap="changeNav" enable-back-to-top="true">训练计划 </view>
+      <view class="categoryBar" bindtap="getCategory">CAT</view>
+   </view>  -->
 
 <!--资源-->
 <scroll-view bindrefresherrefresh="onPullDownRefresh"
@@ -15,7 +16,7 @@
              wx:if="{{navId==0}}" 
              scroll-with-animation="true">
 
-<!--每个视频本体-->
+<!--每个资源本体-->
 <view class="vid">
       <view class="vidItem"
             wx:key="vid"
