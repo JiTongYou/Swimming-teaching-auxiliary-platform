@@ -121,6 +121,26 @@ Page({
   }
   },
 
+  exit(){
+     wx.showModal({
+      title: '提示',
+      content: '您确定要退出登录吗',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.removeStorageSync('userInfo');
+          wx.removeStorageSync('chat7');
+          wx.removeStorageSync('userClass');
+          wx.redirectTo({
+            url: '/pages/login/login',
+          })
+        } else {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

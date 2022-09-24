@@ -52,4 +52,6 @@
   <view class="aboutUs"  bindtap="usTap">
       关于我们
   </view>
+
+  <button class="exit" bindtap="exit">退出登录</button>
 </view>
