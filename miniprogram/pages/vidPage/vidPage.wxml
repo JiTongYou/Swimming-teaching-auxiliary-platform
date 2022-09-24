@@ -1,12 +1,13 @@
 <!--miniprogram/pages/vidPage/vidPage.wxml-->
 <view class="vidItem">
-   <video class="common"
+   <!-- <vid class="common"
           src="{{vidUrl}}"
           bindplay="handlePlay"   
           object-fit="fill"
           bindended="handleEnded"
           bindtap="getHistory">
-   </video>
+   </vid> -->
+   <view>src</view>
 </view>
 
 <view id='vidNav' class="vidNav" style="{{navFixed?'position:fixed; top: 0':''}}">
