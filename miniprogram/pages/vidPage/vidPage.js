@@ -35,6 +35,7 @@ Page({
     that = this;
     //that.data.vidId=options;
     //获取openid
+    console.log(options.vidId)
     wx.getStorage({
       key:"userInfo",
       success(res){
@@ -52,19 +53,20 @@ Page({
     //   }
     // })
 
-    DB.where({
-      _id: options.vidId
-  }).get()
+    wx.cloud.callFunction({
+      name: "vidGetSrc",
+      data: {
+        _id:options.vidId
+      }
+    })
   .then(res=>{
-    console.log(res.data)
-    
-      if(res.data.length>0) {
+      if(res.result.data.length>0) {
           that.setData({
-            vidUrl:res.data[0].vidUrl,
-            comments:res.data[0].comments,
-            introduction:res.data[0].introduction,
-            haveLiked:res.data[0].likes,
-            haveCollected:res.data[0].collect,
+            vidUrl:res.result.data[0].vidUrl,
+            comments:res.result.data[0].comments,
+            introduction:res.result.data[0].introduction,
+            haveLiked:res.result.data[0].likes,
+            haveCollected:res.result.data[0].collect,
           }) 
         }  
         else{
@@ -86,6 +88,7 @@ Page({
            })
         }
       }
+
     })  
   },
 
