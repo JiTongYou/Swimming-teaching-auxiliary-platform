@@ -131,6 +131,9 @@ Page({
           wx.removeStorageSync('userInfo');
           wx.removeStorageSync('chat7');
           wx.removeStorageSync('userClass');
+          console.log(getApp().globalData.userInfo);
+          getApp().globalData.userInfo=0;
+          console.log(getApp().globalData.userInfo);
           wx.redirectTo({
             url: '/pages/login/login',
           })
