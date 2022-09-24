@@ -3,6 +3,10 @@
   display:flex
 }
 
+.vidurl{
+  margin-bottom:80rpx;
+}
+
 .common{
   width:98%;
   height: 380rpx;

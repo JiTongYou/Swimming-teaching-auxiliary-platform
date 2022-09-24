@@ -7,16 +7,15 @@
           bindended="handleEnded"
           bindtap="getHistory">
    </vid> -->
-   <image src="{{vidUrl}}"></image>    <!--使用二维码分享 -->
-
+   <view class='vidurl'>{{vidUrl}}</view>    <!--使用二维码分享 -->
 </view>
 
-<view id='vidNav' class="vidNav" style="{{navFixed?'position:fixed; top: 0':''}}">
-  <view class="navItem">
-    <view class="navContent {{ navId == '0'?'active':''}}" bindtap="changeNav" id="0">简介</view>
-    <view class="navContent {{ navId == '1'?'active':''}}" bindtap="changeNav" id="1">评论</view>
-  </view>
-</view>
+<!-- <view id='vidNav' class="vidNav" style="{{navFixed?'position:fixed; top: 0':''}}"> -->
+  <!-- <view class="navItem"> -->
+    <!-- <view class="navContent {{ navId == '0'?'active':''}}" bindtap="changeNav" id="0">简介</view> -->
+    <!-- <view class="navContent {{ navId == '1'?'active':''}}" bindtap="changeNav" id="1">评论</view> -->
+  <!-- </view> -->
+<!-- </view> -->
 
 <view  wx:if="{{navId==0}}" >
 
