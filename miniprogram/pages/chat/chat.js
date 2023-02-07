@@ -109,7 +109,7 @@ Page({
         }
       }).then(res =>{
         this.setData({
-          msgList: res.result.data[0].msgList
+          msgList: typeof(res.result.data[0].msgList) == "undefined" ? [] : res.result.data[0].msgList
         })
         wx.setStorage({
           key: 'chat' + this.data.chat_group.chat_msg_id,

@@ -193,14 +193,14 @@ Page({
       if (typeof this.data.chat_data == 'number') {
         // 创建聊天
         var chat_members = [{
-            _openid: this.data.userInfo._openid,
-            avatarUrl: this.data.userInfo.avatarUrl,
-            nickName: this.data.userInfo.nickName
+            _openid: this.data.userInfo._openid
+            // avatarUrl: this.data.userInfo.avatarUrl,
+            // nickName: this.data.userInfo.nickName
           },
           {
-            _openid: this.data.otherUserId,
-            avatarUrl: this.data.otherUserAvatar,
-            nickName: this.data.otherUserNickName
+            _openid: this.data.otherUserId
+            // avatarUrl: this.data.otherUserAvatar,
+            // nickName: this.data.otherUserNickName
           }
         ]
         wx.cloud.callFunction({
