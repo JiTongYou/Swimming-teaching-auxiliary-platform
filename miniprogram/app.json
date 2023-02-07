@@ -1,6 +1,5 @@
 {
   "pages": [
-
     "pages/login/login",
     "pages/index/index",
     "pages/vidCollected/vidCollected",
@@ -52,6 +51,5 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "sitemapLocation": "sitemap.json"
 }
