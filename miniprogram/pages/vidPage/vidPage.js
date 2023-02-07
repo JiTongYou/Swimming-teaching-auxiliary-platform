@@ -35,7 +35,6 @@ Page({
     that = this;
     //that.data.vidId=options;
     //获取openid
-    console.log(options.vidId)
     wx.getStorage({
       key:"userInfo",
       success(res){
@@ -62,6 +61,7 @@ Page({
   .then(res=>{
       if(res.result.data.length>0) {
           that.setData({
+            vidId:res.result.data[0]._id,
             vidUrl:res.result.data[0].vidUrl,
             comments:res.result.data[0].comments,
             introduction:res.result.data[0].introduction,
@@ -96,7 +96,7 @@ Page({
    // console.log(that.data.userInfo._openid)
     var tmp_str='ifCollected';
     if(that.data.ifCollected == 1){
-       console.log("取消")
+      console.log("取消")
       that.setData({
         [tmp_str]:0
       })
@@ -104,17 +104,15 @@ Page({
         name:"vidAddCollect",
         data:{
           _openid: that.data.userInfo._openid,   
-          _id:that.data.vidId.vidId,
+          _id:that.data.vidId,
          //_id:that.data.squareItem[index]._id,
-        type:0
+          type:0
         },
       }).then(res=>{
-        console.log(res)
+
       })
-     // console.log(_openid)
     }
     else{
-      console.log("收藏" ,that.data.userInfo._openid)
       that.setData({
         [tmp_str]:1
       })
@@ -122,14 +120,15 @@ Page({
         name:"vidAddCollect",
         data:{
           _openid:that.data.userInfo._openid,
-          _id:that.data.vidId.vidId,
+          _id:that.data.vidId,
          //_id:this.data.squareItem[index]._id,
           type:1
         },
-        // success(res){
-        //     console.log("yep")
-        // }
-      })
+      }).then(res=>{
+
+      }
+
+      )
     }
   },
 
@@ -145,7 +144,7 @@ Page({
          name:"vidAddLike",
          data:{
            _openid: that.data.userInfo._openid,   
-           _id:that.data.vidId.vidId,
+           _id:that.data.vidId,
           //_id:that.data.squareItem[index]._id,
          type:0
          },
@@ -164,7 +163,7 @@ Page({
          name:"vidAddLike",
          data:{
            _openid:that.data.userInfo._openid,
-           _id:that.data.vidId.vidId,
+           _id:that.data.vidId,
           //_id:this.data.squareItem[index]._id,
            type:1
          },

@@ -29,7 +29,7 @@ exports.main = async (event, context) => {
           })
           }
         })
-      )    
+      )
     }else if(type == 0){
       return await db.collection("vids").doc(_id).update({
         data:{

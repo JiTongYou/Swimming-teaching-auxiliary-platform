@@ -8,13 +8,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    vidList:[],//视频列表数据
+    vidList:[],//资源列表数据
     vidId:'',
     isTriggered: false,
     userInfo:{},
   },
 
-  //路由跳转至视频页面
+  //路由跳转至资源页面
   tovid(event){
     let vid=event.currentTarget.dataset.vid;
     // console.log(event.currentTarget.dataset.vid)
@@ -23,7 +23,7 @@ Page({
     })
   },
 
-  //获取视频列表
+  //获取资源列表
   async getvidList(){
     for(var i = 0;i<this.data.userInfo.vidCollected.length;i++){
       console.log("s")

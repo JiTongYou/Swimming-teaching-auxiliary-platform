@@ -41,7 +41,6 @@ Page({
         alreadyNum: alreadyNum
       }
     }).then(res => {
-    console.log(res)
      if (res.result.data.length == "0"){}else {
        var oldvidItem = that.data.vidList;
        var newvidItem = oldvidItem.concat(res.result.data);

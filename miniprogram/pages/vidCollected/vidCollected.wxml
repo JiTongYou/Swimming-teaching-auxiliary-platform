@@ -5,7 +5,7 @@
              class="scrollvid"  
              scroll-with-animation="true">
 
-<!--每个视频本体-->
+<!--每个资源本体-->
 <view class="vid">
       <view class="vidItem"
             wx:key="vid"

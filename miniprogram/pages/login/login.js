@@ -14,12 +14,9 @@ Page({
     wx.getUserProfile({
       desc: '请填写个人信息',
       success:(res)=>{
-        //console.log(res)
-        // that.setData({
-        //   userInfo:res.userInfo,
-        // })
         if(res.userInfo){
             that.addUser(res.userInfo)
+
         }
        else{
             wx.showToast({title:'拒绝授权',})
@@ -38,7 +35,6 @@ Page({
         userInfo: getApp().globalData.userInfo
       })
     }
-    //console.log(that.data.userInfo)
  },
 
   // bindGetUserInfo:function(e){
@@ -67,7 +63,7 @@ Page({
       name:'login',
       data:{userInfo}
     }).then(res=>{
-      //console.log(res);
+
       this.setData({
         userInfo:res.result.data[0]
       })
